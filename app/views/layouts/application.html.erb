@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WMSL World Cup 2014</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<!-- Docs master nav -->
+		<header class="navbar navbar-static-top" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">WMSL World Cup 2014</a>
+				</div>
+				<nav class="collapse navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">Register</a>
+						</li>
+						<li>
+							<a href="#">Matches</a>
+						</li>
+						<li>
+							<a href="#">Teams</a>
+						</li>
+						<li>
+							<a href="#">Groups</a>
+						</li>
+						<li>
+							<a href="#">About</a>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right nav-pills nav-stacked">
+						<li class="dropdown">
+							<% if current_user %>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge pull-right">5</span><%= current_user.name %><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Administrator</a>
+								</li>
+								<li>
+									<a href="#">Setting</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<%= link_to "Sign out", "/signout" %>
+								</li>
+							</ul>
+							<% else %>
+								<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+							<% end %>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
