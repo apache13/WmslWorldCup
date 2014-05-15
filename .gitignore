@@ -24,4 +24,4 @@ config/secrets.yml
 .rvmrc
 
 # config omniauth
-/config/initializers/omniauth.rb
+# /config/initializers/omniauth.rb
