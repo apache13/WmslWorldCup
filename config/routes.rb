@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  resources :matches
+
   resources :players
 
   get "main/login"
