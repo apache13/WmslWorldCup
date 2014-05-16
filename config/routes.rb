@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  resources :bets
+
   resources :matches
 
   resources :players
