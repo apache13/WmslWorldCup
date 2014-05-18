@@ -1,15 +1,20 @@
 module ApplicationHelper
-  
-  def facebook_image_tag(uid)
-      image_tag 'https://graph.facebook.com/'+uid+'/picture' ,:class => 'img-circle'
+  def facebook_image_tag(player)
+    if(player != nil)
+      image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-circle'
+    end
   end
-  
-  def flag_image_tag(abbreviate)
-      image_tag '/flag/'+abbreviate+'.png' ,:class => "img-rounded"
+
+  def flag_image_tag(team)
+    if(team != nil)
+      image_tag '/flag/'+team.abbreviate+'.png' ,:class => "img-rounded"
+    end
   end
-  
+
   def match_image_tag(match)
-      flag_image_tag(match.team1.abbreviate) +' VS '+ flag_image_tag(match.team2.abbreviate)
+    if(match != nil)
+      flag_image_tag(match.team1) +' VS '+ flag_image_tag(match.team2)
+    end
   end
-  
+
 end

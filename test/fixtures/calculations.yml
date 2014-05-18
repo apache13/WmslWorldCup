@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_id: 1
+  bet_id: 1
+  total_point: 1
+  team_winner_point: 1
+  score_point: 1
+
+two:
+  player_id: 1
+  bet_id: 1
+  total_point: 1
+  team_winner_point: 1
+  score_point: 1

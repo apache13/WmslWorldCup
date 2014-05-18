@@ -3,12 +3,13 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Bet ID.</th>
    	  <th>Player</th>
       <th>Match</th>
-      <th>Bet team1 score</th>
-      <th>Bet team2 score</th>
+      <th>Winner</th>
       <th>Team1 score</th>
       <th>Team2 score</th>
+      <th>Close</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,12 +19,13 @@
   <tbody>
     <% @bets.each do |bet| %>
       <tr>
-      	<td><%= facebook_image_tag bet.player.uid %></td>
+      	<td><%= bet.id %></td>
+      	<td><%= facebook_image_tag bet.player %></td>
         <td><%= match_image_tag bet.match %></td>
+        <td><%= flag_image_tag bet.winner %></td>
         <td><%= bet.team1_score %></td>
         <td><%= bet.team2_score %></td>
-        <td><%= bet.match.team1_score %></td>
-        <td><%= bet.match.team2_score %></td>
+        <td><%= bet.close %></td>
         <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -13,7 +13,7 @@ bel = Team.create(name: 'Belgium',abbreviate: 'bel')
 bih = Team.create(name: 'Bosnia and Herzegovina',abbreviate: 'bih')
 bra = Team.create(name: 'Brasil',abbreviate: 'bra')
 chi = Team.create(name: 'Chile',abbreviate: 'chi')
-civ = Team.create(name: 'Costa Rica',abbreviate: 'civ')
+civ = Team.create(name: "Cote D'Ivoire",abbreviate: 'civ')
 cmr = Team.create(name: 'Cameroon',abbreviate: 'cmr')
 col = Team.create(name: 'Colombia',abbreviate: 'col')
 
@@ -25,7 +25,7 @@ esp = Team.create(name: 'Spain',abbreviate: 'esp')
 fra = Team.create(name: 'France',abbreviate: 'fra')
 ger = Team.create(name: 'Germany',abbreviate: 'ger')
 gha = Team.create(name: 'Ghana',abbreviate: 'gha')
-gre = Team.create(name: 'Germany',abbreviate: 'gre')
+gre = Team.create(name: 'Greece',abbreviate: 'gre')
 hon = Team.create(name: 'Honduras',abbreviate: 'hon')
 
 irn = Team.create(name: 'Iran',abbreviate: 'irn')
@@ -42,6 +42,15 @@ sui = Team.create(name: 'Switzerland',abbreviate: 'sui')
 usa = Team.create(name: 'USA',abbreviate: 'usa')
 uru = Team.create(name: 'Uruguay',abbreviate: 'uru')
 
+play01 = Player.create(name: 'plyaer-01',uid: '10152042428021695',team: eng)
+play02 = Player.create(name: 'plyaer-02',uid: '10152042428021695',team: ita)
+play03 = Player.create(name: 'plyaer-03',uid: '10152042428021695',team: ned)
+play04 = Player.create(name: 'plyaer-04',uid: '10152042428021695',team: ger)
+play05 = Player.create(name: 'plyaer-05',uid: '10152042428021695',team: esp)
 
+match01 = Match.create(description: 'Group Stage : A',match: '2014-06-12 17:00:00 UTC',team1: bra, team2: cro ,ready: false)
+match02 = Match.create(description: 'Group Stage : A',match: '2014-06-13 13:00:00 UTC',team1: mex, team2: cmr ,ready: false)
+match03 = Match.create(description: 'Group Stage : B',match: '2014-06-13 16:00:00 UTC',team1: esp, team2: ned ,ready: false)
+match04 = Match.create(description: 'Group Stage : B',match: '2014-06-13 18:00:00 UTC',team1: chi, team2: aus ,ready: false)
 
 

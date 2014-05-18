@@ -12,10 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  
+  <div class="field">
     <%= f.label :match %><br>
     <%= f.datetime_select :match %>
   </div>
-  
   <div class="field">
     <%= f.label :team1_id %><br>
     <%= f.select :team1_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
@@ -25,6 +29,10 @@
     <%= f.select :team2_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
   </div>
   <div class="field">
+    <%= f.label :winner_id %><br>
+    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
+  </div>
+  <div class="field">
     <%= f.label :team1_score %><br>
     <%= f.number_field :team1_score %>
   </div>
@@ -32,6 +40,11 @@
     <%= f.label :team2_score %><br>
     <%= f.number_field :team2_score %>
   </div>
+  <div class="field">
+    <%= f.label :ready %><br>
+    <%= f.check_box :ready %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,39 @@
+<h1>Listing calculations</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Cal ID.</th>
+      <th>Player</th>
+      <th>Match</th>
+      <th>Description</th>
+      <th>Team winner point</th>
+      <th>Score point</th>
+      <th>Total point</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calculations.each do |calculation| %>
+      <tr>
+      	<td><%= calculation.id %></td>
+        <td><%= facebook_image_tag calculation.player %></td>
+        <td><%= calculation.bet.match.match %></td>
+        <td><%= calculation.bet.match.description %></td>
+        <td><%= calculation.team_winner_point %></td>
+        <td><%= calculation.score_point %></td>
+        <td><%= calculation.total_point %></td>
+        <td><%= link_to 'Show', calculation %></td>
+        <td><%= link_to 'Edit', edit_calculation_path(calculation) %></td>
+        <td><%= link_to 'Destroy', calculation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calculation', new_calculation_path %>

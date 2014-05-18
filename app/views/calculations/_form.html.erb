@@ -1,0 +1,39 @@
+<%= form_for(@calculation) do |f| %>
+  <% if @calculation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calculation.errors.count, "error") %> prohibited this calculation from being saved:</h2>
+
+      <ul>
+      <% @calculation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :player_id %><br>
+    <%= f.select :player_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :bet_id %><br>
+    <%= f.select :bet_id ,  Bet.all.collect {|t| [ t.id , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :total_point %><br>
+    <%= f.number_field :total_point %>
+  </div>
+  <div class="field">
+    <%= f.label :team_winner_point %><br>
+    <%= f.number_field :team_winner_point %>
+  </div>
+  <div class="field">
+    <%= f.label :score_point %><br>
+    <%= f.number_field :score_point %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

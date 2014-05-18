@@ -3,11 +3,15 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Match ID.</th>
+      <th>Description</th>
       <th>Match</th>
       <th>Team1</th>
       <th>Team2</th>
+      <th>Winner</th>
       <th>Team1 score</th>
       <th>Team2 score</th>
+      <th>Close</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,11 +21,15 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
+      	<td><%= match.id %></td>
+      	<td><%= match.description %></td>
         <td><%= match.match %></td>
-        <td><%= flag_image_tag match.team1.abbreviate %></td>
-        <td><%= flag_image_tag match.team2.abbreviate %></td>
+        <td><%= flag_image_tag match.team1 %></td>
+        <td><%= flag_image_tag match.team2 %></td>
+        <td><%= flag_image_tag match.winner %></td>
         <td><%= match.team1_score %></td>
         <td><%= match.team2_score %></td>
+        <td><%= match.ready %></td>
         <td><%= link_to 'Show', match %></td>
         <td><%= link_to 'Edit', edit_match_path(match) %></td>
         <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
