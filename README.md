@@ -19,11 +19,13 @@ Installation on windows
 
 7. Add WmslWorldCup::Application.config.secret_token = '[secret_key]' to secret_token.rb (secret key from key.txt)
 
-8. rake db:create
+8. bundle install
 
-9. rake db:migrate
+9. rake db:create
 
-10. rake db:seed
+10. rake db:migrate
 
-11. rails server
+11. rake db:seed
+
+12. rails server
 
