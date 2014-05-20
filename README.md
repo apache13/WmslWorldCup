@@ -33,7 +33,7 @@ Windowns installation
 
 15. $ rake secret > secret_token.rb
 
-16. Modify secret_token.rb add WmslWorldCup::Application.config.secret_token = ...........
+16. Edit file secret_token.rb add WmslWorldCup::Application.config.secret_token = "..........."
 
 17. $ rails server
 
