@@ -1,6 +1,8 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
+  before_filter :require_admin_permission , :except => [:index, :show]
+
   # GET /matches
   # GET /matches.json
   def index

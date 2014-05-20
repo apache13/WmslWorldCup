@@ -1,9 +1,1 @@
-<h1>Main#login</h1>
-<p>
-	Find me in app/views/main/login.html.erb
-</p>
-<% if current_user %>
-<%= link_to "Sign out", "/signout" %>
-<% else %>
-<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-<% end %>
+<%= link_to image_tag("/fb_login_bt.png"), "/auth/facebook", id: "sign_in" %>

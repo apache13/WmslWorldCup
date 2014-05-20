@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-  #before_filter :authenticate
+  before_filter :require_admin_permission , :except => [:index, :show]
 
   # GET /teams
   # GET /teams.json
@@ -73,4 +73,5 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:name, :abbreviate ,:plyers)
     end
+    
 end
