@@ -29,7 +29,13 @@ Windowns installation
 
 13. $ rake db:seed
 
-14. $ rails server
+14. Change directory to /config/initializers/
+
+15. $ rake secret > secret_token.rb
+
+16. Modify secret_token.rb add WmslWorldCup::Application.config.secret_token = ...........
+
+17. $ rails server
 
 
 
