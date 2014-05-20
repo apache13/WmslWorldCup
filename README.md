@@ -9,27 +9,27 @@ Windowns installation
 
 3. Install Node.js    --> http://nodejs.org/download/
 
-4. gem update
+4. $ gem update
 
-4. gem install bundle
+5. $ gem install bundle
 
-5. Install git-scm    --> http://git-scm.com/
+6. Install git-scm    --> http://git-scm.com/
 
-6. Fork project from apache13/WmslWorldCup --> https://github.com/apache13/WmslWorldCup
+7. Fork project from apache13/WmslWorldCup --> https://github.com/apache13/WmslWorldCup
 
-7. Clone your github project to local drive
+8. Clone your github project to local drive
 
-8. Change directory to clone project path
+9. Change directory to clone project path
 
-9. bundle install
+10. $ bundle install
 
-10. rake db:create
+11. $ rake db:create
 
-11. rake db:migrate
+12. $ rake db:migrate
 
-12. rake db:seed
+13. $ rake db:seed
 
-13. rails server
+14. $ rails server
 
 
 
