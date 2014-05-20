@@ -15,7 +15,7 @@ Windowns installation
 
 5. Install git-scm    --> http://git-scm.com/
 
-6. Fork project from apache13/WmslWorldCup
+6. Fork project from apache13/WmslWorldCup --> https://github.com/apache13/WmslWorldCup
 
 7. Clone your github project to local drive
 
