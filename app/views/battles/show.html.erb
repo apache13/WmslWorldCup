@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Match:</strong>
+  <%= @battle.match_id %>
+</p>
+
+<p>
+  <strong>Player1:</strong>
+  <%= @battle.player1_id %>
+</p>
+
+<p>
+  <strong>Player2:</strong>
+  <%= @battle.player2_id %>
+</p>
+
+<p>
+  <strong>Player1 point:</strong>
+  <%= @battle.player1_point %>
+</p>
+
+<p>
+  <strong>Player2 point:</strong>
+  <%= @battle.player2_point %>
+</p>
+
+<%= link_to 'Edit', edit_battle_path(@battle) %> |
+<%= link_to 'Back', battles_path %>

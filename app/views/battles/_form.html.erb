@@ -1,0 +1,40 @@
+<%= form_for(@battle) do |f| %>
+  <% if @battle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@battle.errors.count, "error") %> prohibited this battle from being saved:</h2>
+
+      <ul>
+      <% @battle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :match_id %><br>
+    <%= f.select :match_id ,  Match.all.collect {|t| [ t.description , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :player1_id %><br>
+    <%= f.select :player1_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :player2_id %><br>
+    <%= f.select :player2_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :player1_point %><br>
+    <%= f.number_field :player1_point %>
+  </div>
+  <div class="field">
+    <%= f.label :player2_point %><br>
+    <%= f.number_field :player2_point %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

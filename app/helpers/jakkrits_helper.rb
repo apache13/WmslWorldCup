@@ -1,0 +1,2 @@
+module JakkritsHelper
+end

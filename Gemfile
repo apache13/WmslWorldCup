@@ -48,3 +48,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-facebook'
+

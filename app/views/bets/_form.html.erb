@@ -1,0 +1,48 @@
+<%= form_for(@bet) do |f| %>
+  <% if @bet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+
+      <ul>
+      <% @bet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :match_id %><br>
+    <%= f.select :match_id ,  Match.all.collect {|t| [ t.description , t.id]} %>
+  </div>
+  
+  
+  <div class="field">
+    <%= f.label :player_id %><br>
+    <%= f.select :player_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :winner_id %><br>
+    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :team1_score %><br>
+    <%= f.number_field :team1_score %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :team2_score %><br>
+    <%= f.number_field :team2_score %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :close %><br>
+    <%= f.check_box :close %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

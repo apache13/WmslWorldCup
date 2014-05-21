@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Match:</strong>
+  <%= @bet.match_id %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @bet.player_id %>
+</p>
+
+<p>
+  <strong>Winner:</strong>
+  <%= flag_image_tag @bet.winner %>
+</p>
+
+<p>
+  <strong>Team1 score:</strong>
+  <%= @bet.team1_score %>
+</p>
+
+<p>
+  <strong>Team2 score:</strong>
+  <%= @bet.team2_score %>
+</p>
+
+<p>
+  <strong>Close:</strong>
+  <%= @bet.close %>
+</p>
+
+<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<%= link_to 'Back', bets_path %>

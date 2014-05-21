@@ -5,11 +5,59 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  private
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  before_filter :authenticate , :except => [:login, :logout, :facebook ,:access_denied ]
+
+  @@admin_uid_list = ["10152042428021695","100001280493339"]
+
+  def self.admin?(uid)
+    if(@@admin_uid_list.include?(uid))
+      return true
+    else
+      return false
+    end
   end
   
-  
+  private
+  def current_user
+    if(User.exists?(session[:user_id]))
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    else
+      @current_user = false
+    end
+  end
 
+  def authenticate
+
+    if(current_user != false)
+      logger.debug 'uid : '+current_user.uid
+      logger.debug 'original_url   : '+request.original_url
+      logger.debug 'store original_url : '+session[:return_to].to_s
+      if(session[:return_to] != nil)
+        redirect_to(session[:return_to])
+      end
+      session.delete(:return_to)
+    else
+      logger.debug 'store original_url   : '+request.original_url
+      session[:return_to] = request.original_url
+      redirect_to({ action: 'login' , :controller=>"main"})
+
+    end
+  end
+
+  def require_admin_permission
+    if(current_user != nil)
+      logger.debug('request admin permission from uid: '+current_user.uid)
+      if(@@admin_uid_list.include?(current_user.uid))
+        logger.debug 'result : grant admin permission'
+      else
+        logger.debug 'result : reject admin permission'
+        redirect_to({ action: 'access_denied' , :controller=>"main"})
+      end
+    else
+      redirect_to({ action: 'login' , :controller=>"main"})
+    end
+  end
+
+  
+  
 end

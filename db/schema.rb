@@ -11,7 +11,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513153645) do
+ActiveRecord::Schema.define(version: 20140521171228) do
+
+  create_table "battles", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "player1_point"
+    t.integer  "player2_point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bets", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "team1_score"
+    t.integer  "team2_score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "player_id"
+    t.integer  "winner_id"
+    t.boolean  "close"
+  end
+
+  create_table "calculations", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "bet_id"
+    t.integer  "total_point"
+    t.integer  "team_winner_point"
+    t.integer  "score_point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jakkrits", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "matches", force: true do |t|
+    t.datetime "match"
+    t.integer  "team1_id"
+    t.integer  "team2_id"
+    t.integer  "team1_score"
+    t.integer  "team2_score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "ready"
+    t.string   "description"
+    t.integer  "winner_id"
+  end
+
+  create_table "players", force: true do |t|
+    t.string   "name"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "team_id"
+    t.boolean  "admin"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.string   "abbreviate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "player_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"

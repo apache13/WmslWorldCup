@@ -1,5 +1,23 @@
 WmslWorldCup::Application.routes.draw do
+  resources :jakkrits
+
+  resources :battles
+
+  resources :calculations
+
+  resources :bets
+
+  resources :matches
+
+  resources :players
+
+  get "main/login"
   get "main/index"
+  get "main/access_denied"
+  
+  resources :teams
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

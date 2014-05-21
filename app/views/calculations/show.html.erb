@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @calculation.player_id %>
+</p>
+
+<p>
+  <strong>Bet:</strong>
+  <%= @calculation.bet_id %>
+</p>
+
+<p>
+  <strong>Total point:</strong>
+  <%= @calculation.total_point %>
+</p>
+
+<p>
+  <strong>Team winner point:</strong>
+  <%= @calculation.team_winner_point %>
+</p>
+
+<p>
+  <strong>Score point:</strong>
+  <%= @calculation.score_point %>
+</p>
+
+<%= link_to 'Edit', edit_calculation_path(@calculation) %> |
+<%= link_to 'Back', calculations_path %>
