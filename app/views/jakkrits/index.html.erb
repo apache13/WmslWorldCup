@@ -1,0 +1,31 @@
+<h1>Listing jakkrits</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Team</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jakkrits.each do |jakkrit| %>
+      <tr>
+        <td><%= jakkrit.name %></td>
+        <td><%= jakkrit.age %></td>
+        <td><%= flag_image_tag jakkrit.team %></td>
+        <td><%= link_to 'Show', jakkrit %></td>
+        <td><%= link_to 'Edit', edit_jakkrit_path(jakkrit) %></td>
+        <td><%= link_to 'Destroy', jakkrit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jakkrit', new_jakkrit_path %>

@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   has_many :players
-  
+  has_many :jakkrits
   has_many :matches
   
   validates :name,:abbreviate , presence: true

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jakkrit.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @jakkrit.age %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= flag_image_tag @jakkrit.team %>
+</p>
+
+<%= link_to 'Edit', edit_jakkrit_path(@jakkrit) %> |
+<%= link_to 'Back', jakkrits_path %>

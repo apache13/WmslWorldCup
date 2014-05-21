@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520182212) do
+ActiveRecord::Schema.define(version: 20140521171228) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20140520182212) do
     t.integer  "total_point"
     t.integer  "team_winner_point"
     t.integer  "score_point"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jakkrits", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

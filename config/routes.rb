@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  resources :jakkrits
+
   resources :battles
 
   resources :calculations
