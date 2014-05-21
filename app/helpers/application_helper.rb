@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def facebook_image_tag(player)
     if(player != nil)
       image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-circle'

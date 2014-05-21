@@ -7,6 +7,7 @@
       <th>Name</th>
       <th>Uid</th>
       <th>Facebook</th>
+      <th>Admin</th>
       <th>Team</th>
       <th></th>
       <th></th>
@@ -21,6 +22,7 @@
         <td><%= player.name %></td>
         <td><%= player.uid %></td>
         <td><%= facebook_image_tag player %></td>
+        <td><%= player.admin %></td>
         <td><%= flag_image_tag player.team %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>

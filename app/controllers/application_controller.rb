@@ -7,8 +7,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate , :except => [:login, :logout, :facebook ,:access_denied ]
 
-  @@admin_uid = ["10152042428021695"]
+  @@admin_uid_list = ["10152042428021695","100001280493339"]
 
+  def self.admin?(uid)
+    if(@@admin_uid_list.include?(uid))
+      return true
+    else
+      return false
+    end
+  end
+  
   private
   def current_user
     if(User.exists?(session[:user_id]))
@@ -39,7 +47,7 @@ class ApplicationController < ActionController::Base
   def require_admin_permission
     if(current_user != nil)
       logger.debug('request admin permission from uid: '+current_user.uid)
-      if(@@admin_uid.include?(current_user.uid))
+      if(@@admin_uid_list.include?(current_user.uid))
         logger.debug 'result : grant admin permission'
       else
         logger.debug 'result : reject admin permission'
@@ -50,4 +58,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  
+  
 end
