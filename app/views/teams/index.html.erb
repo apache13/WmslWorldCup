@@ -7,6 +7,7 @@
       <th>Name</th>
       <th>Abbreviate</th>
       <th>Flag</th>
+      <th>Fan</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,6 +21,7 @@
         <td><%= team.name %></td>
         <td><%= team.abbreviate %></td>
         <td><%= flag_image_tag team %></td>
+        <td><%= team.players.count %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>

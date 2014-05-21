@@ -1,0 +1,26 @@
+<strong>Matches (Open)</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Date/Time</th>
+			<th>Description</th>
+			<th>Team1</th>
+			<th>Team2</th>
+			<th>Score</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @matches_open.each_with_index do |match,index| %>
+		<tr>
+			<td><%= index+1 %></td>
+			<td><%= match.match.localtime %></td>
+			<td><%= match.description %></td>
+			<td><%= flag_image_tag match.team1 %></td>
+			<td><%= flag_image_tag match.team2 %></td>
+			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

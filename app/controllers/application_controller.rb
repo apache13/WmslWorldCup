@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate , :except => [:login, :logout, :facebook ,:access_denied ]
 
-  @@admin_uid_list = ["10152042428021695","100001280493339"]
+  @@admin_uid_list = ["10152042428021695"]
 
   def self.admin?(uid)
     if(@@admin_uid_list.include?(uid))
@@ -26,10 +26,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def register
+      @register = Player.exists?(uid: current_user.uid)
+  end
+  
   def authenticate
-
     if(current_user != false)
       logger.debug 'uid : '+current_user.uid
+      
+      logger.debug 'player : '+Player.exists?(uid: current_user.uid).to_s
+      if(!register)
+        session.delete(:return_to)
+        redirect_to({ action: 'new' , :controller=>"players"})
+      end
+      
       logger.debug 'original_url   : '+request.original_url
       logger.debug 'store original_url : '+session[:return_to].to_s
       if(session[:return_to] != nil)
