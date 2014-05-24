@@ -1,5 +1,7 @@
 class MainController < ApplicationController
   
+  before_filter :require_login_permission , :only => [:index]
+
   def login
   
   end

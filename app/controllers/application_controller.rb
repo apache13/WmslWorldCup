@@ -3,11 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user
+  helper_method :current_user , :require_login_permission , :require_admin_permission
 
-  before_filter :authenticate , :except => [:login, :logout, :facebook ,:access_denied ]
-
-  @@admin_uid_list = ["10152042428021695"]
+  @@admin_uid_list = ["10152042428021695x"]
 
   def self.admin?(uid)
     if(@@admin_uid_list.include?(uid))
@@ -16,8 +14,9 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+
   private
+
   def current_user
     if(User.exists?(session[:user_id]))
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -27,19 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
   def register
-      @register = Player.exists?(uid: current_user.uid)
+    @register = Player.exists?(uid: current_user.uid)
   end
-  
-  def authenticate
+
+  def require_login_permission
     if(current_user != false)
       logger.debug 'uid : '+current_user.uid
-      
-      logger.debug 'player : '+Player.exists?(uid: current_user.uid).to_s
-      if(!register)
-        session.delete(:return_to)
-        redirect_to({ action: 'new' , :controller=>"players"})
-      end
-      
       logger.debug 'original_url   : '+request.original_url
       logger.debug 'store original_url : '+session[:return_to].to_s
       if(session[:return_to] != nil)
@@ -68,6 +60,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  
-  
 end

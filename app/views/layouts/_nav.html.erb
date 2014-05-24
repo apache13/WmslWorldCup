@@ -6,16 +6,11 @@
 		</div>
 		<nav class="collapse navbar-collapse" role="navigation">
 			<ul class="nav navbar-nav">
-				<% if !@register %>
-				<li>
-					<%= link_to('Register',{ controller: "players",action: "new"}) %>
-				</li>
-				<% else %>
-				<li>
-					<%= link_to('Teams',{ controller: "teams"}) %>
-				</li>
 				<li>
 					<%= link_to('Players',{ controller: "players"}) %>
+				</li>
+				<li>
+					<%= link_to('Teams',{ controller: "teams"}) %>
 				</li>
 				<li>
 					<%= link_to('Matches',{ controller: "matches"}) %>
@@ -29,7 +24,6 @@
 				<li>
 					<%= link_to('Calculations',{ controller: "calculations"}) %>
 				</li>
-				<% end %>
 				<li>
 					<a href="#">About</a>
 				</li>
@@ -38,21 +32,23 @@
 			<ul class="nav navbar-nav navbar-right nav-pills nav-stacked">
 				<li class="dropdown">
 					<% if @current_user %>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge pull-right">5</span><%= current_user.name %><b class="caret"></b></a>
-					<ul class="dropdown-menu">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						
 						<% if @current_user.admin? %>
-						<li>
-							<%= link_to('Administrator',{ controller: "administrator"}) %>
-						</li>
+							<%= current_user.name %> (Admin)
+						<% else %>
+							<%= current_user.name %> (Player)
 						<% end %>
-						<li>
-							<a href="#">Setting</a>
-						</li>
+						<b class="caret"> </b> 
+					</a>
+					<ul class="dropdown-menu">
 						<li class="divider"></li>
 						<li>
 							<%= link_to "Sign out", "/signout" %>
 						</li>
 					</ul>
+					<% else %>
+					<%= link_to image_tag("/fb_login_bt.png"), "/auth/facebook", id: "sign_in" %>
 					<% end %>
 				</li>
 			</ul>

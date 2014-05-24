@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :authenticate , :only => [:new,:create]
+  before_filter :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
   before_filter :require_admin_permission , :only => [:destroy]
   
   

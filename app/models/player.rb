@@ -6,6 +6,6 @@ class Player < ActiveRecord::Base
   has_many :battles
   
   validates :name , :uid ,:team , presence: true
-  validates :name , :uid , uniqueness: true
+  validates :name , uniqueness: true
   
 end
