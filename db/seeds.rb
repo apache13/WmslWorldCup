@@ -45,9 +45,9 @@ uru = Team.create(name: 'Uruguay',abbreviate: 'uru')
 #admin = Player.create(name: 'pong',uid: '10152042428021695',admin: true,team: ita)
 #play01 = Player.create(name: 'beer',uid: '100001280493339',admin: false,team: eng)
 
-match01 = Match.create(description: 'Group Stage : A#01',match: '2014-06-11 20:00:00 UTC',team1: bra, team2: cro ,ready: false)
-match02 = Match.create(description: 'Group Stage : A#02',match: '2014-06-12 16:00:00 UTC',team1: mex, team2: cmr ,ready: false)
-match03 = Match.create(description: 'Group Stage : B#01',match: '2014-06-12 19:00:00 UTC',team1: esp, team2: ned ,ready: false)
-match04 = Match.create(description: 'Group Stage : B#02',match: '2014-06-12 22:00:00 UTC',team1: chi, team2: aus ,ready: false)
+match01 = Match.create(description: 'Group Stage : A#01',match: '2014-06-11 20:00:00 UTC',team1: bra, team2: cro ,live: '7,8,WC',ready: false)
+match02 = Match.create(description: 'Group Stage : A#02',match: '2014-06-12 16:00:00 UTC',team1: mex, team2: cmr ,live: '7,8,WC',ready: false)
+match03 = Match.create(description: 'Group Stage : B#01',match: '2014-06-12 19:00:00 UTC',team1: esp, team2: ned ,live: '8,WC',ready: false)
+match04 = Match.create(description: 'Group Stage : B#02',match: '2014-06-12 22:00:00 UTC',team1: chi, team2: aus ,live: 'WC',ready: false)
 
 

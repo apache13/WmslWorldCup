@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user , :require_login_permission , :require_admin_permission
 
-  @@admin_uid_list = ["10152042428021695x"]
+  @@admin_uid_list = ["10152042428021695"]
 
   def self.admin?(uid)
     if(@@admin_uid_list.include?(uid))

@@ -1,0 +1,34 @@
+<strong>Information</strong>
+<p>
+	<%= facebook_image_tag current_user %>
+</p>
+<p>
+	Provider : <%= current_user.provider %>
+</p>
+<p>
+	UID : <%= current_user.uid %>
+</p>
+<p>
+	Name : <%= current_user.name %>
+</p>
+<p>
+	<% if @current_player == nil %>
+	Player : N/A
+	<% else%>
+	Player : <%= @current_player.name %>
+	<% end %>
+</p>
+<p>
+	<% if @current_player == nil %>
+	Register : N/A
+	<% else%>
+	Register : <%= @current_player.created_at.localtime %>
+	<% end %>
+</p>
+<p>
+	<% if @current_player == nil %>
+	Fan : N/A
+	<% else%>
+	Fan : <%= flag_image_tag @current_player.team %>
+	<% end %>
+</p>
