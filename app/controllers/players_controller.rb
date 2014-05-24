@@ -1,8 +1,10 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_admin_permission , :except => [:index, :show, :new , :create]
- 
+  before_filter :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
+  before_filter :require_admin_permission , :only => [:destroy]
+  
+  
   # GET /players
   # GET /players.json
   def index
@@ -28,6 +30,7 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
+    @player.uid = current_user.uid
     
     respond_to do |format|
       if @player.save

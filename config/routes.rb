@@ -1,4 +1,5 @@
 WmslWorldCup::Application.routes.draw do
+  get "administrator/index"
   resources :battles
 
   resources :calculations

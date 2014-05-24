@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  skip_before_filter :authenticate, :only => [:create, :destroy]
+  # skip_before_filter :require_login_permission, :only => [:create, :destroy]
   
   def create
     user = User.from_omniauth(env["omniauth.auth"])
