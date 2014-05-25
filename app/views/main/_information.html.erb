@@ -21,31 +21,31 @@
 	</div>
 	<div class="col-md-5">
 		<p>
-			<% if @current_player == nil %>
+			<% if current_user.player == nil %>
 			<strong>Player:</strong>
 			<%= 'N/A' %>
 			<% else%>
 			<strong>Player:</strong>
-			<%= @current_player.name %>
+			<%= current_user.player.name %>
 			<% end %>
 		</p>
 
 		<p>
-			<% if @current_player == nil %>
+			<% if current_user.player == nil %>
 			<strong>Register:</strong>
 			<%= 'N/A' %>
 			<% else%>
 			<strong>Register:</strong>
-			<%= @current_player.created_at.localtime %>
+			<%= current_user.player.created_at.localtime %>
 			<% end %>
 		</p>
 		<p>
-			<% if @current_player == nil %>
+			<% if current_user.player == nil %>
 			<strong>Fan:</strong>
 			<%= 'N/A' %>
 			<% else%>
 			<strong>Fan:</strong>
-			<%= flag_image_tag @current_player.team %>
+			<%= flag_image_tag current_user.player.team %>
 			<% end %>
 		</p>
 	</div>

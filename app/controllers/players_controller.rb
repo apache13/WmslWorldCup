@@ -20,6 +20,8 @@ class PlayersController < ApplicationController
   def new
     @player = Player.new
     @player.uid = current_user.uid
+    @player.user = current_user
+    
   end
 
   # GET /players/1/edit
@@ -31,6 +33,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     @player.uid = current_user.uid
+    @player.user = current_user
     
     respond_to do |format|
       if @player.save
@@ -75,6 +78,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :uid ,:team_id)
+      params.require(:player).permit(:name, :uid ,:team_id,:user_id)
     end
 end
