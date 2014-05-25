@@ -24,7 +24,7 @@
   
   <div class="field">
     <%= f.label :winner_id %><br>
-    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
+    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
   </div>
   
   <div class="field">
