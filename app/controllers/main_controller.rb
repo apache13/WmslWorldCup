@@ -7,9 +7,11 @@ class MainController < ApplicationController
   end
   def index
     @players = Player.all
+    @current_player = Player.find_by(:uid => current_user.uid)
     @matches_close = Match.where(:closed => true).order(:match)
     @matches_open = Match.where(:closed => false).order(:match)
-    @current_player = Player.find_by(:uid => current_user.uid)
+    @bets = Bet.all
+    
   end
   def access_denied
     

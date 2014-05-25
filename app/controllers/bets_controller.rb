@@ -1,8 +1,8 @@
 class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show]
-  before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
+  before_filter :require_login_permission , :only => [:index,:show,:edit,:update]
+  before_filter :require_admin_permission , :only => [:new,:create,:destroy]
   
   # GET /bets
   # GET /bets.json
@@ -72,6 +72,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :close)
+      params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :calculation_id)
     end
 end

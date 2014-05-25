@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th>Cal ID.</th>
+      <th>Bet ID.</th>
+      <th>Facebook</th>
       <th>Player</th>
       <th>Match</th>
       <th>Description</th>
@@ -20,7 +22,9 @@
     <% @calculations.each do |calculation| %>
       <tr>
       	<td><%= calculation.id %></td>
+        <td><%= calculation.bet.id %></td>
         <td><%= facebook_image_tag calculation.player %></td>
+        <td><%= calculation.player.name %></td>
         <td><%= calculation.bet.match.match %></td>
         <td><%= calculation.bet.match.description %></td>
         <td><%= calculation.team_winner_point %></td>
