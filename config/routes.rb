@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  get "generate/bets"
+  get "generate/calculate"
   get "administrator/index"
   resources :battles
 

@@ -1,6 +1,5 @@
 class Calculation < ActiveRecord::Base  
   
-  before_save :calculate
   after_save :link_bet
   
   belongs_to :player
@@ -14,6 +13,7 @@ class Calculation < ActiveRecord::Base
     self.bet.update(calculation: self)
   end
   
+  public
   def calculate
     
     self.team_winner_point = 0
