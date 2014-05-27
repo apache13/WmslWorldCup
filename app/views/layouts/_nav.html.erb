@@ -1,0 +1,53 @@
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<%= link_to("WMSL World Cup 2014",{ controller: "main"} ,:class => "navbar-brand") %>
+		</div>
+		<nav class="collapse navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li>
+					<%= link_to('Players',{ controller: "players"}) %>
+				</li>
+				<li>
+					<%= link_to('Teams',{ controller: "teams"}) %>
+				</li>
+				<li>
+					<%= link_to('Matches',{ controller: "matches"}) %>
+				</li>
+				<li>
+					<%= link_to('Bets',{ controller: "bets"}) %>
+				</li>
+				<li>
+					<%= link_to('Calculations',{ controller: "calculations"}) %>
+				</li>
+				<li>
+					<a href="#">About</a>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right nav-pills nav-stacked">
+				<li class="dropdown">
+					<% if @current_user %>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <% if @current_user.admin? %>
+					<%= current_user.name %> (Admin)
+					<% else %>
+					<%= current_user.name %> (Player)
+					<% end %> <b class="caret"> </b> </a>
+					<ul class="dropdown-menu">
+						<li>
+							<%= link_to('Administrator',{ controller: "administrator"}) %>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<%= link_to "Sign out", "/signout" %>
+						</li>
+					</ul>
+					<% else %>
+					<%= link_to image_tag("/fb_login_bt.png"), "/auth/facebook", id: "sign_in" %>
+					<% end %>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>

@@ -1,0 +1,53 @@
+<strong>Information</strong>
+<div class="row">
+	<div class="col-md-2">
+		<p>
+			<%= facebook_thumbnail_image_tag(current_user,'small') %>
+		</p>
+	</div>
+	<div class="col-md-5">
+		<p>
+			<strong>Provider:</strong>
+			<%= current_user.provider %>
+		</p>
+		<p>
+			<strong>UID:</strong>
+			<%= current_user.uid %>
+		</p>
+		<p>
+			<strong>Name:</strong>
+			<%= current_user.name %>
+		</p>
+	</div>
+	<div class="col-md-5">
+		<p>
+			<% if current_user.player == nil %>
+			<strong>Player:</strong>
+			<%= 'N/A' %>
+			<% else%>
+			<strong>Player:</strong>
+			<%= current_user.player.name %>
+			<% end %>
+		</p>
+
+		<p>
+			<% if current_user.player == nil %>
+			<strong>Register:</strong>
+			<%= 'N/A' %>
+			<% else%>
+			<strong>Register:</strong>
+			<%= current_user.player.created_at.localtime %>
+			<% end %>
+		</p>
+		<p>
+			<% if current_user.player == nil %>
+			<strong>Fan:</strong>
+			<%= 'N/A' %>
+			<% else%>
+			<strong>Fan:</strong>
+			<%= flag_image_tag current_user.player.team %>
+			<% end %>
+		</p>
+	</div>
+</div>
+

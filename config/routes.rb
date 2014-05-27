@@ -1,6 +1,7 @@
 WmslWorldCup::Application.routes.draw do
-  resources :jakkrits
-
+  get "generate/bets"
+  get "generate/calculate"
+  get "administrator/index"
   resources :battles
 
   resources :calculations

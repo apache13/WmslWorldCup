@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521171228) do
+ActiveRecord::Schema.define(version: 20140525095256) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140521171228) do
     t.datetime "updated_at"
     t.integer  "player_id"
     t.integer  "winner_id"
-    t.boolean  "close"
+    t.integer  "calculation_id"
   end
 
   create_table "calculations", force: true do |t|
@@ -44,13 +44,6 @@ ActiveRecord::Schema.define(version: 20140521171228) do
     t.datetime "updated_at"
   end
 
-  create_table "jakkrits", force: true do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "matches", force: true do |t|
     t.datetime "match"
     t.integer  "team1_id"
@@ -59,9 +52,10 @@ ActiveRecord::Schema.define(version: 20140521171228) do
     t.integer  "team2_score"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ready"
+    t.boolean  "closed"
     t.string   "description"
     t.integer  "winner_id"
+    t.string   "live"
   end
 
   create_table "players", force: true do |t|
@@ -71,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140521171228) do
     t.datetime "updated_at"
     t.integer  "team_id"
     t.boolean  "admin"
+    t.integer  "user_id"
   end
 
   create_table "teams", force: true do |t|
@@ -89,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140521171228) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "player_id"
   end
 
 end

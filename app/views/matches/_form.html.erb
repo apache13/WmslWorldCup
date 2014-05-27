@@ -28,6 +28,12 @@
     <%= f.label :team2_id %><br>
     <%= f.select :team2_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
   </div>
+  
+  <div class="field">
+    <%= f.label :live %><br>
+    <%= f.text_field :live %>
+  </div>
+  
   <div class="field">
     <%= f.label :winner_id %><br>
     <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
@@ -41,8 +47,8 @@
     <%= f.number_field :team2_score %>
   </div>
   <div class="field">
-    <%= f.label :ready %><br>
-    <%= f.check_box :ready %>
+    <%= f.label :closed %><br>
+    <%= f.check_box :closed %>
   </div>
   
   <div class="actions">

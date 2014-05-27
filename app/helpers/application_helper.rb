@@ -5,7 +5,13 @@ module ApplicationHelper
       image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-circle'
     end
   end
-
+  
+  def facebook_thumbnail_image_tag(player,type)
+    if(player != nil)
+      image_tag 'https://graph.facebook.com/'+player.uid+'/picture?type='+type ,:class => 'img-thumbnail'
+    end
+  end
+  
   def flag_image_tag(team)
     if(team != nil)
       image_tag '/flag/'+team.abbreviate+'.png' ,:class => "img-rounded"

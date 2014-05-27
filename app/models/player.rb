@@ -1,18 +1,40 @@
 class Player < ActiveRecord::Base
   
-  before_save :admin_player
-  
   belongs_to :team
   has_many :bets
   has_many :calculations
   has_many :battles
+  belongs_to :user
   
   validates :name , :uid ,:team , presence: true
-  validates :name , :uid , uniqueness: true
+  validates :name , uniqueness: true
+
+  def played
+    return self.calculations.count
+  end
   
-  private
-  def admin_player
-    self.admin = ApplicationController.admin?(self.uid)
+  def twp
+    twp = 0
+    self.calculations.each do |calculation|
+      twp += calculation.team_winner_point
+    end
+    return twp
+  end
+  
+  def sp
+    sp = 0
+    self.calculations.each do |calculation|
+      sp += calculation.score_point
+    end
+    return sp
+  end
+  
+  def pts
+    pts = 0
+    self.calculations.each do |calculation|
+      pts += calculation.total_point
+    end
+    return pts
   end
   
 end

@@ -1,8 +1,9 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_admin_permission , :except => [:index, :show]
-
+  before_filter :require_login_permission , :only => [:index,:show]
+  before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
+  
   # GET /matches
   # GET /matches.json
   def index
@@ -71,6 +72,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :ready ,:winner_id)
+      params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :closed ,:winner_id,:live)
     end
 end

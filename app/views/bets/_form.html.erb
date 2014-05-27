@@ -24,7 +24,7 @@
   
   <div class="field">
     <%= f.label :winner_id %><br>
-    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
+    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
   </div>
   
   <div class="field">
@@ -35,11 +35,6 @@
   <div class="field">
     <%= f.label :team2_score %><br>
     <%= f.number_field :team2_score %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :close %><br>
-    <%= f.check_box :close %>
   </div>
   
   <div class="actions">
