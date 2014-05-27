@@ -3,7 +3,6 @@ class BetsController < ApplicationController
 
   before_filter :require_login_permission , :only => [:index,:show,:edit,:update]
   before_filter :require_admin_permission , :only => [:new,:create,:destroy]
-  
   # GET /bets
   # GET /bets.json
   def index
@@ -44,12 +43,18 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1.json
   def update
     respond_to do |format|
-      if @bet.update(bet_params)
-        format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
-        format.json { head :no_content }
+
+      if @bet.match.closed == true
+        format.html { redirect_to @bet, notice: "Can't update because match is closed." }
+          format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @bet.errors, status: :unprocessable_entity }
+        if @bet.update(bet_params)
+          format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @bet.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -65,13 +70,14 @@ class BetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bet
-      @bet = Bet.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bet_params
-      params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :calculation_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bet
+    @bet = Bet.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def bet_params
+    params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :calculation_id,:result)
+  end
 end

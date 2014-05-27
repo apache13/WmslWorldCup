@@ -1,43 +1,82 @@
 <%= form_for(@bet) do |f| %>
-  <% if @bet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+<% if @bet.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
 
-      <ul>
-      <% @bet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @bet.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :match_id %><br>
-    <%= f.select :match_id ,  Match.all.collect {|t| [ t.description , t.id]} %>
-  </div>
-  
-  
-  <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.select :player_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :winner_id %><br>
-    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :team1_score %><br>
-    <%= f.number_field :team1_score %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :team2_score %><br>
-    <%= f.number_field :team2_score %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<strong>Information</strong>
+<div class="row">
+	<div class="col-md-2">
+		<p>
+			<%= facebook_thumbnail_image_tag(@bet.player.user,'small') %>
+		</p>
+	</div>
+	<div class="col-md-10">
+		<p>
+			<strong>Closed:</strong>
+			<%= @bet.match.closed %>
+		</p>
+		<p>
+			<strong>Description:</strong>
+			<%= @bet.match.description %>
+		</p>
+		<p>
+			<strong>Date/Time:</strong>
+			<%= @bet.match.match %>
+		</p>
+		<p>
+			<strong>Team1:</strong>
+			<%= flag_image_tag @bet.match.team1 %>
+		</p>
+		<p>
+			<strong>Team2:</strong>
+			<%= flag_image_tag @bet.match.team2 %>
+		</p>
+	</div>
+</div>
+
+<strong>Bet</strong>
+<div class="row">
+	<div class="col-md-12">
+		<p>
+			<div class="field">
+				<%= f.label 'Match result' %>
+				<br>
+				<%= f.select :result ,   {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>
+			</div>
+		</p>
+		<p>
+			<div class="field">
+				<%= f.label :team1_score %>
+				<br>
+				<%= f.number_field :team1_score %>
+			</div>
+		</p>
+		<p>
+			<div class="field">
+				<%= f.label :team2_score %>
+				<br>
+				<%= f.number_field :team2_score %>
+			</div>
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+	</div>
+</div>
+
 <% end %>

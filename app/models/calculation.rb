@@ -19,7 +19,7 @@ class Calculation < ActiveRecord::Base
     self.team_winner_point = 0
     self.score_point = 0
     
-    if(self.bet.match.winner.id == self.bet.winner.id)
+    if(self.bet.match.result == self.bet.result)
       self.team_winner_point = 20
     else
       self.team_winner_point = 0
