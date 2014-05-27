@@ -1,0 +1,30 @@
+<h1>Generate#bets</h1>
+<p>Find me in app/views/generate/bets.html.erb</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Bet ID.</th>
+      <th>Facebook</th>
+   	  <th>Player</th>
+      <th>Match</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bets.each do |bet| %>
+      <tr>
+      	<td><%= bet.id %></td>
+      	<td><%= facebook_image_tag bet.player %></td>
+      	<td><%= bet.player.name %></td>
+        <td><%= match_image_tag bet.match %></td>
+        <td><%= link_to 'Show', bet %></td>
+        <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
+        <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
