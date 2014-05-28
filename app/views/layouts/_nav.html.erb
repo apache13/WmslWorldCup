@@ -15,12 +15,18 @@
 				<li>
 					<%= link_to('Matches',{ controller: "matches"}) %>
 				</li>
+				<% if current_user %>
 				<li>
 					<%= link_to('Bets',{ controller: "bets"}) %>
 				</li>
+				<% end %>
+				
+				<% if current_user %>
 				<li>
 					<%= link_to('Calculations',{ controller: "calculations"}) %>
 				</li>
+				<% end %>
+				
 				<li>
 					<a href="#">About</a>
 				</li>
@@ -28,15 +34,20 @@
 
 			<ul class="nav navbar-nav navbar-right nav-pills nav-stacked">
 				<li class="dropdown">
-					<% if @current_user %>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <% if @current_user.admin? %>
+					<% if current_user %>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <% if current_user.admin? %>
 					<%= current_user.name %> (Admin)
 					<% else %>
 					<%= current_user.name %> (Player)
 					<% end %> <b class="caret"> </b> </a>
 					<ul class="dropdown-menu">
+						<% if current_user.admin? %>
 						<li>
 							<%= link_to('Administrator',{ controller: "administrator"}) %>
+						</li>
+						<% end %>
+						<li>
+							<a href="#">Setting</a>
 						</li>
 						<li class="divider"></li>
 						<li>

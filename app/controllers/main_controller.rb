@@ -9,7 +9,7 @@ class MainController < ApplicationController
     @tables = Player.all.order(:id).collect.sort{ |a,b| b.pts <=> a.pts }
     @matches_close = Match.where(:closed => true).order(:match)
     @matches_open = Match.where(:closed => false).order(:match)
-    @bets = Bet.joins(:match).where(player: current_user.player).order('matches.match')
+    @bets = Bet.joins(:match).where("player_id = ? and matches.closed = ? ",current_user.player,false).order('matches.match')
   end
   def access_denied
     

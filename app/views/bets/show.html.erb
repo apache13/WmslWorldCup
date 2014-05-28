@@ -26,5 +26,12 @@
 </p>
 
 
-<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<% if current_user.admin? %> 
+	<%= link_to 'Edit', edit_bet_path(@bet) %> |
+<% else %>
+	<% if @bet.match.closed == false %>
+		<%= link_to 'Edit', edit_bet_path(@bet) %> |
+	<% end %>
+<% end %>
+
 <%= link_to 'Back', bets_path %>

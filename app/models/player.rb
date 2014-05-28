@@ -4,11 +4,14 @@ class Player < ActiveRecord::Base
   has_many :bets
   has_many :calculations
   has_many :battles
-  belongs_to :user
   
   validates :name , :uid ,:team , presence: true
-  validates :name , uniqueness: true
+  validates :name , :uid , uniqueness: true
 
+  def user
+    return User.find_by_uid(self.uid)
+  end
+  
   def played
     return self.calculations.count
   end

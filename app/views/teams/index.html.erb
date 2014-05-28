@@ -23,13 +23,16 @@
         <td><%= flag_image_tag team %></td>
         <td><%= team.players.count %></td>
         <td><%= link_to 'Show', team %></td>
+        <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.admin? %>
 <%= link_to 'New Team', new_team_path %>
+<% end %>

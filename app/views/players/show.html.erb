@@ -15,5 +15,14 @@
   <%= flag_image_tag @player.team %>
 </p>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= render "players/bets"%>
+
+<% if current_user.admin? %> 
+	<%= link_to 'Edit', edit_player_path(@player) %> |
+<% else %>
+	<% if @player.user == current_user %>
+		<%= link_to 'Edit', edit_player_path(@player) %> |
+	<% end %>
+<% end %>
+
 <%= link_to 'Back', players_path %>

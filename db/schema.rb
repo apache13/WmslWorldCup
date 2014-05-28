@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527172810) do
+ActiveRecord::Schema.define(version: 20140528153750) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20140527172810) do
     t.datetime "updated_at"
     t.boolean  "closed"
     t.string   "description"
-    t.integer  "winner_id"
     t.string   "live"
     t.integer  "result"
   end

@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   
-  after_save :link_player
-  
   belongs_to :player
   
   def self.from_omniauth(auth)
@@ -20,8 +18,5 @@ class User < ActiveRecord::Base
     return ApplicationController.admin?(self.uid)
   end
   
-  private
-  def link_player
-    self.player.update(user: self)
-  end
+  
 end

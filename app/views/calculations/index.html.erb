@@ -31,13 +31,13 @@
         <td><%= calculation.score_point %></td>
         <td><%= calculation.total_point %></td>
         <td><%= link_to 'Show', calculation %></td>
+        <% if current_user.admin? %>
         <td><%= link_to 'Edit', edit_calculation_path(calculation) %></td>
         <td><%= link_to 'Destroy', calculation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Calculation', new_calculation_path %>

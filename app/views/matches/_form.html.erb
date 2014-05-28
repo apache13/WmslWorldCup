@@ -42,12 +42,6 @@
 </div>
 
 <div class="field">
-	<%= f.label :winner_id %>
-	<br>
-	<%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
-</div>
-
-<div class="field">
 	<%= f.label 'Match result' %>
 	<br>
 	<%= f.select :result ,   {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>

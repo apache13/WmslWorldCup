@@ -7,6 +7,7 @@
 			<th>Description</th>
 			<th>Team1</th>
 			<th>Team2</th>
+			<th>Result</th>
 			<th>Score</th>
 		</tr>
 	</thead>
@@ -19,6 +20,7 @@
 			<td><%= match.description %></td>
 			<td><%= flag_image_tag match.team1 %></td>
 			<td><%= flag_image_tag match.team2 %></td>
+			<td><%= match_result_flat_image_tag(match.result,match) %></td>
 			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
 		</tr>
 		<% end %>

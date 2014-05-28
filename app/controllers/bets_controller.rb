@@ -6,7 +6,12 @@ class BetsController < ApplicationController
   # GET /bets
   # GET /bets.json
   def index
-    @bets = Bet.all
+    if current_user.admin?
+      @bets = Bet.all
+    else
+      @bets = Bet.where(player: current_user.player)
+    end
+
   end
 
   # GET /bets/1
@@ -21,6 +26,9 @@ class BetsController < ApplicationController
 
   # GET /bets/1/edit
   def edit
+    if !(current_user.admin? || @bet.player.user == current_user)
+      redirect_to({ action: 'access_denied' , :controller=>"main"})
+    end
   end
 
   # POST /bets
@@ -46,7 +54,7 @@ class BetsController < ApplicationController
 
       if @bet.match.closed == true
         format.html { redirect_to @bet, notice: "Can't update because match is closed." }
-          format.json { head :no_content }
+        format.json { head :no_content }
       else
         if @bet.update(bet_params)
           format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
