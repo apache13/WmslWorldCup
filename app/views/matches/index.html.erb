@@ -11,7 +11,7 @@
 			<th>Team2</th>
 			<th>Result</th>
 			<th>Score</th>
-			<th>Match closed</th>
+			<th>Closed</th>
 			<th></th>
 			<% if current_user.admin? %>
 			<th></th>
@@ -35,7 +35,7 @@
 			<td><%= match.match.localtime %></td>
 			<td>
 			<% match.live.split(",").each do |ch| %>
-      			<%= image_tag("/"+ch+".png") %>
+      			<%= image_tag("/"+ch+".png", height: '20', width: '20') %>
    			<% end%>	
 			</td>
 			<td><%= flag_image_tag match.team1 %></td>
@@ -47,8 +47,8 @@
 			<% if current_user.admin? %>
 			<td><%= link_to 'Edit', edit_match_path(match) %></td>
 			<td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<td><%= link_to('Generate bets',{ controller: "generate" , action: "bets" , match: match}) %></td>
-			<td><%= link_to('Calculate score',{ controller: "generate" , action: "calculate" , match: match}) %></td>
+			<td><%= link_to('Gen bets',{ controller: "generate" , action: "bets" , match: match}) %></td>
+			<td><%= link_to('Cal score',{ controller: "generate" , action: "calculate" , match: match}) %></td>
 			<% end %>
 		</tr>
 		<% end %>
