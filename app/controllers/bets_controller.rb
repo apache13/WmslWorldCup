@@ -7,9 +7,13 @@ class BetsController < ApplicationController
   # GET /bets.json
   def index
     if current_user.admin?
-      @bets = Bet.all
+        @bets = Bet.all
     else
-      @bets = Bet.where(player: current_user.player)
+      if current_user.player.nil?
+        @bets = Bet.joins(:match).where("matches.closed = ? ",false).order('matches.match')
+      else
+        @bets = Bet.where(player: current_user.player)
+      end
     end
 
   end

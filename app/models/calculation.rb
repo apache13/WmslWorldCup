@@ -20,25 +20,29 @@ class Calculation < ActiveRecord::Base
     self.score_point = 0
     
     if(self.bet.match.result == self.bet.result)
-      self.team_winner_point = 20
+      self.team_winner_point = 10
     else
       self.team_winner_point = 0
     end
     
     
     if(self.bet.match.team1_score == self.bet.team1_score)
-      self.score_point += 20
+      self.score_point += 10
     else
       self.score_point += 0
     end
     
     if(self.bet.match.team2_score == self.bet.team2_score)
-      self.score_point += 20
+      self.score_point += 10
     else
       self.score_point += 0
     end
     
     self.total_point = self.team_winner_point + self.score_point
+    
+    if(self.bet.match.team1 == self.bet.player.team || self.bet.match.team2 == self.bet.player.team)
+      self.total_point += self.total_point*10/100
+    end
     
   end
   

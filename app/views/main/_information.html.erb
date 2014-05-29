@@ -23,17 +23,17 @@
 		<p>
 			<% if current_user.player == nil %>
 			<strong>Player:</strong>
-			<%= 'N/A' %>
+			<%= link_to 'Register', new_player_path %>
 			<% else%>
 			<strong>Player:</strong>
-			<%= current_user.player.name %>
+			<%= link_to current_user.player.name , current_user.player %>
 			<% end %>
 		</p>
 
 		<p>
 			<% if current_user.player == nil %>
 			<strong>Register:</strong>
-			<%= 'N/A' %>
+			<%= '-' %>
 			<% else%>
 			<strong>Register:</strong>
 			<%= current_user.player.created_at.localtime %>
@@ -41,10 +41,10 @@
 		</p>
 		<p>
 			<% if current_user.player == nil %>
-			<strong>Fan:</strong>
-			<%= 'N/A' %>
+			<strong>Favorite team:</strong>
+			<%= '-' %>
 			<% else%>
-			<strong>Fan:</strong>
+			<strong>Favorite team:</strong>
 			<%= flag_image_tag current_user.player.team %>
 			<% end %>
 		</p>

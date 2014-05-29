@@ -20,7 +20,7 @@
     <%= f.text_field :uid , :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :team_id %><br>
+    <%= f.label "Favorite team" %><br>
     <%= f.select :team_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true%>
   </div>
   

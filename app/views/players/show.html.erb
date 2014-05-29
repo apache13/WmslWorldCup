@@ -1,21 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @player.name %>
-</p>
-
-<p>
-  <strong>Uid:</strong>
-  <%= @player.uid %>
-</p>
-
-<p>
-  <strong>Team:</strong>
-  <%= flag_image_tag @player.team %>
-</p>
-
-<%= render "players/bets"%>
+<%= render "players/information" %>
+<%= render "players/table" %>
+<%= render "players/bets" %>
 
 <% if current_user.admin? %> 
 	<%= link_to 'Edit', edit_player_path(@player) %> |

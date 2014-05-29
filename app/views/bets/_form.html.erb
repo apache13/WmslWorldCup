@@ -19,60 +19,94 @@
 		<p>
 			<%= facebook_thumbnail_image_tag(@bet.player.user,'small') %>
 		</p>
+		<p>
+			<strong>Name:</strong>
+			<%= @bet.player.name %>
+		</p>
+		<p>
+			<strong>Team:</strong>
+			<%= flag_image_tag(@bet.player.team) %>
+		</p>
 	</div>
 	<div class="col-md-10">
 		<p>
-			<strong>Closed:</strong>
+			<strong>Match closed:</strong>
 			<%= @bet.match.closed %>
+		</p>
+		<p>
+			<strong>Team1:</strong>
+			<%= flag_image_tag @bet.match.team1 %>
+			<strong>Team2:</strong>
+			<%= flag_image_tag @bet.match.team2 %>
 		</p>
 		<p>
 			<strong>Description:</strong>
 			<%= @bet.match.description %>
 		</p>
 		<p>
-			<strong>Date/Time:</strong>
-			<%= @bet.match.match %>
+			<strong>Match date/time:</strong>
+			<%= @bet.match.match.localtime %>
 		</p>
 		<p>
-			<strong>Team1:</strong>
-			<%= flag_image_tag @bet.match.team1 %>
+			<strong>LIVE:</strong>
+			<% @bet.match.live.split(",").each do |ch| %>
+			<%= image_tag("/"+ch+".png") %>
+			<% end%>
 		</p>
-		<p>
-			<strong>Team2:</strong>
-			<%= flag_image_tag @bet.match.team2 %>
-		</p>
+
 	</div>
 </div>
 
 <strong>Bet</strong>
 <div class="row">
 	<div class="col-md-12">
-		<p>
-			<div class="field">
-				<%= f.label 'Match result' %>
-				<br>
-				<%= f.select :result ,   {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>
-			</div>
-		</p>
-		<p>
-			<div class="field">
-				<%= f.label :team1_score %>
-				<br>
-				<%= f.number_field :team1_score %>
-			</div>
-		</p>
-		<p>
-			<div class="field">
-				<%= f.label :team2_score %>
-				<br>
-				<%= f.number_field :team2_score %>
-			</div>
-		</p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<%= f.label :result %><em> (10 Pts)</em>
+					</td>
+					<td>
+						<%= f.select :result , {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.label :team1_score %><em> (10 Pts)</em>
+					</td>
+					<td>
+						<%= f.number_field :team1_score %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.label :team2_score %><em> (10 Pts)</em>
+					</td>
+					<td>
+						<%= f.number_field :team2_score %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.label 'Bonus favorite team' %><em> (10%)</em>
+					</td>
+					<td>
+						<%= flag_image_tag(@bet.player.team) %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-12">
 		<div class="actions">
 			<%= f.submit %>
 		</div>

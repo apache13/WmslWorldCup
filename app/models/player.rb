@@ -8,6 +8,8 @@ class Player < ActiveRecord::Base
   validates :name , :uid ,:team , presence: true
   validates :name , :uid , uniqueness: true
 
+  validates :name, length: { maximum: 32 }
+  
   def user
     return User.find_by_uid(self.uid)
   end

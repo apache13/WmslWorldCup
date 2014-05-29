@@ -19,7 +19,11 @@
 			<td><%= match.description %></td>
 			<td><%= flag_image_tag match.team1 %></td>
 			<td><%= flag_image_tag match.team2 %></td>
-			<td><%= match.live %></td>
+			<td>
+			<% match.live.split(",").each do |ch| %>
+      			<%= image_tag("/"+ch+".png") %>
+   			<% end%>	
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
