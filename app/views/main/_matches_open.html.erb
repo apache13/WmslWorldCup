@@ -1,4 +1,5 @@
 <strong>Matches (Open)</strong>
+<%= link_to('View all',{ controller: "matches",:closed => false}) %>
 <table class="table">
 	<thead>
 		<tr>
@@ -8,6 +9,7 @@
 			<th>Team1</th>
 			<th>Team2</th>
 			<th>LIVE</th>
+			<th></th>
 		</tr>
 	</thead>
 
@@ -21,9 +23,10 @@
 			<td><%= flag_image_tag match.team2 %></td>
 			<td>
 			<% match.live.split(",").each do |ch| %>
-      			<%= image_tag("/"+ch+".png") %>
+      			<%= live_image_tag(ch) %>
    			<% end%>	
 			</td>
+			<td><%= button_to "View", match , :method => :get %></td>
 		</tr>
 		<% end %>
 	</tbody>

@@ -1,4 +1,5 @@
 <strong>Matches (Close)</strong>
+<%= link_to('View all',{ controller: "matches",:closed => true} ) %>
 <table class="table">
 	<thead>
 		<tr>
@@ -9,9 +10,9 @@
 			<th>Team2</th>
 			<th>Result</th>
 			<th>Score</th>
+			<th></th>
 		</tr>
 	</thead>
-
 	<tbody>
 		<% @matches_close.each_with_index do |match,index| %>
 		<tr>
@@ -22,7 +23,10 @@
 			<td><%= flag_image_tag match.team2 %></td>
 			<td><%= match_result_flat_image_tag(match.result,match) %></td>
 			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
+			<td><%= button_to "View", match , :method => :get %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
+

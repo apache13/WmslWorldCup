@@ -1,45 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Match:</strong>
-  <%= @match.match %>
+<p id="notice">
+	<%= notice %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @match.description %>
-</p>
+<div class="row">
+	<div class="col-md-6">
+		<%= render "matches/information"%>
+	</div>
+	<div class="col-md-6">
+		<%= render "matches/result"%>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "matches/bets" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<% if current_user.admin? %>
+		<%= link_to 'Edit', edit_match_path(@match) %> |
+		<% end %>
+		<%= link_to 'Back', matches_path %>
+	</div>
+</div>
 
-<p>
-  <strong>Team1:</strong>
-  <%= flag_image_tag @match.team1 %>
-</p>
-
-<p>
-  <strong>Team2:</strong>
-  <%= flag_image_tag @match.team2 %>
-</p>
-
-<p>
-  <strong>Result:</strong>
-  <%= @match.result %>
-</p>
-
-<p>
-  <strong>Team1 score:</strong>
-  <%= @match.team1_score %>
-</p>
-
-<p>
-  <strong>Team2 score:</strong>
-  <%= @match.team2_score %>
-</p>
-
-<p>
-  <strong>Closed:</strong>
-  <%= @match.closed %>
-</p>
-<% if current_user.admin? %>
-<%= link_to 'Edit', edit_match_path(@match) %> |
-<% end %>
-<%= link_to 'Back', matches_path %>

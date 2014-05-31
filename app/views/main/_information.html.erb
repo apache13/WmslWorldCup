@@ -18,6 +18,11 @@
 			<strong>Name:</strong>
 			<%= current_user.name %>
 		</p>
+		<p>
+			<strong>Expires:</strong>
+			<%= current_user.oauth_expires_at.localtime %>
+		</p>
+		
 	</div>
 	<div class="col-md-5">
 		<p>
@@ -48,6 +53,7 @@
 			<%= flag_image_tag current_user.player.team %>
 			<% end %>
 		</p>
+		
 	</div>
 </div>
 

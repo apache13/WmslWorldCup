@@ -26,9 +26,9 @@
 			<td><%= player.created_at.localtime %></td>
 			<td><%= flag_image_tag player.team %></td>
 			<td><%= player.pts %></td>
-			<td><%= link_to 'Show', player %></td>
+			<td><%= button_to "View", player , :method => :get %></td>
 			<% if current_user.admin? || player.user == current_user %>
-			<td><%= link_to 'Edit', edit_player_path(player) %></td>
+			<td><%= button_to "Edit", edit_player_path(player) , :method => :get %></td>
 			<% else %>
 			<td></td>
 			<% end %>

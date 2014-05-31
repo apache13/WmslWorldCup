@@ -35,7 +35,7 @@
 			<td><%= match.match.localtime %></td>
 			<td>
 			<% match.live.split(",").each do |ch| %>
-      			<%= image_tag("/"+ch+".png", height: '20', width: '20') %>
+      		<%= live_image_tag(ch) %>
    			<% end%>	
 			</td>
 			<td><%= flag_image_tag match.team1 %></td>
@@ -43,7 +43,7 @@
 			<td><%= match_result_flat_image_tag(match.result,match) %></td>
 			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
 			<td><%= match.closed %></td>
-			<td><%= link_to 'Show', match %></td>
+			<td><%= button_to "View", match , :method => :get %></td>
 			<% if current_user.admin? %>
 			<td><%= link_to 'Edit', edit_match_path(match) %></td>
 			<td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>

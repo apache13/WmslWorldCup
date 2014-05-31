@@ -42,12 +42,26 @@ sui = Team.create(name: 'Switzerland',abbreviate: 'sui')
 usa = Team.create(name: 'USA',abbreviate: 'usa')
 uru = Team.create(name: 'Uruguay',abbreviate: 'uru')
 
-pong = Player.create(name: 'pong',uid: '10152042428021695',admin: true,team: ita)
-beer = Player.create(name: 'beer',uid: '100001280493339',admin: false,team: eng)
+#pong = Player.create(name: 'pong',uid: '10152042428021695',admin: true,team: ita)
+#beer = Player.create(name: 'beer',uid: '100001280493339',admin: false,team: eng)
 
-match01 = Match.create(description: 'Group Stage : A#01',match: '2014-06-11 20:00:00 UTC',team1: bra, team2: cro ,live: '7,8,WC',closed: false)
-match02 = Match.create(description: 'Group Stage : A#02',match: '2014-06-12 16:00:00 UTC',team1: mex, team2: cmr ,live: '7,8,WC',closed: false)
-match03 = Match.create(description: 'Group Stage : B#01',match: '2014-06-12 19:00:00 UTC',team1: esp, team2: ned ,live: '8,WC',closed: false)
-match04 = Match.create(description: 'Group Stage : B#02',match: '2014-06-12 22:00:00 UTC',team1: chi, team2: aus ,live: 'WC',closed: false)
+match01 = Match.create(description: 'Group Stage : A#01',match: '2014-06-12 03:00:00 +0700',team1: bra, team2: cro ,live: '7,8,WC',closed: false)
+match02 = Match.create(description: 'Group Stage : A#02',match: '2014-06-13 23:00:00 +0700',team1: mex, team2: cmr ,live: '7,8,WC',closed: false)
+match03 = Match.create(description: 'Group Stage : B#01',match: '2014-06-13 02:00:00 +0700',team1: esp, team2: ned ,live: '8,WC',closed: false)
+match04 = Match.create(description: 'Group Stage : B#02',match: '2014-06-13 05:00:00 +0700',team1: chi, team2: aus ,live: 'WC',closed: false)
+match05 = Match.create(description: 'Group Stage : C#01',match: '2014-06-14 23:00:00 +0700',team1: col, team2: gre ,live: '8,WC',closed: false)
+
+match06 = Match.create(description: 'Group Stage : D#01',match: '2014-06-14 02:00:00 +0700',team1: uru, team2: crc ,live: '7,8,WC',closed: false)
+match07 = Match.create(description: 'Group Stage : D#02',match: '2014-06-14 05:00:00 +0700',team1: eng, team2: ita ,live: 'WC',closed: false)
+match08 = Match.create(description: 'Group Stage : C#01',match: '2014-06-15 08:00:00 +0700',team1: civ, team2: jpn ,live: 'WC',closed: false)
+match09 = Match.create(description: 'Group Stage : E#01',match: '2014-06-15 23:00:00 +0700',team1: sui, team2: ecu ,live: '8,WC',closed: false)
+match10 = Match.create(description: 'Group Stage : E#02',match: '2014-06-15 02:00:00 +0700',team1: fra, team2: hon ,live: '7,8,WC',closed: false)
+
+match11 = Match.create(description: 'Group Stage : F#01',match: '2014-06-15 05:00:00 +0700',team1: arg, team2: bih ,live: 'WC',closed: false)
+match12 = Match.create(description: 'Group Stage : G#01',match: '2014-06-16 23:00:00 +0700',team1: ger, team2: por ,live: 'WC',closed: false)
+match13 = Match.create(description: 'Group Stage : F#02',match: '2014-06-16 02:00:00 +0700',team1: irn, team2: nga ,live: '8,WC',closed: false)
+match14 = Match.create(description: 'Group Stage : G#02',match: '2014-06-16 05:00:00 +0700',team1: gha, team2: usa ,live: 'WC',closed: false)
+match15 = Match.create(description: 'Group Stage : H#01',match: '2014-06-17 23:00:00 +0700',team1: bel, team2: alg ,live: 'WC',closed: false)
+
 
 

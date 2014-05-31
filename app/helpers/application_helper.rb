@@ -1,7 +1,7 @@
 module ApplicationHelper
   def facebook_image_tag(player)
     if(player != nil)
-      image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-circle'
+      image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-circle' , height: '30', width: '30' , :title => player.name
     end
   end
 
@@ -40,5 +40,8 @@ module ApplicationHelper
     end
   end
 
+  def live_image_tag(channel)
+    image_tag("/"+channel+".png", height: '20', width: '20')
+  end
   
 end

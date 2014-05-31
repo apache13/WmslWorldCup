@@ -3,11 +3,19 @@ class MatchesController < ApplicationController
 
   before_filter :require_login_permission , :only => [:index,:show]
   before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
-  
   # GET /matches
   # GET /matches.json
   def index
-    @matches = Match.all
+    
+    if(params[:closed].present?)
+      if params[:closed] == 'true'
+        @matches = Match.where(:closed=>true).order("datetime(:match)")
+      else
+        @matches = Match.where(:closed=>false).order("datetime(:match)")
+      end
+    else
+      @matches = Match.all.order("datetime(:match)")
+    end
   end
 
   # GET /matches/1
@@ -65,13 +73,14 @@ class MatchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_match
-      @match = Match.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def match_params
-      params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :closed ,:live,:result)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_match
+    @match = Match.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def match_params
+    params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :closed ,:live,:result)
+  end
 end

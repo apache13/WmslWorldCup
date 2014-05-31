@@ -17,15 +17,31 @@ class PlayersController < ApplicationController
 
   # GET /players/new
   def new
-    @player = Player.new
-    @player.uid = current_user.uid
+    if ApplicationController.register_new_player?
+      @player = Player.new
+      @player.uid = current_user.uid
+    else
+      redirect_to({ action: 'access_denied' , :controller=>"main"})
+    end
   end
 
   # GET /players/1/edit
   def edit
-    if !(current_user.admin? || @player.user == current_user)
-      redirect_to({ action: 'access_denied' , :controller=>"main"})
+    
+    if current_user.admin?
+      # pass
+    else
+      if @player.user == current_user
+        if ApplicationController.player_edit_profile?
+          # pass
+        else
+          redirect_to({ action: 'access_denied' , :controller=>"main"})
+        end
+      else
+        redirect_to({ action: 'access_denied' , :controller=>"main"})
+      end
     end
+    
   end
 
   # POST /players

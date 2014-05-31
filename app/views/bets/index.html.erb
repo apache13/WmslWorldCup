@@ -41,10 +41,10 @@
 			<td><%= 'N/A' %></td>
 			<% end %>
 
-			<td><%= link_to 'Show', bet %></td>
+			<td><%= button_to "View", bet , :method => :get %></td>
 
 			<% if current_user.admin? %>
-				<td><%= link_to 'Edit', edit_bet_path(bet) %></td>
+				<td><%= button_to "Bet", edit_bet_path(bet), :method => :get %></td>
 			<% else %>
 				<% if bet.match.closed == true%>
 					<td></td>
