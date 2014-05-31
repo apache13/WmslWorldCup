@@ -23,7 +23,7 @@
 			<td><%= facebook_image_tag player %></td>
 			<td><%= player.name %></td>
 			<td><%= player.uid %></td>
-			<td><%= player.created_at.localtime %></td>
+			<td><%= player.created_at.localtime.to_formatted_s(:short) %></td>
 			<td><%= flag_image_tag player.team %></td>
 			<td><%= player.pts %></td>
 			<td><%= button_to "View", player , :method => :get %></td>

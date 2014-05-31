@@ -32,12 +32,10 @@
 
 			<td><%= match.id %></td>
 			<td><%= match.description %></td>
-			<td><%= match.match.localtime %></td>
-			<td>
-			<% match.live.split(",").each do |ch| %>
-      		<%= live_image_tag(ch) %>
-   			<% end%>	
-			</td>
+			<td><%= match.match.localtime.to_formatted_s(:short) %></td>
+			<td> <% match.live.split(",").each do |ch| %>
+			<%= live_image_tag(ch) %>
+			<% end%> </td>
 			<td><%= flag_image_tag match.team1 %></td>
 			<td><%= flag_image_tag match.team2 %></td>
 			<td><%= match_result_flat_image_tag(match.result,match) %></td>
@@ -47,8 +45,11 @@
 			<% if current_user.admin? %>
 			<td><%= link_to 'Edit', edit_match_path(match) %></td>
 			<td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<td><%= link_to('Gen bets',{ controller: "generate" , action: "bets" , match: match}) %></td>
-			<td><%= link_to('Cal score',{ controller: "generate" , action: "calculate" , match: match}) %></td>
+			
+			<td><%= link_to("Gen bets (#{match.bets.count.to_s+'/'+Player.all.count.to_s})",{ controller: "generate" , action: "bets" , match: match}) %></td>
+			<td><%= link_to("Cal score (#{Calculation.where(:bet_id=>match.bets).count.to_s+'/'+match.bets.count.to_s})",{ controller: "generate" , action: "calculate" , match: match}, :disabled => true) %></td>
+
+			
 			<% end %>
 		</tr>
 		<% end %>

@@ -7,22 +7,17 @@
 	</div>
 	<div class="col-md-5">
 		<p>
-			<strong>Provider:</strong>
-			<%= current_user.provider %>
-		</p>
-		<p>
 			<strong>UID:</strong>
 			<%= current_user.uid %>
+		</p>
+		<p>
+			<strong>URL:</strong>
+			<%= link_to 'Facebook' , url_for(current_user.link) , :target => "_blank" %>
 		</p>
 		<p>
 			<strong>Name:</strong>
 			<%= current_user.name %>
 		</p>
-		<p>
-			<strong>Expires:</strong>
-			<%= current_user.oauth_expires_at.localtime %>
-		</p>
-		
 	</div>
 	<div class="col-md-5">
 		<p>
@@ -41,7 +36,7 @@
 			<%= '-' %>
 			<% else%>
 			<strong>Register:</strong>
-			<%= current_user.player.created_at.localtime %>
+			<%= current_user.player.created_at.localtime.to_formatted_s(:short) %>
 			<% end %>
 		</p>
 		<p>

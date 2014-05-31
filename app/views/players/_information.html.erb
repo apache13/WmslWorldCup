@@ -7,19 +7,19 @@
 	</div>
 	<div class="col-md-5">
 		<p>
-			<strong>Provider:</strong>
-			<% if @player.user.nil? %>
-			<%= '-' %>
-			<% else %>
-			<%= @player.user.provider %>
-			<% end %>
-		</p>
-		<p>
 			<strong>UID:</strong>
 			<% if @player.user.nil? %>
 			<%= '-' %>
 			<% else %>
 			<%= @player.user.uid %>
+			<% end %>
+		</p>
+		<p>
+			<strong>URL:</strong>
+			<% if @player.user.nil? %>
+			<%= '-' %>
+			<% else %>
+			<%= link_to 'Facebook' , url_for(@player.user.link) , :target => "_blank" %>
 			<% end %>
 		</p>
 		<p>
@@ -40,7 +40,7 @@
 
 		<p>
 			<strong>Register:</strong>
-			<%= @player.created_at.localtime %>
+			<%= @player.created_at.localtime.to_formatted_s(:short) %>
 		</p>
 		<p>
 			<strong>Favorite team:</strong>
