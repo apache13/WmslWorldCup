@@ -7,7 +7,7 @@ class CalculationsController < ApplicationController
   # GET /calculations
   # GET /calculations.json
   def index
-    @calculations = Calculation.all
+    @calculations = Calculation.all.paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /calculations/1

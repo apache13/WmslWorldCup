@@ -3,19 +3,24 @@ class MatchesController < ApplicationController
 
   before_filter :require_login_permission , :only => [:index,:show]
   before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
+  
   # GET /matches
   # GET /matches.json
   def index
     
-    if(params[:closed].present?)
+    conditions = {}
+    unless params[:closed].blank?
       if params[:closed] == 'true'
-        @matches = Match.where(:closed=>true).order("datetime(:match)")
+        conditions[:closed] = true
       else
-        @matches = Match.where(:closed=>false).order("datetime(:match)")
+        conditions[:closed] = false
       end
-    else
-      @matches = Match.all.order("datetime(:match)")
     end
+    conditions[:team1_id] = params[:team1_id] unless params[:team1_id].blank?
+    conditions[:team2_id] = params[:team2_id] unless params[:team2_id].blank?
+
+    @matches = Match.where(conditions).order("datetime(:match)").paginate(:page => params[:page],:per_page => 10)
+
   end
 
   # GET /matches/1

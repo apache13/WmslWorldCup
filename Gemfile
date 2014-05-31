@@ -48,4 +48,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-facebook'
-
+gem 'will_paginate', '~> 3.0.5'

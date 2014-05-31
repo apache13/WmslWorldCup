@@ -1,5 +1,5 @@
+<%= render "bets/search" %>
 <h1>Listing bets</h1>
-
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -41,15 +41,15 @@
 			<td><%= 'N/A' %></td>
 			<% end %>
 
-			<td><%= button_to "View", bet , :method => :get %></td>
+			<td><%= button_to "View", bet , :method => :get , :class=>"btn btn-default" %></td>
 
 			<% if current_user.admin? %>
-				<td><%= button_to "Bet", edit_bet_path(bet), :method => :get %></td>
+				<td><%= button_to "Bet", edit_bet_path(bet), :method => :get , :class=>"btn btn-default" %></td>
 			<% else %>
 				<% if bet.match.closed == true%>
 					<td></td>
 				<% else %>
-					<td><%= button_to "Bet", edit_bet_path(bet), :method => :get %></td>
+					<td><%= button_to "Bet", edit_bet_path(bet), :method => :get , :class=>"btn btn-default" %></td>
 				<% end %>
 			<% end %>
 
@@ -60,6 +60,6 @@
 		<% end %>
 	</tbody>
 </table>
-
+<%= will_paginate @bets %>
 <br>
 

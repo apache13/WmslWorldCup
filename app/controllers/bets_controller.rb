@@ -6,15 +6,26 @@ class BetsController < ApplicationController
   # GET /bets
   # GET /bets.json
   def index
-    if current_user.admin?
-        @bets = Bet.all
-    else
-      if current_user.player.nil?
-        @bets = Bet.joins(:match).where("matches.closed = ? ",false).order('matches.match')
+    
+    conditions = {}
+    unless params[:closed].blank?
+      if params[:closed] == 'true'
+        conditions['matches.closed'] = true
       else
-        @bets = Bet.where(player: current_user.player)
+        conditions['matches.closed'] = false
       end
     end
+    conditions['matches.team1_id'] = params[:team1_id] unless params[:team1_id].blank?
+    conditions['matches.team2_id'] = params[:team2_id] unless params[:team2_id].blank?
+    
+    if current_user.admin?
+      @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+    else
+      conditions[:player_id] = current_user.player.id 
+      @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+    end
+    
+    
 
   end
 

@@ -37,9 +37,9 @@
 			<td><%= '?' %></td>
 			<% end %>
 			<%if bet.match.closed == true%>
-			<td><%= button_to "Bet", edit_bet_path(bet), :method => :get , :disabled => true %></td>
+			<td><%= button_to "Bet", edit_bet_path(bet), :method => :get , :class=>"btn btn-default" , :disabled => true %></td>
 			<% else %>
-			<td><%= button_to "Bet", edit_bet_path(bet), :method => :get %></td>
+			<td><%= button_to "Bet", edit_bet_path(bet), :method => :get , :class=>"btn btn-default" %></td>
 			<% end %>
 		</tr>
 		<% end %>

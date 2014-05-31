@@ -26,9 +26,9 @@
 			<td><%= player.created_at.localtime.to_formatted_s(:short) %></td>
 			<td><%= flag_image_tag player.team %></td>
 			<td><%= player.pts %></td>
-			<td><%= button_to "View", player , :method => :get %></td>
+			<td><%= button_to "View", player , :method => :get , :class=>"btn btn-default" %></td>
 			<% if current_user.admin? || player.user == current_user %>
-			<td><%= button_to "Edit", edit_player_path(player) , :method => :get %></td>
+			<td><%= button_to "Edit", edit_player_path(player) , :method => :get , :class=>"btn btn-default" %></td>
 			<% else %>
 			<td></td>
 			<% end %>
