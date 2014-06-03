@@ -32,15 +32,18 @@ class BetsController < ApplicationController
   # GET /bets/1
   # GET /bets/1.json
   def show
+    @view_only = true
   end
 
   # GET /bets/new
   def new
+    @view_only = false
     @bet = Bet.new
   end
 
   # GET /bets/1/edit
   def edit
+    @view_only = false
     if !(current_user.admin? || @bet.player.user == current_user)
       redirect_to({ action: 'access_denied' , :controller=>"main"})
     end

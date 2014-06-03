@@ -38,7 +38,7 @@
 			<% if bet.calculation != nil %>
 			<td><%= bet.calculation.total_point %></td>
 			<% else %>
-			<td><%= 'N/A' %></td>
+			<td><%= '?' %></td>
 			<% end %>
 
 			<td><%= button_to "View", bet , :method => :get , :class=>"btn btn-default" %></td>

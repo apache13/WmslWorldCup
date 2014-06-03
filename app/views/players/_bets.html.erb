@@ -42,9 +42,12 @@
 			<td><%= bet.match.closed %></td>
 			<% if bet.calculation != nil %>
 			<td><%= bet.calculation.total_point %></td>
+			<td><%= button_to "View", bet , :method => :get , :class=>"btn btn-default" %></td>
 			<% else %>
 			<td><%= '?' %></td>
+			<td><%= '-' %></td>
 			<% end %>
+			
 		</tr>
 		<% end %>
 	</tbody>

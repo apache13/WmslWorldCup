@@ -69,48 +69,36 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>
-						<%= f.label :result %><em> (90 minutes 10 Pts)</em>
-					</td>
-					<td>
-						<%= f.select :result , {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>
-					</td>
+					<td> <%= f.label :result %><em> (90 minutes 10 Pts)</em></td>
+					<td> <%= f.select :result , {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} ,{}, :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td>
-						<%= f.label :team1_score %><em> (10 Pts)</em>
-					</td>
-					<td>
-						<%= f.number_field :team1_score %>
-					</td>
+					<td> <%= f.label :team1_score %><em> (10 Pts)</em></td>
+					<td> <%= f.number_field :team1_score , :readonly => @view_only %> </td>
 				</tr>
 				<tr>
-					<td>
-						<%= f.label :team2_score %><em> (10 Pts)</em>
-					</td>
-					<td>
-						<%= f.number_field :team2_score %>
-					</td>
+					<td> <%= f.label :team2_score %><em> (10 Pts)</em></td>
+					<td> <%= f.number_field :team2_score , :readonly => @view_only %> </td>
 				</tr>
 				<tr>
-					<td>
-						<%= f.label 'Bonus favorite team' %><em> (10%)</em>
-					</td>
-					<td>
-						<%= flag_image_tag(@bet.player.team) %>
-					</td>
+					<td> <%= f.label 'Bonus favorite team' %><em> (10%)</em></td>
+					<td> <%= flag_image_tag(@bet.player.team) %> </td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="actions">
-			<%= f.submit %>
+
+<% if !@view_only %>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="actions">
+				<%= f.submit %>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>
+
 
 <% end %>
