@@ -55,7 +55,7 @@
 	</tbody>
 </table>
 
-<%= will_paginate @matches %>
+<%= will_paginate @matches ,:class=>"pagination"%>
 
 <br>
 <% if current_user.admin? %>

@@ -6,6 +6,7 @@
 		</div>
 		<nav class="collapse navbar-collapse" role="navigation">
 			<ul class="nav navbar-nav">
+				<% if current_user %>
 				<li>
 					<%= link_to('Players',{ controller: "players"}) %>
 				</li>
@@ -15,18 +16,14 @@
 				<li>
 					<%= link_to('Matches',{ controller: "matches"}) %>
 				</li>
-				<% if current_user %>
 				<li>
 					<%= link_to('Bets',{ controller: "bets"}) %>
 				</li>
-				<% end %>
-				
-				<% if current_user %>
 				<li>
 					<%= link_to('Calculations',{ controller: "calculations"}) %>
 				</li>
 				<% end %>
-				
+
 				<li>
 					<a href="#">About</a>
 				</li>
@@ -46,8 +43,14 @@
 							<%= link_to('Administrator',{ controller: "administrator"}) %>
 						</li>
 						<% end %>
+
+						<% if current_user.player == nil %>
 						<li>
-							<a href="#">Setting</a>
+							<%= link_to 'Register', new_player_path %>
+						</li>
+						<% end %>
+						<li>
+							<%= link_to 'Setting', "#" %>
 						</li>
 						<li class="divider"></li>
 						<li>

@@ -23,7 +23,8 @@
 		<p>
 			<% if current_user.player == nil %>
 			<strong>Player:</strong>
-			<%= link_to 'Register', new_player_path %>
+			
+			<span class="label label-default"><%= link_to 'Register', new_player_path %></span>
 			<% else%>
 			<strong>Player:</strong>
 			<%= link_to current_user.player.name , current_user.player %>

@@ -13,15 +13,18 @@ class CalculationsController < ApplicationController
   # GET /calculations/1
   # GET /calculations/1.json
   def show
+    @view_only = true
   end
 
   # GET /calculations/new
   def new
+    @view_only = false
     @calculation = Calculation.new
   end
 
   # GET /calculations/1/edit
   def edit
+    @view_only = false
   end
 
   # POST /calculations
