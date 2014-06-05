@@ -81,6 +81,22 @@
 					<td> <%= f.number_field :team2_score , :readonly => @view_only %> </td>
 				</tr>
 				<tr>
+					<td> <%= f.label :penalty %><em> (+/-10 Pts)</em></td>
+					<td> <%= f.check_box :penalty , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em> (+/-10 Pts)</em></td>
+					<td> <%= f.check_box :yellow_card , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :red_card %><em> (+/-10 Pts)</em></td>
+					<td> <%= f.check_box :red_card , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :own_goal %><em> (+/-20 Pts)</em></td>
+					<td> <%= f.check_box :own_goal , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
 					<td> <%= f.label 'Bonus favorite team' %><em> (10%)</em></td>
 					<td> <%= flag_image_tag(@bet.player.team) %> </td>
 				</tr>

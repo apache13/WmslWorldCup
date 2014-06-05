@@ -74,6 +74,6 @@ class CalculationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calculation_params
-      params.require(:calculation).permit(:player_id, :bet_id, :total_point, :team_winner_point, :score_point)
+      params.require(:calculation).permit(:player_id, :bet_id, :total_point, :team_winner_point, :score_point,:penalty_point,:yellow_card_point,:red_card_point,:own_goal_point)
     end
 end

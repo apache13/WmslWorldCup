@@ -39,7 +39,7 @@
 			<% end %>
 
 			<% if bet.calculation != nil %>
-			<td><%= bet.calculation.total_point %></td>
+			<td><%= link_to(bet.calculation.total_point,bet.calculation ) %></td>
 			<% else %>
 			<td><%= 'N/A' %></td>
 			<% end %>

@@ -8,16 +8,32 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td> <%= :result %><em> (90 minutes)</em></td>
+			<td> <%= label_tag :result %><em> (90 minutes)</em></td>
 			<td> <%= match_result_flat_image_tag(@calculation.bet.match.result,@calculation.bet.match) %> </td>
 		</tr>
 		<tr>
-			<td> <%= :team1_score %></td>
+			<td> <%= label_tag :team1_score %></td>
 			<td> <%= @calculation.bet.match.team1_score %> </td>
 		</tr>
 		<tr>
-			<td> <%= :team2_score %></td>
+			<td> <%= label_tag :team2_score %></td>
 			<td> <%= @calculation.bet.match.team2_score %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :penalty %></td>
+			<td> <%= @calculation.bet.match.penalty %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :yellow_card , 'Yellow card > 3' %></td>
+			<td> <%= @calculation.bet.match.yellow_card %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :red_card %></td>
+			<td> <%= @calculation.bet.match.red_card %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :own_goal %></td>
+			<td> <%= @calculation.bet.match.own_goal %> </td>
 		</tr>
 	</tbody>
 </table>

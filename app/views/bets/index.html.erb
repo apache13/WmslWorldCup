@@ -1,5 +1,5 @@
-<%= render "bets/search" %>
 <h1>Listing bets</h1>
+<%= render "bets/search" %>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -36,7 +36,7 @@
 			<td><%= bet.updated_at.localtime.to_formatted_s(:db) %></td>
 			<td><%= bet.match.closed %></td>
 			<% if bet.calculation != nil %>
-			<td><%= bet.calculation.total_point %></td>
+			<td><%= link_to(bet.calculation.total_point, bet.calculation ) %></td>
 			<% else %>
 			<td><%= '?' %></td>
 			<% end %>

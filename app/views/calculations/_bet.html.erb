@@ -1,0 +1,43 @@
+<strong>Bet</strong>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td> <%= label_tag :result %><em> (90 minutes 10 Pts)</em></td>
+			<td> <%= match_result_flat_image_tag @calculation.bet.result , @calculation.bet.match %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :team1_score %><em> (10 Pts)</em></td>
+			<td> <%= @calculation.bet.team1_score %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :team2_score %><em> (10 Pts)</em></td>
+			<td> <%= @calculation.bet.team2_score %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :penalty %><em> (+/-10 Pts)</em></td>
+			<td> <%= @calculation.bet.penalty  %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :yellow_card , 'Yellow card > 3'%><em> (+/-10 Pts)</em></td>
+			<td> <%= @calculation.bet.yellow_card %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :red_card %><em> (+/-10 Pts)</em></td>
+			<td> <%= @calculation.bet.red_card %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :own_goal %><em> (+/-20 Pts)</em></td>
+			<td> <%= @calculation.bet.own_goal %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag 'Bonus favorite team' %><em> (10%)</em></td>
+			<td> <%= flag_image_tag(@calculation.player.team) %> </td>
+		</tr>
+	</tbody>
+</table>

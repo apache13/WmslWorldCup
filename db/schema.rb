@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531035352) do
+ActiveRecord::Schema.define(version: 20140605164938) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20140531035352) do
     t.integer  "player_id"
     t.integer  "calculation_id"
     t.integer  "result"
+    t.boolean  "own_goal"
+    t.boolean  "yellow_card"
+    t.boolean  "red_card"
+    t.boolean  "penalty"
   end
 
   create_table "calculations", force: true do |t|
@@ -42,6 +46,11 @@ ActiveRecord::Schema.define(version: 20140531035352) do
     t.integer  "score_point"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bonus_team_point"
+    t.integer  "own_goal_point"
+    t.integer  "yellow_card_point"
+    t.integer  "red_card_point"
+    t.integer  "penalty_point"
   end
 
   create_table "matches", force: true do |t|
@@ -56,6 +65,10 @@ ActiveRecord::Schema.define(version: 20140531035352) do
     t.string   "description"
     t.string   "live"
     t.integer  "result"
+    t.boolean  "own_goal"
+    t.boolean  "yellow_card"
+    t.boolean  "red_card"
+    t.boolean  "penalty"
   end
 
   create_table "players", force: true do |t|
