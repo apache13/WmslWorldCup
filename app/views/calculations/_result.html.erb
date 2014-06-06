@@ -21,19 +21,19 @@
 		</tr>
 		<tr>
 			<td> <%= label_tag :penalty %></td>
-			<td> <%= @calculation.bet.match.penalty %> </td>
+			<td> <%= check_box_tag :penalty ,true, @calculation.bet.match.penalty , :disabled=>true %> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :yellow_card , 'Yellow card > 3' %></td>
-			<td> <%= @calculation.bet.match.yellow_card %> </td>
+			<td> <%= check_box_tag :yellow_card ,true, @calculation.bet.match.yellow_card , :disabled=>true %> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :red_card %></td>
-			<td> <%= @calculation.bet.match.red_card %> </td>
+			<td> <%= check_box_tag :red_card ,true, @calculation.bet.match.red_card , :disabled=>true %> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :own_goal %></td>
-			<td> <%= @calculation.bet.match.own_goal %> </td>
+			<td> <%= check_box_tag :own_goal ,true, @calculation.bet.match.own_goal , :disabled=>true %> </td>
 		</tr>
 	</tbody>
 </table>

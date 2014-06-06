@@ -21,19 +21,19 @@
 		</tr>
 		<tr>
 			<td> <%= label_tag :penalty %></td>
-			<td> <%= @match.penalty %> </td>
+			<td> <%= check_box_tag :penalty ,true, @match.penalty ,:disabled => @view_only%> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :yellow_card , 'Yellow card > 3'%></td>
-			<td> <%= @match.yellow_card %> </td>
+			<td> <%= check_box_tag :yellow_card ,true, @match.yellow_card ,:disabled => @view_only%> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :red_card %></td>
-			<td> <%= @match.red_card  %> </td>
+			<td> <%= check_box_tag :red_card , true, @match.red_card , :disabled => @view_only  %> </td>
 		</tr>
 		<tr>
 			<td> <%= label_tag :own_goal %></td>
-			<td> <%= @match.own_goal %> </td>
+			<td> <%= check_box_tag :own_goal , true , @match.own_goal , :disabled => @view_only %> </td>
 		</tr>
 	</tbody>
 </table>

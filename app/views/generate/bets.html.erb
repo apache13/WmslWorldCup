@@ -8,6 +8,7 @@
       <th>Facebook</th>
    	  <th>Player</th>
       <th>Match</th>
+      <th>Rule</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,6 +22,7 @@
       	<td><%= facebook_image_tag bet.player %></td>
       	<td><%= bet.player.name %></td>
         <td><%= match_image_tag bet.match %></td>
+        <td><%= bet.calculation_config.id %></td>
         <td><%= link_to 'Show', bet %></td>
         <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
         <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>

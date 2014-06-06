@@ -61,4 +61,4 @@ match14 = Match.create(description: 'Group Stage : G#02',match: '2014-06-16 05:0
 match15 = Match.create(description: 'Group Stage : H#01',match: '2014-06-17 23:00:00 +0700',team1: bel, team2: alg ,live: 'WC',closed: false)
 
 
-
+config1 = CalculationConfig.create(team_winner_multiply: 10,score_multiply: 10,penalty_multiply: 10,yellow_card_multiply: 10,red_card_multiply: 10,own_goal_multiply: 10, bonus_team_multiply: 10)

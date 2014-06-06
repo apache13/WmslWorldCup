@@ -1,20 +1,16 @@
-<strong>Player bets</strong>
+<strong>Bets</strong>
 <table class="table">
 	<thead>
 		<tr>
 			<th>#</th>
 			<th>Facebook</th>
 			<th>Player name</th>
-			<th>Team1</th>
-			<th>Team2</th>
-			<th>Result</th>
-			<th>Score</th>
 			<th>Pts</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% @match.bets.each_with_index do |bet,index| %>
+		<% @match.bets.collect.sort{ |a,b| b.pts <=> a.pts }.each_with_index do |bet,index| %>
 		<%if bet.match.closed == true%>
 		<tr class="success">
 			<%else%>
@@ -23,20 +19,6 @@
 			<td><%= index+1 %></td>
 			<td><%= facebook_image_tag bet.player %></td>
 			<td><%= link_to bet.player.name,bet.player %></td>
-			<td><%= flag_image_tag bet.match.team1 %></td>
-			<td><%= flag_image_tag bet.match.team2 %></td>
-
-			<% if bet.match.closed == true %> <td><%= match_result_flat_image_tag(bet.result,bet.match) %></td>
-			<td><strong><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></strong></td>
-			<% else %>
-				<% if current_user.admin? %>
-				<td><%= match_result_flat_image_tag(bet.result,bet.match) %></td>
-				<td><strong><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></strong></td>
-				<% else %>
-				<td>?</td>
-				<td>?</td>
-				<% end %>
-			<% end %>
 
 			<% if bet.calculation != nil %>
 			<td><%= link_to(bet.calculation.total_point,bet.calculation ) %></td>

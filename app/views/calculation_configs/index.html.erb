@@ -1,0 +1,41 @@
+<h1>Listing calculation_configs</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Rule ID.</th>
+      <th>Team winner multiply</th>
+      <th>Score multiply</th>
+      <th>Penalty multiply</th>
+      <th>Yellow card multiply</th>
+      <th>Red card multiply</th>
+      <th>Own goal multiply</th>
+      <th>Bonus team multiply</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calculation_configs.each do |calculation_config| %>
+      <tr>
+      	<td><%= calculation_config.id %></td>
+        <td><%= calculation_config.team_winner_multiply %></td>
+        <td><%= calculation_config.score_multiply %></td>
+        <td><%= calculation_config.penalty_multiply %></td>
+        <td><%= calculation_config.yellow_card_multiply %></td>
+        <td><%= calculation_config.red_card_multiply %></td>
+        <td><%= calculation_config.own_goal_multiply %></td>
+        <td><%= calculation_config.bonus_team_multiply %></td>
+        <td><%= link_to 'Show', calculation_config %></td>
+        <td><%= link_to 'Edit', edit_calculation_config_path(calculation_config) %></td>
+        <td><%= link_to 'Destroy', calculation_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calculation config', new_calculation_config_path %>

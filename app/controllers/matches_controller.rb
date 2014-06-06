@@ -26,15 +26,18 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
+    @view_only = true
   end
 
   # GET /matches/new
   def new
+    @view_only = false
     @match = Match.new
   end
 
   # GET /matches/1/edit
   def edit
+    @view_only = false
   end
 
   # POST /matches

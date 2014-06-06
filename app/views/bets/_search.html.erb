@@ -8,6 +8,12 @@
 	</div>
 	<div class="col-md-3">
 		<div class="form-group">
+			<%= label_tag(:player) %>
+			<%= select_tag(:player , options_for_select(Player.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
 			<%= label_tag(:team1_id ,"Team1") %>
 			<%= select_tag(:team1_id , options_for_select(Team.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
 		</div>

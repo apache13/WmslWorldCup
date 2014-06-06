@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team winner multiply:</strong>
+  <%= @calculation_config.team_winner_multiply %>
+</p>
+
+<p>
+  <strong>Score multiply:</strong>
+  <%= @calculation_config.score_multiply %>
+</p>
+
+<p>
+  <strong>Penalty multiply:</strong>
+  <%= @calculation_config.penalty_multiply %>
+</p>
+
+<p>
+  <strong>Yellow card multiply:</strong>
+  <%= @calculation_config.yellow_card_multiply %>
+</p>
+
+<p>
+  <strong>Red card multiply:</strong>
+  <%= @calculation_config.red_card_multiply %>
+</p>
+
+<p>
+  <strong>Own goal multiply:</strong>
+  <%= @calculation_config.own_goal_multiply %>
+</p>
+
+<p>
+  <strong>Bonus team multiply:</strong>
+  <%= @calculation_config.bonus_team_multiply %>
+</p>
+
+<%= link_to 'Edit', edit_calculation_config_path(@calculation_config) %> |
+<%= link_to 'Back', calculation_configs_path %>

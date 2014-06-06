@@ -69,35 +69,35 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td> <%= f.label :result %><em> (90 minutes 10 Pts)</em></td>
+					<td> <%= f.label :result %><em><%= "(90 minutes #{@bet.calculation_config.team_winner_multiply} Pts)" %></em></td>
 					<td> <%= f.select :result , {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} ,{}, :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :team1_score %><em> (10 Pts)</em></td>
+					<td> <%= f.label :team1_score %><em><%= "(#{@bet.calculation_config.score_multiply} Pts)" %></em></td>
 					<td> <%= f.number_field :team1_score , :readonly => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :team2_score %><em> (10 Pts)</em></td>
+					<td> <%= f.label :team2_score %><em><%= "(#{@bet.calculation_config.score_multiply} Pts)" %></em></td>
 					<td> <%= f.number_field :team2_score , :readonly => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :penalty %><em> (+/-10 Pts)</em></td>
-					<td> <%= f.check_box :penalty , :readonly => @view_only %> </td>
+					<td> <%= f.label :penalty %><em><%= "(#{@bet.calculation_config.penalty_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :penalty , :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em> (+/-10 Pts)</em></td>
-					<td> <%= f.check_box :yellow_card , :readonly => @view_only %> </td>
+					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em><%= "(#{@bet.calculation_config.yellow_card_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :yellow_card  , :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :red_card %><em> (+/-10 Pts)</em></td>
-					<td> <%= f.check_box :red_card , :readonly => @view_only %> </td>
+					<td> <%= f.label :red_card %><em><%= "(#{@bet.calculation_config.red_card_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :red_card , :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label :own_goal %><em> (+/-20 Pts)</em></td>
-					<td> <%= f.check_box :own_goal , :readonly => @view_only %> </td>
+					<td> <%= f.label :own_goal %><em><%= "(#{@bet.calculation_config.own_goal_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :own_goal , :disabled => @view_only %> </td>
 				</tr>
 				<tr>
-					<td> <%= f.label 'Bonus favorite team' %><em> (10%)</em></td>
+					<td> <%= f.label 'Bonus favorite team' %><em><%= "(#{@bet.calculation_config.bonus_team_multiply} %)" %></em></td>
 					<td> <%= flag_image_tag(@bet.player.team) %> </td>
 				</tr>
 			</tbody>

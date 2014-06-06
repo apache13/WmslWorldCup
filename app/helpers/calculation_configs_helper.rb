@@ -1,0 +1,2 @@
+module CalculationConfigsHelper
+end

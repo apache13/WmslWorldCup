@@ -1,5 +1,5 @@
 <h1>Listing calculations</h1>
-
+<%= render "calculations/search" %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -9,9 +9,6 @@
       <th>Player</th>
       <th>Match</th>
       <th>Description</th>
-      <th>Team winner point</th>
-      <th>Score point</th>
-      <th>Bonus team point</th>
       <th>Total point</th>
       <th></th>
       <th></th>
@@ -28,9 +25,6 @@
         <td><%= calculation.player.name %></td>
         <td><%= calculation.bet.match.match.localtime.to_formatted_s(:short) %></td>
         <td><%= calculation.bet.match.description %></td>
-        <td><%= calculation.team_winner_point %></td>
-        <td><%= calculation.score_point %></td>
-        <td><%= calculation.bonus_team_point %></td>
         <td><%= calculation.total_point %></td>
         <td><%= button_to "View", calculation , :method => :get , :class=>"btn btn-default"%></td>
         <% if current_user.admin? %>

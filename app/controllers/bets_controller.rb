@@ -17,6 +17,7 @@ class BetsController < ApplicationController
     end
     conditions['matches.team1_id'] = params[:team1_id] unless params[:team1_id].blank?
     conditions['matches.team2_id'] = params[:team2_id] unless params[:team2_id].blank?
+    conditions[:player_id] = params[:player] unless params[:player].blank?
     
     if current_user.admin?
       @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
@@ -104,6 +105,6 @@ class BetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bet_params
-    params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :calculation_id,:result,:own_goal,:yellow_card,:red_card,:penalty)
+    params.require(:bet).permit(:match_id, :player_id, :winner_id ,:team1_score, :team2_score , :calculation_id,:result,:own_goal,:yellow_card,:red_card,:penalty,:calculation_config)
   end
 end

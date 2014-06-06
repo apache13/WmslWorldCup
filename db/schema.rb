@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605164938) do
+ActiveRecord::Schema.define(version: 20140606200734) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 20140605164938) do
     t.boolean  "yellow_card"
     t.boolean  "red_card"
     t.boolean  "penalty"
+    t.integer  "calculation_config_id"
+  end
+
+  create_table "calculation_configs", force: true do |t|
+    t.integer  "team_winner_multiply"
+    t.integer  "score_multiply"
+    t.integer  "penalty_multiply"
+    t.integer  "yellow_card_multiply"
+    t.integer  "red_card_multiply"
+    t.integer  "own_goal_multiply"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bonus_team_multiply"
   end
 
   create_table "calculations", force: true do |t|

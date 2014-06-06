@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  resources :calculation_configs
+
   get "generate/bets"
   get "generate/calculate"
   get "generate/bet"
