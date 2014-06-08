@@ -1,15 +1,29 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+	<%= notice %>
+</p>
 
-<%= render "players/information" %>
-<%= render "players/table" %>
-<%= render "players/bets" %>
+<div class="row">
+	<div class="col-md-9">
+		<%= render "players/information" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "players/table" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "players/bets" %>
+	</div>
+</div>
 
-<% if current_user.admin? %> 
-	<%= link_to 'Edit', edit_player_path(@player) %> |
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_player_path(@player) %> |
 <% else %>
-	<% if @player.user == current_user %>
-		<%= link_to 'Edit', edit_player_path(@player) %> |
-	<% end %>
+<% if @player.user == current_user %>
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<% end %>
 <% end %>
 
 <%= link_to 'Back', players_path %>

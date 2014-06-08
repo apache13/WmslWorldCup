@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @bets = Bet.where(player: @player)
+    @bets = Bet.where(player: @player).paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /players/new

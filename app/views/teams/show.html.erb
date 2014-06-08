@@ -1,53 +1,28 @@
-<p id="notice">
-	<%= notice %>
-</p>
+<div class="row">
+	<div class="col-md-2">
+		<p id="notice">
+			<%= notice %>
+		</p>
 
-<p>
-	<strong>Name:</strong>
-	<%= @team.name %>
-</p>
+		<p>
+			<strong>Name:</strong>
+			<%= @team.name %>
+		</p>
 
-<p>
-	<strong>Abbreviate:</strong>
-	<%= @team.abbreviate %>
-</p>
+		<p>
+			<strong>Abbreviate:</strong>
+			<%= @team.abbreviate %>
+		</p>
 
-<p>
-	<strong>Flag:</strong>
-	<%= flag_image_tag @team %>
-</p>
-
-<p>
-	<strong>Fan club:<%= @team.players.count %> player(s)</strong>
-</p>
-
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Player ID.</th>
-			<th>Facebook</th>
-			<th>Name</th>
-			<th title="Played">P</th>
-			<th title="Team winner point">TWP</th>
-			<th title="Score point">SP</th>
-			<th title="Total point">Pts</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @team.players.each do |player| %>
-		<tr>
-			<td><%= player.id %></td>
-			<td><%= facebook_image_tag player %></td>
-			<td><%= link_to player.name , player %></td>
-			<td><%= player.played %></td>
-			<td><%= player.twp %></td>
-			<td><%= player.sp %></td>
-			<td><%= player.pts %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+		<p>
+			<strong>Flag:</strong>
+			<%= flag_image_tag @team %>
+		</p>
+	</div>
+	<div class="col-md-10">
+		<%= render "teams/fev" %>
+	</div>
+</div>
 
 <% if current_user.admin? %>
 <%= link_to 'Edit', edit_team_path(@team) %> |

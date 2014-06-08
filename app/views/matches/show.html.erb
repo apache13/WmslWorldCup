@@ -3,13 +3,25 @@
 </p>
 
 <div class="row">
+
 	<div class="col-md-9">
-		<%= render "matches/information"%>
-		<%= render "matches/result"%>
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<%= render "matches/information"%>
+			</div>
+			<div class="col-md-6">
+				<%= render "matches/highlight"%>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<%= render "matches/result"%>
+
+		</div>
 	</div>
+
 	<div class="col-md-3">
 		<%= render "matches/bets" %>
-		
+
 	</div>
 </div>
 

@@ -60,5 +60,11 @@ match13 = Match.create(description: 'Group Stage : F#02',match: '2014-06-16 02:0
 match14 = Match.create(description: 'Group Stage : G#02',match: '2014-06-16 05:00:00 +0700',team1: gha, team2: usa ,live: 'WC',closed: false)
 match15 = Match.create(description: 'Group Stage : H#01',match: '2014-06-17 23:00:00 +0700',team1: bel, team2: alg ,live: 'WC',closed: false)
 
+match16 = Match.create(description: 'Group Stage : H#01',match: '2014-06-17 02:00:00 +0700',team1: bra, team2: mex ,live: 'WC',closed: false)
+match17 = Match.create(description: 'Group Stage : A#02',match: '2014-06-17 05:00:00 +0700',team1: rus, team2: kor ,live: '7,8,WC',closed: false)
+match18 = Match.create(description: 'Group Stage : H#01',match: '2014-06-18 23:00:00 +0700',team1: aus, team2: ned ,live: 'WC',closed: false)
+match19 = Match.create(description: 'Group Stage : B#02',match: '2014-06-18 02:00:00 +0700',team1: esp, team2: chi ,live: 'WC',closed: false)
+match20 = Match.create(description: 'Group Stage : B#02',match: '2014-06-18 05:00:00 +0700',team1: cmr, team2: cro ,live: '8,WC',closed: false)
 
-config1 = CalculationConfig.create(team_winner_multiply: 10,score_multiply: 10,penalty_multiply: 10,yellow_card_multiply: 10,red_card_multiply: 10,own_goal_multiply: 10, bonus_team_multiply: 10)
+
+config1 = CalculationConfig.create(team_winner_multiply: 10,score_multiply: 15,penalty_multiply: 10,yellow_card_multiply: 10,red_card_multiply: 20,own_goal_multiply: 20, bonus_team_multiply: 10)

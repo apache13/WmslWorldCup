@@ -16,7 +16,7 @@ module ApplicationHelper
 
   def flag_image_tag(team)
     if(team != nil)
-      image_tag '/flag/'+team.abbreviate+'.png' ,:class => "img-rounded" , :title => team.name
+      link_to(image_tag('/flag/'+team.abbreviate+'.png' ,:class => "img-rounded" , :title => team.name),team) 
     end
   end
 
