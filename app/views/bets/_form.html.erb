@@ -45,7 +45,7 @@
 		</p>
 		<p>
 			<strong>Match date/time:</strong>
-			<%= @bet.match.match.localtime %>
+			<%= @bet.match.match.localtime.to_formatted_s(:short) %>
 		</p>
 		<p>
 			<strong>LIVE:</strong>

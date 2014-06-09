@@ -14,7 +14,7 @@
 </p>
 <p>
 	<strong>Match date/time:</strong>
-	<%= @match.match.localtime %>
+	<%= @match.match.localtime.to_formatted_s(:short) %>
 </p>
 <p>
 	<strong>LIVE:</strong>

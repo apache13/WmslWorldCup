@@ -22,9 +22,9 @@ class Calculation < ActiveRecord::Base
     self.yellow_card_point = 0
     self.red_card_point = 0  
     self.own_goal_point = 0
-    
     self.bonus_team_point = 0
         
+    
     if(self.bet.match.result == self.bet.result)
       self.team_winner_point = self.bet.calculation_config.team_winner_multiply
     else

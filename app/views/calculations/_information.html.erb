@@ -30,7 +30,7 @@
 		</p>
 		<p>
 			<strong>Match date/time:</strong>
-			<%= @calculation.bet.match.match.localtime %>
+			<%= @calculation.bet.match.match.localtime.to_formatted_s(:short) %>
 		</p>
 		<p>
 			<strong>LIVE:</strong>
