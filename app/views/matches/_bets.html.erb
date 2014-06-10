@@ -1,4 +1,4 @@
-<strong>Bets</strong>
+<strong>Calculations</strong>
 <table class="table">
 	<thead>
 		<tr>
@@ -10,20 +10,15 @@
 	</thead>
 
 	<tbody>
-		<% @match.bets.collect.sort{ |a,b| b.pts <=> a.pts }.each_with_index do |bet,index| %>
-		<%if bet.match.closed == true%>
-		<tr class="success">
-			<%else%>
+		<% @bets.each_with_index do |bet,index| %>
 		<tr>
-			<%end %>
 			<td><%= index+1 %></td>
 			<td><%= facebook_image_tag bet.player %></td>
 			<td><%= link_to bet.player.name,bet.player %></td>
-
 			<% if bet.calculation != nil %>
 			<td><%= link_to(bet.calculation.total_point,bet.calculation ) %></td>
 			<% else %>
-			<td><%= 'N/A' %></td>
+			<td><%= '?' %></td>
 			<% end %>
 		</tr>
 		<% end %>

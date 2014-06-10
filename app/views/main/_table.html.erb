@@ -11,11 +11,16 @@
 
 	<tbody>
 		<% @tables.each_with_index do |player,index| %>
-		<% if index < 1 %>
-		<tr class="success">
+		<% if index < 3 %>
+			<tr class="success">
+		<% else %>
+			<% if index > (@tables.count-4)%>
+				<tr class="danger">
 			<% else %>
-		<tr>
-			<%end%>
+				<tr>
+			<% end %>
+		<%end%>
+
 			<td><%= index+1 %></td>
 			<td><%= facebook_image_tag player %></td>
 			<td><%= player.played %></td>

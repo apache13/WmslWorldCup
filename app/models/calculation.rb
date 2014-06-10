@@ -13,9 +13,26 @@ class Calculation < ActiveRecord::Base
     self.bet.update(calculation: self)
   end
   
+  private
+  def random_bet
+    
+    Random.new_seed 
+    
+    self.bet.result = rand(3) # 0,1,2
+    self.bet.team1_score = rand(10) # 0-9
+    self.bet.team2_score = rand(10) # 0-9
+    
+    self.bet.penalty = rand(2) == 1 ? true : false
+    self.bet.yellow_card = rand(2) == 1 ? true : false
+    self.bet.red_card = rand(2) == 1 ? true : false
+    self.bet.own_goal = rand(2) == 1 ? true : false
+
+  end  
+  
   public
   def calculate
     
+    #initial variable
     self.team_winner_point = 0
     self.score_point = 0
     self.penalty_point = 0
@@ -23,14 +40,17 @@ class Calculation < ActiveRecord::Base
     self.red_card_point = 0  
     self.own_goal_point = 0
     self.bonus_team_point = 0
-        
+    self.total_point = 0
+    
+    if self.bet.result.nil?
+      random_bet
+    end 
     
     if(self.bet.match.result == self.bet.result)
       self.team_winner_point = self.bet.calculation_config.team_winner_multiply
     else
       self.team_winner_point = 0
     end
-    
     
     if(self.bet.match.team1_score == self.bet.team1_score)
       self.score_point += self.bet.calculation_config.score_multiply

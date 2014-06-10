@@ -13,7 +13,7 @@ class GenerateController < ApplicationController
       else
         logger.debug 'generate bet'
         bet = Bet.new(match: match , player: player , calculation_config: calculation_config )
-      bet.save
+        bet.save
       end
     end
     @bets = Bet.where(match: match)
@@ -27,16 +27,18 @@ class GenerateController < ApplicationController
       if Calculation.exists?(player: bet.player , bet: bet)
         logger.debug 're-calculation'
         calculation = Calculation.where(player: bet.player , bet: bet).first
-      calculation.calculate
-      calculation.save
+        calculation.calculate
+        calculation.save
       else
         logger.debug 'new-calculation'
         calculation = Calculation.new(player: bet.player , bet: bet)
-      calculation.calculate
-      calculation.save
+        calculation.calculate
+        calculation.save
       end
     end
+    
     @calculations = Calculation.joins(bet: :match).where('matches.id'=>match)
+    
   end
 
 end

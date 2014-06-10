@@ -27,6 +27,7 @@ class MatchesController < ApplicationController
   # GET /matches/1.json
   def show
     @view_only = true
+    @bets = Bet.joins(:calculation).where(:match=>@match).order('calculations.total_point DESC')
   end
 
   # GET /matches/new
