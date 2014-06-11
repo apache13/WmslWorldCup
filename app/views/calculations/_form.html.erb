@@ -27,7 +27,7 @@
 		<%= render 'calculations/bet'%>
 	</div>
 	<div class="col-md-4">
-		<strong>Calculation</strong>
+		<strong>Calculation</strong><small> (<%= @calculation.bet.updated_at.localtime.to_formatted_s(:short) %>)</small> 
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -71,7 +71,7 @@
 				</tr>
 
 				<tr>
-					<td><%= f.label 'Bonus team score' %></td>
+					<td><%= f.label :bonus_team_point , 'Bonus team score' %></td>
 					<td><%= f.number_field :bonus_team_point , :readonly => @view_only %> </td>
 				</tr>
 
