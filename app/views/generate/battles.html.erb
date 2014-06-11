@@ -1,0 +1,22 @@
+<h1>Generate#battles</h1>
+<p>Find me in app/views/generate/battles.html.erb</p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Player 1</th>
+      <th>Player 2</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @battles.each do |battle| %>
+      <tr>
+      	<td><%= facebook_image_tag battle.player1 %></td>
+      	<td><%= facebook_image_tag battle.player2 %></td>
+      	<td><%= battle.result %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
