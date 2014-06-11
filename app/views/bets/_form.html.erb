@@ -81,10 +81,12 @@
 				</tr>
 				<tr>
 					<td> <%= f.label :penalty %><em><%= "(#{@bet.calculation_config.penalty_multiply} Pts)" %></em></td>
-					<td> <%= f.radio_button :penalty , false , :disabled => @view_only %>
-					<%= f.label(:penalty, "No") %>
-					<%= f.radio_button :penalty , true , :disabled => @view_only %>
-					<%= f.label(:penalty, "Yes") %> </td>
+					<td>
+						<%= f.radio_button :penalty , false , :disabled => @view_only %>
+						<%= f.label(:penalty, "No") %>
+						<%= f.radio_button :penalty , true , :disabled => @view_only %>
+						<%= f.label(:penalty, "Yes") %>
+					</td>
 				</tr>
 				<tr>
 					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em><%= "(#{@bet.calculation_config.yellow_card_multiply} Pts)" %></em></td>
