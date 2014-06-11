@@ -8,7 +8,23 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all.order(:name).paginate(:page => params[:page],:per_page => 10)
+    
+    conditions = {}
+    orderBy = "name"
+    
+    # unless params[:teamOrderBy].blank?
+      # if params[:teamOrderBy] == "มากไปน้อย"
+        # orderBy += ", players.count desc"
+      # else
+        # orderBy += ", players.count asc"  
+      # end
+    # end
+    # puts "Order by = " + orderBy
+    conditions[:id] = params[:teams] unless params[:teams].blank?
+    
+    # @teams = Team.joins(:players).order("count(teams.player_id)").paginate(:page => params[:page],:per_page => 10)
+    
+    @teams = Team.where(conditions).order(orderBy).paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /teams/1
