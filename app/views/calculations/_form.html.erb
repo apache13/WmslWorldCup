@@ -1,39 +1,97 @@
 <%= form_for(@calculation) do |f| %>
-  <% if @calculation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@calculation.errors.count, "error") %> prohibited this calculation from being saved:</h2>
+<% if @calculation.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@calculation.errors.count, "error") %> prohibited this calculation from being saved:</h2>
 
-      <ul>
-      <% @calculation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @calculation.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.select :player_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :bet_id %><br>
-    <%= f.select :bet_id ,  Bet.all.collect {|t| [ t.id , t.id]} %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :total_point %><br>
-    <%= f.number_field :total_point %>
-  </div>
-  <div class="field">
-    <%= f.label :team_winner_point %><br>
-    <%= f.number_field :team_winner_point %>
-  </div>
-  <div class="field">
-    <%= f.label :score_point %><br>
-    <%= f.number_field :score_point %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render 'calculations/information'%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<%= render "calculations/result"%>
+	</div>
+	<div class="col-md-4">
+		<%= render 'calculations/bet'%>
+	</div>
+	<div class="col-md-4">
+		<strong>Calculation</strong>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> <%= f.label :team_winner_point %></td>
+					<td> <%= f.number_field :team_winner_point , :readonly => @view_only%> </td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"> <%= f.label :score_point %></td>
+					<td> <%= f.number_field :score_point , :readonly => @view_only%> </td>
+				</tr>
+				<tr>
+					<td><%= '-' %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :penalty_point %></td>
+					<td><%= f.number_field :penalty_point , :readonly => @view_only %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :yellow_card_point , 'Yellow card > 3' %></td>
+					<td><%= f.number_field :yellow_card_point , :readonly => @view_only %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :red_card_point %></td>
+					<td><%= f.number_field :red_card_point , :readonly => @view_only %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :own_goal_point %></td>
+					<td><%= f.number_field :own_goal_point , :readonly => @view_only %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label 'Bonus team score' %></td>
+					<td><%= f.number_field :bonus_team_point , :readonly => @view_only %> </td>
+				</tr>
+
+				<tr>
+					<td><%= f.label :total_point %></td>
+					<td><%= f.number_field :total_point , :readonly => @view_only%> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% if !@view_only %>
+<div class="row">
+	<div class="col-md-12">
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+	</div>
+</div>
+<% end %>
+
 <% end %>

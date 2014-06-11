@@ -7,21 +7,27 @@ class CalculationsController < ApplicationController
   # GET /calculations
   # GET /calculations.json
   def index
-    @calculations = Calculation.all
+    conditions = {}
+    conditions[:player_id] = params[:player] unless params[:player].blank?
+    
+    @calculations = Calculation.where(conditions).paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /calculations/1
   # GET /calculations/1.json
   def show
+    @view_only = true
   end
 
   # GET /calculations/new
   def new
+    @view_only = false
     @calculation = Calculation.new
   end
 
   # GET /calculations/1/edit
   def edit
+    @view_only = false
   end
 
   # POST /calculations
@@ -71,6 +77,6 @@ class CalculationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calculation_params
-      params.require(:calculation).permit(:player_id, :bet_id, :total_point, :team_winner_point, :score_point)
+      params.require(:calculation).permit(:player_id, :bet_id, :total_point, :team_winner_point, :score_point,:penalty_point,:yellow_card_point,:red_card_point,:own_goal_point)
     end
 end

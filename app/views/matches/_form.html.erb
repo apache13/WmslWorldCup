@@ -1,57 +1,94 @@
 <%= form_for(@match) do |f| %>
-  <% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+<% if @match.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
 
-      <ul>
-      <% @match.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @match.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :match %><br>
-    <%= f.datetime_select :match %>
-  </div>
-  <div class="field">
-    <%= f.label :team1_id %><br>
-    <%= f.select :team1_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
-  </div>
-  <div class="field">
-    <%= f.label :team2_id %><br>
-    <%= f.select :team2_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :live %><br>
-    <%= f.text_field :live %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :winner_id %><br>
-    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label :team1_score %><br>
-    <%= f.number_field :team1_score %>
-  </div>
-  <div class="field">
-    <%= f.label :team2_score %><br>
-    <%= f.number_field :team2_score %>
-  </div>
-  <div class="field">
-    <%= f.label :closed %><br>
-    <%= f.check_box :closed %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+	<%= f.label :description %>
+	<br>
+	<%= f.text_field :description %>
+</div>
+
+<div class="field">
+	<%= f.label :match %>
+	<br>
+	<%= f.datetime_select :match %>
+</div>
+<div class="field">
+	<%= f.label :team1_id %>
+	<br>
+	<%= f.select :team1_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
+</div>
+<div class="field">
+	<%= f.label :team2_id %>
+	<br>
+	<%= f.select :team2_id ,  Team.all.collect {|t| [ t.name , t.id]} %>
+</div>
+
+<div class="field">
+	<%= f.label :live %>
+	<br>
+	<%= f.text_field :live %>
+</div>
+
+<div class="field">
+	<%= f.label 'Match result' %>
+	<br>
+	<%= f.select :result ,   {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} , :include_blank => true %>
+</div>
+
+<div class="field">
+	<%= f.label :team1_score %>
+	<br>
+	<%= f.number_field :team1_score %>
+</div>
+<div class="field">
+	<%= f.label :team2_score %>
+	<br>
+	<%= f.number_field :team2_score %>
+</div>
+
+<div class="field">
+	<%= f.label :penalty %>
+	<br>
+	<%= f.check_box :penalty %>
+</div>
+
+<div class="field">
+	<%= f.label :yellow_card %>
+	<br>
+	<%= f.check_box :yellow_card %>
+</div>
+
+<div class="field">
+	<%= f.label :red_card %>
+	<br>
+	<%= f.check_box :red_card %>
+</div>
+
+<div class="field">
+	<%= f.label :own_goal %>
+	<br>
+	<%= f.check_box :own_goal %>
+</div>
+
+<div class="field">
+	<%= f.label :closed %>
+	<br>
+	<%= f.check_box :closed %>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>

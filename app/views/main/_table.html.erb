@@ -3,26 +3,27 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>Player</th>
-			<th>P</th>
-			<th>TWP</th>
-			<th>SP</th>
-			<th>Pts</th>
+			<th title="Player name">Player</th>
+			<th title="Played">P</th>
+			<th title="Total point">Pts</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% @players.each_with_index do |player,index| %>
-		<% if index < 1 %>
-		<tr class="success">
+		<% @tables.each_with_index do |player,index| %>
+		<% if index < 3 %>
+			<tr class="success">
+		<% else %>
+			<% if index > (@tables.count-4)%>
+				<tr class="danger">
 			<% else %>
-		<tr>
-			<%end%>
+				<tr>
+			<% end %>
+		<%end%>
+
 			<td><%= index+1 %></td>
-			<td><%= player.name %></td>
+			<td><%= facebook_image_tag player %></td>
 			<td><%= player.played %></td>
-			<td><%= player.twp %></td>
-			<td><%= player.sp %></td>
 			<td><%= player.pts %></td>
 		</tr>
 		<% end %>

@@ -1,0 +1,45 @@
+<%= form_for(@calculation_config) do |f| %>
+  <% if @calculation_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calculation_config.errors.count, "error") %> prohibited this calculation_config from being saved:</h2>
+
+      <ul>
+      <% @calculation_config.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_winner_multiply %><br>
+    <%= f.number_field :team_winner_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :score_multiply %><br>
+    <%= f.number_field :score_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :penalty_multiply %><br>
+    <%= f.number_field :penalty_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :yellow_card_multiply %><br>
+    <%= f.number_field :yellow_card_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :red_card_multiply %><br>
+    <%= f.number_field :red_card_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :own_goal_multiply %><br>
+    <%= f.number_field :own_goal_multiply %>
+  </div>
+  <div class="field">
+    <%= f.label :bonus_team_multiply %><br>
+    <%= f.number_field :bonus_team_multiply %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

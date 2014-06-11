@@ -6,6 +6,7 @@
 		</div>
 		<nav class="collapse navbar-collapse" role="navigation">
 			<ul class="nav navbar-nav">
+				<% if current_user %>
 				<li>
 					<%= link_to('Players',{ controller: "players"}) %>
 				</li>
@@ -21,22 +22,34 @@
 				<li>
 					<%= link_to('Calculations',{ controller: "calculations"}) %>
 				</li>
+				<% end %>
 				<li>
-					<%= link_to('Abouts',{ controller: "abouts"}) %>
+					<%= link_to('About',{ :controller => :about ,:action=>:index }) %>
 				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right nav-pills nav-stacked">
 				<li class="dropdown">
-					<% if @current_user %>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <% if @current_user.admin? %>
+					<% if current_user %>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <% if current_user.admin? %>
 					<%= current_user.name %> (Admin)
 					<% else %>
 					<%= current_user.name %> (Player)
 					<% end %> <b class="caret"> </b> </a>
 					<ul class="dropdown-menu">
+						<% if current_user.admin? %>
 						<li>
-							<%= link_to('Administrator',{ controller: "administrator"}) %>
+							<%= link_to('Configuration',{ controller: "calculation_configs"}) %>
+						</li>
+						<% end %>
+
+						<% if current_user.player == nil %>
+						<li>
+							<%= link_to 'Register', new_player_path %>
+						</li>
+						<% end %>
+						<li>
+							<%= link_to 'Setting', "#" %>
 						</li>
 						<li class="divider"></li>
 						<li>

@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @player.name %>
+<p id="notice">
+	<%= notice %>
 </p>
 
-<p>
-  <strong>Uid:</strong>
-  <%= @player.uid %>
-</p>
+<div class="row">
+	<div class="col-md-9">
+		<%= render "players/information" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "players/table" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "players/bets" %>
+	</div>
+</div>
 
-<p>
-  <strong>Team:</strong>
-  <%= flag_image_tag @player.team %>
-</p>
-
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_player_path(@player) %> |
+<% else %>
+<% if @player.user == current_user %>
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<% end %>
+<% end %>
+
 <%= link_to 'Back', players_path %>

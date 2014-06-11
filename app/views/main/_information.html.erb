@@ -7,12 +7,12 @@
 	</div>
 	<div class="col-md-5">
 		<p>
-			<strong>Provider:</strong>
-			<%= current_user.provider %>
-		</p>
-		<p>
 			<strong>UID:</strong>
 			<%= current_user.uid %>
+		</p>
+		<p>
+			<strong>URL:</strong>
+			<%= link_to 'Facebook' , url_for(current_user.link) , :target => "_blank" %>
 		</p>
 		<p>
 			<strong>Name:</strong>
@@ -23,28 +23,29 @@
 		<p>
 			<% if current_user.player == nil %>
 			<strong>Player:</strong>
-			<%= 'N/A' %>
+			
+			<span class="label label-default"><%= link_to 'Register', new_player_path %></span>
 			<% else%>
 			<strong>Player:</strong>
-			<%= current_user.player.name %>
+			<%= link_to current_user.player.name , current_user.player %>
 			<% end %>
 		</p>
 
 		<p>
 			<% if current_user.player == nil %>
 			<strong>Register:</strong>
-			<%= 'N/A' %>
+			<%= '-' %>
 			<% else%>
 			<strong>Register:</strong>
-			<%= current_user.player.created_at.localtime %>
+			<%= current_user.player.created_at.localtime.to_formatted_s(:short) %>
 			<% end %>
 		</p>
 		<p>
 			<% if current_user.player == nil %>
-			<strong>Fan:</strong>
-			<%= 'N/A' %>
+			<strong>Favorite team:</strong>
+			<%= '-' %>
 			<% else%>
-			<strong>Fan:</strong>
+			<strong>Favorite team:</strong>
 			<%= flag_image_tag current_user.player.team %>
 			<% end %>
 		</p>

@@ -1,0 +1,47 @@
+<strong>Bet</strong>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td> <%= label_tag :result %><em> <%= "(90 minutes #{@calculation.bet.calculation_config.team_winner_multiply} Pts)" %></em></td>
+			<td> <%= match_result_flat_image_tag @calculation.bet.result , @calculation.bet.match %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :team1_score %><em> <%= "(#{@calculation.bet.calculation_config.score_multiply} Pts)" %></em></td>
+			<td> <%= @calculation.bet.team1_score %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :team2_score %><em> <%= "(#{@calculation.bet.calculation_config.score_multiply} Pts)" %></em></td>
+			<td> <%= @calculation.bet.team2_score %></td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :penalty %><em> <%= "(#{@calculation.bet.calculation_config.penalty_multiply} Pts)" %></em></td>
+			<td> <%= check_box_tag :penalty ,true, @calculation.bet.penalty , :disabled=>true %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :yellow_card , 'Yellow card > 3'%><em> <%= "(#{@calculation.bet.calculation_config.yellow_card_multiply} Pts)" %></em></td>
+			<td> <%= check_box_tag :yellow_card ,true, @calculation.bet.yellow_card , :disabled=>true %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :red_card %><em> <%= "(#{@calculation.bet.calculation_config.red_card_multiply} Pts)" %></em></td>
+			<td> <%= check_box_tag :red_card ,true, @calculation.bet.red_card , :disabled=>true %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag :own_goal %><em> <%= "(#{@calculation.bet.calculation_config.own_goal_multiply} Pts)" %></em></td>
+			<td> <%= check_box_tag :own_goal ,true, @calculation.bet.own_goal , :disabled=>true %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag 'Bonus favorite team' %><em> <%= "(#{@calculation.bet.calculation_config.bonus_team_multiply} %)" %></em></td>
+			<td> <%= flag_image_tag(@calculation.player.team) %> </td>
+		</tr>
+		<tr>
+			<td> <%= label_tag 'Bet date/time' %></td>
+			<td> <%= @calculation.bet.updated_at.localtime.to_formatted_s(:short) %> </td>
+		</tr>
+	</tbody>
+</table>

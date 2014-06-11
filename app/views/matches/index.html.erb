@@ -1,20 +1,24 @@
 <h1>Listing matches</h1>
-
+<%= render "matches/search" %>
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>Match ID.</th>
 			<th>Description</th>
 			<th>Match</th>
+			<th>LIVE</th>
 			<th>Team1</th>
 			<th>Team2</th>
-			<th>LIVE</th>
+			<th>Result</th>
 			<th>Score</th>
 			<th>Closed</th>
 			<th></th>
+			<% if current_user.admin? %>
 			<th></th>
 			<th></th>
 			<th></th>
+			<th></th>
+			<% end %>
 		</tr>
 	</thead>
 
@@ -28,22 +32,32 @@
 
 			<td><%= match.id %></td>
 			<td><%= match.description %></td>
-			<td><%= match.match %></td>
+			<td><%= match.match.localtime.to_formatted_s(:short) %></td>
+			<td> <% match.live.split(",").each do |ch| %>
+			<%= live_image_tag(ch) %>
+			<% end%> </td>
 			<td><%= flag_image_tag match.team1 %></td>
 			<td><%= flag_image_tag match.team2 %></td>
-			<td><%= match.live %></td>
+			<td><%= match_result_flat_image_tag(match.result,match) %></td>
 			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
 			<td><%= match.closed %></td>
-			<td><%= link_to 'Show', match %></td>
-			<td><%= link_to 'Edit', edit_match_path(match) %></td>
+			<td><%= button_to "View", match , :method => :get , :class=>"btn btn-default" %></td>
+			<% if current_user.admin? %>
+			<td><%= button_to "Edit", edit_match_path(match) , :method => :get , :class=>"btn btn-default" %></td>
 			<td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<td><%= link_to('Generate bets',{ controller: "generate" , action: "bets" , match: match}) %></td>
-			<td><%= link_to('Calculate score',{ controller: "generate" , action: "calculate" , match: match}) %></td>
+			
+			<td><%= link_to("Gen bets (#{match.bets.count.to_s+'/'+Player.all.count.to_s})",{ controller: "generate" , action: "bets" , match: match}) %></td>
+			<td><%= link_to("Cal score (#{Calculation.where(:bet_id=>match.bets).count.to_s+'/'+match.bets.count.to_s})",{ controller: "generate" , action: "calculate" , match: match}, :disabled => true) %></td>
+			
+			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<br>
+<%= will_paginate @matches ,:class=>"pagination"%>
 
+<br>
+<% if current_user.admin? %>
 <%= link_to 'New Match', new_match_path %>
+<% end %>

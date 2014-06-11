@@ -1,0 +1,33 @@
+<%= form_tag("/bets", method: "get" , :role=>"form") do %>
+<div class="row">
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= label_tag(:closed,"Closed") %>
+			<%= select_tag(:closed,options_for_select([true,false]), :include_blank => true , :class=>"form-control") %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= label_tag(:player) %>
+			<%= select_tag(:player , options_for_select(Player.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= label_tag(:team1_id ,"Team1") %>
+			<%= select_tag(:team1_id , options_for_select(Team.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= label_tag(:team2_id ,"Team2") %>
+			<%= select_tag(:team2_id , options_for_select(Team.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<%= submit_tag("Search" , :class=>"btn btn-default") %>
+	</div>
+</div>
+<% end %>

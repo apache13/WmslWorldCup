@@ -1,0 +1,30 @@
+<strong>Statistic</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th title="Played">Played</th>
+			<th title="Team winner point">Team winner point</th>
+			<th title="Score point">Score point</th>
+			<th title="Penalty point">Penalty point</th>
+			<th title="Yellow card point">Yellow card point</th>
+			<th title="Red card point">Red card point</th>
+			<th title="Own goal point">Own goal point</th>
+			<th title="Bonus team point">Bonus team point</th>
+			<th title="Total point">Total point</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @player.played %></td>
+			<td><%= @player.twp %></td>
+			<td><%= @player.sp %></td>
+			<td><%= @player.pp %></td>
+			<td><%= @player.ycp %></td>
+			<td><%= @player.rcp %></td>
+			<td><%= @player.ogp %></td>
+			<td><%= @player.btp %></td>
+			<td><%= @player.pts %></td>
+		</tr>
+	</tbody>
+</table>

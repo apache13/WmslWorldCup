@@ -1,5 +1,5 @@
 <h1>Listing calculations</h1>
-
+<%= render "calculations/search" %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -9,8 +9,6 @@
       <th>Player</th>
       <th>Match</th>
       <th>Description</th>
-      <th>Team winner point</th>
-      <th>Score point</th>
       <th>Total point</th>
       <th></th>
       <th></th>
@@ -25,19 +23,17 @@
         <td><%= calculation.bet.id %></td>
         <td><%= facebook_image_tag calculation.player %></td>
         <td><%= calculation.player.name %></td>
-        <td><%= calculation.bet.match.match %></td>
+        <td><%= calculation.bet.match.match.localtime.to_formatted_s(:short) %></td>
         <td><%= calculation.bet.match.description %></td>
-        <td><%= calculation.team_winner_point %></td>
-        <td><%= calculation.score_point %></td>
         <td><%= calculation.total_point %></td>
-        <td><%= link_to 'Show', calculation %></td>
-        <td><%= link_to 'Edit', edit_calculation_path(calculation) %></td>
+        <td><%= button_to "View", calculation , :method => :get , :class=>"btn btn-default"%></td>
+        <% if current_user.admin? %>
+        <td><%= button_to "Edit", edit_calculation_path(calculation) , :method => :get , :class=>"btn btn-default"%></td>
         <td><%= link_to 'Destroy', calculation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @calculations %>
 <br>
-
-<%= link_to 'New Calculation', new_calculation_path %>

@@ -4,11 +4,16 @@ class Player < ActiveRecord::Base
   has_many :bets
   has_many :calculations
   has_many :battles
-  belongs_to :user
   
   validates :name , :uid ,:team , presence: true
-  validates :name , uniqueness: true
+  validates :name , :uid , uniqueness: true
 
+  validates :name, length: { maximum: 32 }
+  
+  def user
+    return User.find_by_uid(self.uid)
+  end
+  
   def played
     return self.calculations.count
   end
@@ -27,6 +32,46 @@ class Player < ActiveRecord::Base
       sp += calculation.score_point
     end
     return sp
+  end
+  
+  def pp
+    pp = 0
+    self.calculations.each do |calculation|
+      pp += calculation.penalty_point
+    end
+    return pp
+  end
+  
+  def ycp
+    ycp = 0
+    self.calculations.each do |calculation|
+      ycp += calculation.yellow_card_point
+    end
+    return ycp
+  end
+  
+  def rcp
+    rcp = 0
+    self.calculations.each do |calculation|
+      rcp += calculation.red_card_point
+    end
+    return rcp
+  end
+  
+  def ogp
+    ogp = 0
+    self.calculations.each do |calculation|
+      ogp += calculation.own_goal_point
+    end
+    return ogp
+  end
+  
+  def btp
+    btp = 0
+    self.calculations.each do |calculation|
+      btp += calculation.bonus_team_point
+    end
+    return btp
   end
   
   def pts

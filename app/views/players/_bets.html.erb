@@ -1,0 +1,55 @@
+<strong>Bets</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Date/Time</th>
+			<th>Description</th>
+			<th>Team1</th>
+			<th>Team2</th>
+			<th>Result</th>
+			<th>Score</th>
+			<th>Close</th>
+			<th>Pts</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @bets.each_with_index do |bet,index| %>
+		<%if bet.match.closed == true%>
+		<tr class="success">
+			<%else%>
+		<tr>
+			<%end %>
+			<td><%= index+1 %></td>
+			<td><%= bet.match.match.localtime %></td>
+			<td><%= bet.match.description %></td>
+			<td><%= flag_image_tag bet.match.team1 %></td>
+			<td><%= flag_image_tag bet.match.team2 %></td>
+
+			<% if bet.match.closed == true %> <td><%= match_result_flat_image_tag(bet.result,bet.match) %></td>
+			<td><strong><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></strong></td>
+			<% else %>
+				<% if current_user.admin? %>
+				<td><%= match_result_flat_image_tag(bet.result,bet.match) %></td>
+				<td><strong><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></strong></td>
+				<% else %>
+				<td>?</td>
+				<td>?</td>
+				<% end %>
+			<% end %>
+
+			<td><%= bet.match.closed %></td>
+			<% if bet.calculation != nil %>
+			<td><%= link_to bet.calculation.total_point , bet.calculation %></td>
+			<td><%= button_to "View", bet , :method => :get , :class=>"btn btn-default" %></td>
+			<% else %>
+			<td><%= '?' %></td>
+			<td><%= '-' %></td>
+			<% end %>
+			
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate @bets %>

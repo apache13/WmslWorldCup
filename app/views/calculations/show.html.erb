@@ -1,29 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Player:</strong>
-  <%= @calculation.player_id %>
-</p>
+<%= render 'form' %>
 
-<p>
-  <strong>Bet:</strong>
-  <%= @calculation.bet_id %>
-</p>
-
-<p>
-  <strong>Total point:</strong>
-  <%= @calculation.total_point %>
-</p>
-
-<p>
-  <strong>Team winner point:</strong>
-  <%= @calculation.team_winner_point %>
-</p>
-
-<p>
-  <strong>Score point:</strong>
-  <%= @calculation.score_point %>
-</p>
-
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_calculation_path(@calculation) %> |
+<% end %>
 <%= link_to 'Back', calculations_path %>

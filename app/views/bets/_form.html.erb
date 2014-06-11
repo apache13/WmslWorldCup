@@ -1,43 +1,120 @@
 <%= form_for(@bet) do |f| %>
-  <% if @bet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+<% if @bet.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
 
-      <ul>
-      <% @bet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @bet.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :match_id %><br>
-    <%= f.select :match_id ,  Match.all.collect {|t| [ t.description , t.id]} %>
-  </div>
-  
-  
-  <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.select :player_id ,  Player.all.collect {|t| [ t.name , t.id]} %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :winner_id %><br>
-    <%= f.select :winner_id ,  Team.all.collect {|t| [ t.name , t.id]} , :include_blank => true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :team1_score %><br>
-    <%= f.number_field :team1_score %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :team2_score %><br>
-    <%= f.number_field :team2_score %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<strong>Information</strong>
+<div class="row">
+	<div class="col-md-2">
+		<p>
+			<%= facebook_thumbnail_image_tag(@bet.player.user,'small') %>
+		</p>
+		<p>
+			<strong>Name:</strong>
+			<%= @bet.player.name %>
+		</p>
+		<p>
+			<strong>Team:</strong>
+			<%= flag_image_tag(@bet.player.team) %>
+		</p>
+	</div>
+	<div class="col-md-10">
+		<p>
+			<strong>Match closed:</strong>
+			<%= @bet.match.closed %>
+		</p>
+		<p>
+			<strong>Team1:</strong>
+			<%= flag_image_tag @bet.match.team1 %>
+			<strong>Team2:</strong>
+			<%= flag_image_tag @bet.match.team2 %>
+		</p>
+		<p>
+			<strong>Description:</strong>
+			<%= @bet.match.description %>
+		</p>
+		<p>
+			<strong>Match date/time:</strong>
+			<%= @bet.match.match.localtime.to_formatted_s(:short) %>
+		</p>
+		<p>
+			<strong>LIVE:</strong>
+			<% @bet.match.live.split(",").each do |ch| %>
+			<%= live_image_tag(ch) %>
+			<% end%>
+		</p>
+
+	</div>
+</div>
+
+<strong>Bet</strong>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> <%= f.label :result %><em><%= "(90 minutes #{@bet.calculation_config.team_winner_multiply} Pts)" %></em></td>
+					<td> <%= f.select :result , {'Draw'=>0,'Team 1'=>1,'Team 2'=>2} ,{}, :disabled => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :team1_score %><em><%= "(#{@bet.calculation_config.score_multiply} Pts)" %></em></td>
+					<td> <%= f.number_field :team1_score , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :team2_score %><em><%= "(#{@bet.calculation_config.score_multiply} Pts)" %></em></td>
+					<td> <%= f.number_field :team2_score , :readonly => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :penalty %><em><%= "(#{@bet.calculation_config.penalty_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :penalty , :disabled => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em><%= "(#{@bet.calculation_config.yellow_card_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :yellow_card  , :disabled => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :red_card %><em><%= "(#{@bet.calculation_config.red_card_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :red_card , :disabled => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label :own_goal %><em><%= "(#{@bet.calculation_config.own_goal_multiply} Pts)" %></em></td>
+					<td> <%= f.check_box :own_goal , :disabled => @view_only %> </td>
+				</tr>
+				<tr>
+					<td> <%= f.label 'Bonus favorite team' %><em><%= "(#{@bet.calculation_config.bonus_team_multiply} %)" %></em></td>
+					<td> <%= flag_image_tag(@bet.player.team) %> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<% if !@view_only %>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="actions">
+				<%= f.submit %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+
 <% end %>

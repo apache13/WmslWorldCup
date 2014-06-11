@@ -1,0 +1,21 @@
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th title="Player name">Player</th>
+			<th title="Played">P</th>
+			<th title="Total point">Pts</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @team.players.each_with_index do |player,index| %>
+		<tr>
+			<td><%= index+1 %></td>
+			<td><%= facebook_image_tag player %></td>
+			<td><%= player.played %></td>
+			<td><%= player.pts %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

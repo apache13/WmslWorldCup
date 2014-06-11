@@ -1,4 +1,5 @@
 <strong>Matches (Close)</strong>
+<%= link_to('View all',{ controller: "matches",:closed => true} ) %>
 <table class="table">
 	<thead>
 		<tr>
@@ -7,20 +8,25 @@
 			<th>Description</th>
 			<th>Team1</th>
 			<th>Team2</th>
+			<th>Result</th>
 			<th>Score</th>
+			<th></th>
 		</tr>
 	</thead>
-
 	<tbody>
 		<% @matches_close.each_with_index do |match,index| %>
 		<tr>
 			<td><%= index+1 %></td>
-			<td><%= match.match.localtime %></td>
+			<td><%= match.match.localtime.to_formatted_s(:short) %></td>
 			<td><%= match.description %></td>
 			<td><%= flag_image_tag match.team1 %></td>
 			<td><%= flag_image_tag match.team2 %></td>
+			<td><%= match_result_flat_image_tag(match.result,match) %></td>
 			<td><strong><%= match.team1_score.to_s+'-'+match.team2_score.to_s %></strong></td>
+			<td><%= button_to "View", match , :method => :get , :class=>"btn btn-default" %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
+

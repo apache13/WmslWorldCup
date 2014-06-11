@@ -7,21 +7,38 @@ class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.json
   def index
-    @matches = Match.all
+    
+    conditions = {}
+    unless params[:closed].blank?
+      if params[:closed] == 'true'
+        conditions[:closed] = true
+      else
+        conditions[:closed] = false
+      end
+    end
+    conditions[:team1_id] = params[:team1_id] unless params[:team1_id].blank?
+    conditions[:team2_id] = params[:team2_id] unless params[:team2_id].blank?
+
+    @matches = Match.where(conditions).order("datetime(:match)").paginate(:page => params[:page],:per_page => 10)
+
   end
 
   # GET /matches/1
   # GET /matches/1.json
   def show
+    @view_only = true
+    @bets = Bet.joins(:calculation).where(:match=>@match).order('calculations.total_point DESC')
   end
 
   # GET /matches/new
   def new
+    @view_only = false
     @match = Match.new
   end
 
   # GET /matches/1/edit
   def edit
+    @view_only = false
   end
 
   # POST /matches
@@ -65,13 +82,14 @@ class MatchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_match
-      @match = Match.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def match_params
-      params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :closed ,:winner_id,:live)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_match
+    @match = Match.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def match_params
+    params.require(:match).permit(:description , :match, :team1_id, :team2_id, :team1_score, :team2_score, :closed ,:live,:result,:penalty,:yellow_card,:red_card,:own_goal)
+  end
 end

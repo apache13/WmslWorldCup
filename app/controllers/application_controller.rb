@@ -3,10 +3,22 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user , :require_login_permission , :require_admin_permission
+  helper_method :current_user , :require_login_permission , :require_admin_permission , :player_edit_profile?
 
+
+  # system constant
   @@admin_uid_list = ["10152042428021695"]
+  @@register_new_player = true
+  @@player_edit_profile = true
 
+  def self.player_edit_profile?
+    @@player_edit_profile
+  end
+  
+  def self.register_new_player?
+    @@register_new_player
+  end
+  
   def self.admin?(uid)
     if(@@admin_uid_list.include?(uid))
       return true
@@ -16,7 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def current_user
     if(User.exists?(session[:user_id]))
       @current_user ||= User.find(session[:user_id]) if session[:user_id]

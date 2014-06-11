@@ -1,0 +1,51 @@
+<strong>Information</strong>
+<div class="row">
+	<div class="col-md-2">
+		<p>
+			<%= facebook_thumbnail_image_tag(@player.user,'small') %>
+		</p>
+	</div>
+	<div class="col-md-5">
+		<p>
+			<strong>UID:</strong>
+			<% if @player.user.nil? %>
+			<%= '-' %>
+			<% else %>
+			<%= @player.user.uid %>
+			<% end %>
+		</p>
+		<p>
+			<strong>URL:</strong>
+			<% if @player.user.nil? %>
+			<%= '-' %>
+			<% else %>
+			<%= link_to 'Facebook' , url_for(@player.user.link) , :target => "_blank" %>
+			<% end %>
+		</p>
+		<p>
+			<strong>Name:</strong>
+			<% if @player.user.nil? %>
+			<%= '-' %>
+			<% else %>
+			<%= @player.user.name %>
+			<% end %>
+			
+		</p>
+	</div>
+	<div class="col-md-5">
+		<p>
+			<strong>Player:</strong>
+			<%= @player.name %>
+		</p>
+
+		<p>
+			<strong>Register:</strong>
+			<%= @player.created_at.localtime.to_formatted_s(:short) %>
+		</p>
+		<p>
+			<strong>Favorite team:</strong>
+			<%= flag_image_tag @player.team %>
+		</p>
+	</div>
+</div>
+

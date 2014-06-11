@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525095256) do
+ActiveRecord::Schema.define(version: 20140606200734) do
 
   create_table "battles", force: true do |t|
     t.integer  "match_id"
@@ -30,8 +30,25 @@ ActiveRecord::Schema.define(version: 20140525095256) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "player_id"
-    t.integer  "winner_id"
     t.integer  "calculation_id"
+    t.integer  "result"
+    t.boolean  "own_goal"
+    t.boolean  "yellow_card"
+    t.boolean  "red_card"
+    t.boolean  "penalty"
+    t.integer  "calculation_config_id"
+  end
+
+  create_table "calculation_configs", force: true do |t|
+    t.integer  "team_winner_multiply"
+    t.integer  "score_multiply"
+    t.integer  "penalty_multiply"
+    t.integer  "yellow_card_multiply"
+    t.integer  "red_card_multiply"
+    t.integer  "own_goal_multiply"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bonus_team_multiply"
   end
 
   create_table "calculations", force: true do |t|
@@ -42,6 +59,11 @@ ActiveRecord::Schema.define(version: 20140525095256) do
     t.integer  "score_point"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bonus_team_point"
+    t.integer  "own_goal_point"
+    t.integer  "yellow_card_point"
+    t.integer  "red_card_point"
+    t.integer  "penalty_point"
   end
 
   create_table "matches", force: true do |t|
@@ -54,8 +76,12 @@ ActiveRecord::Schema.define(version: 20140525095256) do
     t.datetime "updated_at"
     t.boolean  "closed"
     t.string   "description"
-    t.integer  "winner_id"
     t.string   "live"
+    t.integer  "result"
+    t.boolean  "own_goal"
+    t.boolean  "yellow_card"
+    t.boolean  "red_card"
+    t.boolean  "penalty"
   end
 
   create_table "players", force: true do |t|
@@ -85,6 +111,7 @@ ActiveRecord::Schema.define(version: 20140525095256) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "player_id"
+    t.string   "link"
   end
 
 end

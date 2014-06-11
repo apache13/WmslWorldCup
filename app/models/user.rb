@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
   
-  after_save :link_player
-  
   belongs_to :player
   
   def self.from_omniauth(auth)
@@ -9,9 +7,13 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
+      user.link = auth.info.urls.Facebook
+      
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      
       user.player = Player.find_by_uid(auth.uid)
+      
       user.save!
     end
   end
@@ -20,8 +22,5 @@ class User < ActiveRecord::Base
     return ApplicationController.admin?(self.uid)
   end
   
-  private
-  def link_player
-    self.player.update(user: self)
-  end
+  
 end

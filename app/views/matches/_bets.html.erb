@@ -1,0 +1,26 @@
+<strong>Calculations</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Facebook</th>
+			<th>Player name</th>
+			<th>Pts</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @bets.each_with_index do |bet,index| %>
+		<tr>
+			<td><%= index+1 %></td>
+			<td><%= facebook_image_tag bet.player %></td>
+			<td><%= link_to bet.player.name,bet.player %></td>
+			<% if bet.calculation != nil %>
+			<td><%= link_to(bet.calculation.total_point,bet.calculation ) %></td>
+			<% else %>
+			<td><%= '?' %></td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
