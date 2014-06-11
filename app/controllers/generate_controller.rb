@@ -54,7 +54,7 @@ class GenerateController < ApplicationController
     
     Battle.destroy_all(match: match)
     
-    players = Player.all.limit(4)
+    players = Player.all
     players = players.shuffle
 
     players.each_slice(2) do |player1,player2|
