@@ -25,7 +25,7 @@
 			<td><%= battle.match.description %></td>
 			<td><%= facebook_image_tag battle.player1 %></td>
 			<td><%= facebook_image_tag battle.player2 %></td>
-			<% if battle.match.closed == true%>
+			<% if battle.match.closed == true && !battle.calculation1.nil? && !battle.calculation1.nil? %>
 			<td><%= battle.calculation1.total_point %></td>
 			<td><%= battle.calculation2.total_point %></td>
 			<% else %>
