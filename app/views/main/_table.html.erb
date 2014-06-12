@@ -6,7 +6,7 @@
 			<th title="Player name">Player</th>
 			<th title="Played">P</th>
 			<th title="Total point">Pts</th>
-			<th title="Total point">LPts</th>
+			<th title="League total point">LPts</th>
 		</tr>
 	</thead>
 
@@ -18,7 +18,11 @@
 			<% if index > (@tables.count-4)%>
 				<tr class="danger">
 			<% else %>
-				<tr>
+				<% if current_user.player == player %>
+					<tr class="info">
+				<% else %>
+					<tr>
+				<% end %>
 			<% end %>
 		<%end%>
 
