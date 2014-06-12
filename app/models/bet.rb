@@ -8,7 +8,7 @@ class Bet < ActiveRecord::Base
   validates_uniqueness_of :match, :scope => :player
   
   validates :penalty,:yellow_card,:red_card,:own_goal, inclusion: { in: [true,false]} , :on => :update
-  validates :result, inclusion: { in: [0,1,2]}
+  validates :result, inclusion: { in: [0,1,2]} , :on => :update
   
   validates :team1_score , :team2_score , numericality: { only_integer: true , greater_than_or_equal_to: 0 , less_than: 100 } , :on => :update
   
