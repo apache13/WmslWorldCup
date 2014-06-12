@@ -7,11 +7,15 @@ class MainController < ApplicationController
   end
   def index
     
-    @tables = Player.all.order(:id).collect.sort{ |a,b| b.pts <=> a.pts }
+    @tables = Player.all.order(:id).collect.sort do |a,b| 
+      comp = (b.lpts <=> a.lpts)
+      comp.zero? ? (b.pts <=> a.pts) : comp
+    end
     
     @matches_close = Match.where(:closed => true).order("datetime(:match) DESC").limit(5)
     @matches_open = Match.where(:closed => false).order("datetime(:match) ASC").limit(5)
     @bets = Bet.joins(:match).where("player_id = ? and matches.closed = ? ",current_user.player,false).order("datetime(matches.match) ASC")
+    
   end
   def access_denied
     

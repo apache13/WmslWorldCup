@@ -82,4 +82,33 @@ class Player < ActiveRecord::Base
     return pts
   end
   
+  def lpts
+    lpts = 0
+    
+    @battles1 = Battle.joins(:match).where('matches.closed = ? and player1_id = ?',true,self)
+    @battles1.each do |battle|
+      if battle.result == 0
+        lpts += 1
+      else
+        if battle.result == 1
+          lpts += 3
+        end
+      end
+    end
+    
+    @battles2 = Battle.joins(:match).where('matches.closed = ? and player2_id = ?',true,self)
+    @battles2.each do |battle|
+      if battle.result == 0
+        lpts += 1
+      else
+        if battle.result == 2
+          lpts += 3
+        end
+      end
+    end
+    
+    return lpts
+    
+  end
+  
 end

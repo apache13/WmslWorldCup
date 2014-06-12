@@ -6,16 +6,18 @@ class BattlesController < ApplicationController
   # GET /battles
   # GET /battles.json
   def index
-    @battles = Battle.all
-
-    @battles.each do |battle|
-      bet1 = Bet.where(player: battle.player1,match: battle.match).first
-      bet2 = Bet.where(player: battle.player2,match: battle.match).first
-      calculation1 = Calculation.where(player: battle.player1, bet: bet1).first
-      calculation2 = Calculation.where(player: battle.player2, bet: bet2).first
-      battle.calculation1 = calculation1
-      battle.calculation2 = calculation2
+    
+    conditions = {}
+    unless params[:closed].blank?
+      if params[:closed] == 'true'
+        conditions['matches.closed'] = true
+      else
+        conditions['matches.closed'] = false
+      end
     end
+    conditions[:match_id] = params[:match] unless params[:match].blank?
+    
+    @battles = Battle.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
 
   end
 

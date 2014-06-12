@@ -15,18 +15,14 @@ class BetsController < ApplicationController
         conditions['matches.closed'] = false
       end
     end
-    conditions['matches.team1_id'] = params[:team1_id] unless params[:team1_id].blank?
-    conditions['matches.team2_id'] = params[:team2_id] unless params[:team2_id].blank?
-    conditions[:player_id] = params[:player] unless params[:player].blank?
-    
+    conditions[:match_id] = params[:match] unless params[:match].blank?
     if current_user.admin?
-      @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+      conditions[:player_id] = params[:player] unless params[:player].blank?
     else
-      conditions[:player_id] = current_user.player.id 
-      @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+      conditions[:player_id] = current_user.player
     end
     
-    
+    @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
 
   end
 
