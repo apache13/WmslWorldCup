@@ -9,12 +9,12 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all.order(:name).paginate(:page => params[:page],:per_page => 10)
-    #@teams = Team.joins(:players).group(:team_id).paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+      @players = player_sort(@team.players)
   end
 
   # GET /teams/new

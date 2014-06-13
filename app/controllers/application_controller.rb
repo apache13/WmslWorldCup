@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user , :require_login_permission , :require_admin_permission , :player_edit_profile?
+  helper_method :current_user , :require_login_permission , :require_admin_permission , :player_edit_profile? , :player_sort
 
 
   # system constant
@@ -71,4 +71,40 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def player_sort(players)
+    
+    players.each do |player|
+      player.calculate
+    end
+    
+    players.collect.sort do |a,b|
+      comp = (b.lpts <=> a.lpts)
+      if comp.zero?
+        comp = (b.pts <=> a.pts)
+        if comp.zero?
+          comp = (b.win <=> a.win)
+          if comp.zero?
+            comp = (b.draw <=> a.draw)
+            if comp.zero?
+              comp = (a.loss <=> b.loss)
+              if comp.zero?
+              comp = (a.id <=> b.id)
+              else
+              comp
+              end
+            else
+            comp
+            end
+          else
+          comp
+          end
+        else
+        comp
+        end
+      else
+      comp
+      end
+    end
+  end
+  
 end

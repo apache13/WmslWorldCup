@@ -16,7 +16,7 @@ module ApplicationHelper
 
   def flag_image_tag(team)
     if(team != nil)
-      link_to(image_tag('/flag/'+team.abbreviate+'.png' ,:class => "img-rounded" , :title => team.name),team) 
+      link_to(image_tag('/flag/'+team.abbreviate+'.png' ,:class => "img-rounded" , :title => team.name),team)
     end
   end
 
@@ -59,7 +59,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def live_image_tag(channel)
     image_tag("/"+channel+".png", height: '20', width: '20')
   end
