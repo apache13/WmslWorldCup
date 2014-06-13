@@ -13,6 +13,8 @@ class TeamsController < ApplicationController
     conditions[:id] = params[:teams] unless params[:teams].blank?
     
     @teams = Team.where(conditions).order(:name).paginate(:page => params[:page],:per_page => 10)
+    
+    #@teams = Team.all.order(:name).paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /teams/1

@@ -43,6 +43,23 @@ module ApplicationHelper
     end
   end
 
+  def battle_result_facebook_image_tag(result,battle)
+    if result == 1
+      facebook_image_tag(battle.player1)
+    else
+      if result == 2
+        facebook_image_tag(battle.player2)
+      else
+        if result.nil?
+          return "-"
+        else
+          return "Draw"
+        end
+
+      end
+    end
+  end
+  
   def live_image_tag(channel)
     image_tag("/"+channel+".png", height: '20', width: '20')
   end

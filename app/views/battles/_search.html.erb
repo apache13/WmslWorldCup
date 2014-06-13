@@ -1,4 +1,4 @@
-<%= form_tag("/bets", method: "get" , :role=>"form") do %>
+<%= form_tag("/battles", method: "get" , :role=>"form") do %>
 <div class="row">
 	<div class="col-md-3">
 		<div class="form-group">
@@ -12,14 +12,6 @@
 			<%= select_tag(:match , options_for_select(Match.all.collect {|m| [ m.description , m.id]}), :include_blank => true , :class=>"form-control") %>
 		</div>
 	</div>
-	<% if current_user.admin? %>
-	<div class="col-md-3">
-		<div class="form-group">
-			<%= label_tag(:player) %>
-			<%= select_tag(:player , options_for_select(Player.all.collect {|t| [ t.name , t.id]}), :include_blank => true , :class=>"form-control") %>
-		</div>
-	</div>
-	<% end %>
 </div>
 <div class="row">
 	<div class="col-md-3">

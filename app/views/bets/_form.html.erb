@@ -28,7 +28,7 @@
 			<%= flag_image_tag(@bet.player.team) %>
 		</p>
 	</div>
-	<div class="col-md-10">
+	<div class="col-md-5">
 		<p>
 			<strong>Match closed:</strong>
 			<%= @bet.match.closed %>
@@ -53,7 +53,6 @@
 			<%= live_image_tag(ch) %>
 			<% end%>
 		</p>
-
 	</div>
 </div>
 
@@ -82,19 +81,33 @@
 				</tr>
 				<tr>
 					<td> <%= f.label :penalty %><em><%= "(#{@bet.calculation_config.penalty_multiply} Pts)" %></em></td>
-					<td> <%= f.check_box :penalty , :disabled => @view_only %> </td>
+					<td>
+						<%= f.radio_button :penalty , false , :disabled => @view_only %>
+						<%= f.label(:penalty, "No") %>
+						<%= f.radio_button :penalty , true , :disabled => @view_only %>
+						<%= f.label(:penalty, "Yes") %>
+					</td>
 				</tr>
 				<tr>
 					<td> <%= f.label :yellow_card , 'Yellow card > 3'%><em><%= "(#{@bet.calculation_config.yellow_card_multiply} Pts)" %></em></td>
-					<td> <%= f.check_box :yellow_card  , :disabled => @view_only %> </td>
+					<td> <%= f.radio_button :yellow_card , false , :disabled => @view_only %>
+					<%= f.label(:yellow_card, "No") %>
+					<%= f.radio_button :yellow_card , true , :disabled => @view_only %>
+					<%= f.label(:yellow_card, "Yes") %> </td>
 				</tr>
 				<tr>
 					<td> <%= f.label :red_card %><em><%= "(#{@bet.calculation_config.red_card_multiply} Pts)" %></em></td>
-					<td> <%= f.check_box :red_card , :disabled => @view_only %> </td>
+					<td> <%= f.radio_button :red_card , false , :disabled => @view_only %>
+					<%= f.label(:red_card, "No") %>
+					<%= f.radio_button :red_card , true , :disabled => @view_only %>
+					<%= f.label(:red_card, "Yes") %> </td>
 				</tr>
 				<tr>
 					<td> <%= f.label :own_goal %><em><%= "(#{@bet.calculation_config.own_goal_multiply} Pts)" %></em></td>
-					<td> <%= f.check_box :own_goal , :disabled => @view_only %> </td>
+					<td> <%= f.radio_button :own_goal , false , :disabled => @view_only %>
+					<%= f.label(:own_goal, "No") %>
+					<%= f.radio_button :own_goal , true , :disabled => @view_only %>
+					<%= f.label(:own_goal, "Yes") %> </td>
 				</tr>
 				<tr>
 					<td> <%= f.label 'Bonus favorite team' %><em><%= "(#{@bet.calculation_config.bonus_team_multiply} %)" %></em></td>
@@ -105,16 +118,14 @@
 	</div>
 </div>
 
-
 <% if !@view_only %>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="actions">
-				<%= f.submit %>
-			</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="actions">
+			<%= f.submit %>
 		</div>
 	</div>
+</div>
 <% end %>
-
 
 <% end %>

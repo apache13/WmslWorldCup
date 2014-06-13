@@ -17,6 +17,11 @@
 		<%= render "players/bets" %>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-12">
+		<%= render "players/battles" %>
+	</div>
+</div>
 
 <% if current_user.admin? %>
 <%= link_to 'Edit', edit_player_path(@player) %> |

@@ -3,11 +3,22 @@ class BattlesController < ApplicationController
 
   before_filter :require_login_permission , :only => [:index,:show]
   before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
-  
   # GET /battles
   # GET /battles.json
   def index
-    @battles = Battle.all
+    
+    conditions = {}
+    unless params[:closed].blank?
+      if params[:closed] == 'true'
+        conditions['matches.closed'] = true
+      else
+        conditions['matches.closed'] = false
+      end
+    end
+    conditions[:match_id] = params[:match] unless params[:match].blank?
+    
+    @battles = Battle.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+
   end
 
   # GET /battles/1
@@ -65,13 +76,14 @@ class BattlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_battle
-      @battle = Battle.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def battle_params
-      params.require(:battle).permit(:match_id, :player1_id, :player2_id, :player1_point, :player2_point)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_battle
+    @battle = Battle.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def battle_params
+    params.require(:battle).permit(:match_id, :player1_id, :player2_id, :result)
+  end
 end

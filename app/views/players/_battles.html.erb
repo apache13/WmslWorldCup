@@ -1,45 +1,33 @@
-<h1>Listing battles</h1>
-<%= render "battles/search" %>
-<table class="table table-hover">
+<strong>Battles</strong>
+<table class="table">
 	<thead>
 		<tr>
-			<th>Battle ID.</th>
+			<th>#</th>
 			<th>Match</th>
 			<th>Player1</th>
 			<th>Player2</th>
 			<th>Player1 Total Point</th>
 			<th>Player2 Total Point</th>
 			<th>Result</th>
-			<th></th>
-			<th></th>
-			<th></th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% @battles.each do |battle| %>
-		<% if battle.match.closed == true%>
+		<% @battles.each_with_index do |battle,index| %>
+		<%if battle.match.closed == true%>
 		<tr class="success">
 			<%else%>
 		<tr>
 			<%end %>
-			<td><%= battle.id %></td>
+			<td><%= index+1 %></td>
 			<td><%= battle.match.description %></td>
 			<td><%= facebook_image_tag battle.player1 %></td>
 			<td><%= facebook_image_tag battle.player2 %></td>
 			<td><%= battle.player1_total_point %></td>
 			<td><%= battle.player2_total_point %></td>
 			<td><%= battle_result_facebook_image_tag battle.result,battle %></td>
-
-			<td><%= button_to "View", battle , :method => :get , :class=>"btn btn-default"%></td>
-			<% if current_user.admin? %>
-			<td><%= link_to 'Edit', edit_battle_path(battle) %></td>
-			<td><%= link_to 'Destroy', battle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 <%= will_paginate @battles %>
-<br>
-

@@ -9,7 +9,6 @@ class CalculationsController < ApplicationController
   def index
     conditions = {}
     conditions[:player_id] = params[:player] unless params[:player].blank?
-    
     @calculations = Calculation.where(conditions).paginate(:page => params[:page],:per_page => 10)
   end
 

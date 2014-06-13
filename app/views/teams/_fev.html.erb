@@ -2,7 +2,8 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th title="Player name">Player</th>
+			<th title="Facebook">Facebook</th>
+			<th title="Player name">Name</th>
 			<th title="Played">P</th>
 			<th title="Total point">Pts</th>
 		</tr>
@@ -13,6 +14,7 @@
 		<tr>
 			<td><%= index+1 %></td>
 			<td><%= facebook_image_tag player %></td>
+			<td><%= player.name %></td>
 			<td><%= player.played %></td>
 			<td><%= player.pts %></td>
 		</tr>

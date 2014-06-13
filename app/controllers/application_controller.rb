@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   # system constant
   @@admin_uid_list = ["10152042428021695"]
-  @@register_new_player = true
-  @@player_edit_profile = true
+  @@register_new_player = false
+  @@player_edit_profile = false
 
   def self.player_edit_profile?
     @@player_edit_profile

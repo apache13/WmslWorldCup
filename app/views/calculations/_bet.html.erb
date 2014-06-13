@@ -1,4 +1,4 @@
-<strong>Bet</strong>
+<strong>Bet</strong><small> (<%= @calculation.bet.updated_at.localtime.to_formatted_s(:short) %>)</small>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -38,10 +38,6 @@
 		<tr>
 			<td> <%= label_tag 'Bonus favorite team' %><em> <%= "(#{@calculation.bet.calculation_config.bonus_team_multiply} %)" %></em></td>
 			<td> <%= flag_image_tag(@calculation.player.team) %> </td>
-		</tr>
-		<tr>
-			<td> <%= label_tag 'Bet date/time' %></td>
-			<td> <%= @calculation.bet.updated_at.localtime.to_formatted_s(:short) %> </td>
 		</tr>
 	</tbody>
 </table>
