@@ -9,7 +9,7 @@
 	<div class="col-md-3">
 		<div class="form-group">
 			<%= label_tag(:match ,"Match") %>
-			<%= select_tag(:match , options_for_select(Match.all.collect {|m| [ m.description , m.id]}), :include_blank => true , :class=>"form-control") %>
+			<%= select_tag(:match , options_for_select(Match.all.collect {|m| [ m.description+' ('+m.team1.name+' vs '+m.team2.name+')' , m.id]}), :include_blank => true , :class=>"form-control") %>
 		</div>
 	</div>
 	<% if current_user.admin? %>

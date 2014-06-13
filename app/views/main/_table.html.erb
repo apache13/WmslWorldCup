@@ -2,16 +2,21 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>#</th>
-			<th title="Player name">Player</th>
+			<th>Pos</th>
+			<th title="Facebook">Player</th>
+			<th title="Player">Player</th>
 			<th title="Played">P</th>
-			<th title="Total point">Pts</th>
-			<th title="League total point">LPts</th>
+			<th title="Win">W</th>
+			<th title="Draw">D</th>
+			<th title="Loss">L</th>
+			<th title="Gd">Gd</th>
+			<th title="Points">Pts</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<% @tables.each_with_index do |player,index| %>
+		
 		<% if index < 3 %>
 			<tr class="success">
 		<% else %>
@@ -28,7 +33,11 @@
 
 			<td><%= index+1 %></td>
 			<td><%= facebook_image_tag player %></td>
+			<td><%= link_to player.name , player %></td>
 			<td><%= player.played %></td>
+			<td><%= player.win %></td>
+			<td><%= player.draw %></td>
+			<td><%= player.loss %></td>
 			<td><%= player.pts %></td>
 			<td><%= player.lpts %></td>
 		</tr>

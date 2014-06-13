@@ -5,6 +5,8 @@
 		<tr>
 			<th>Battle ID.</th>
 			<th>Match</th>
+			<th>Team1</th>
+			<th>Team2</th>
 			<th>Player1</th>
 			<th>Player2</th>
 			<th>Player1 Total Point</th>
@@ -25,6 +27,8 @@
 			<%end %>
 			<td><%= battle.id %></td>
 			<td><%= battle.match.description %></td>
+			<td><%= flag_image_tag battle.match.team1 %></td>
+			<td><%= flag_image_tag battle.match.team2 %></td>
 			<td><%= facebook_image_tag battle.player1 %></td>
 			<td><%= facebook_image_tag battle.player2 %></td>
 			<td><%= battle.player1_total_point %></td>
