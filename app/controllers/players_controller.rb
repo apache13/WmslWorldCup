@@ -1,12 +1,18 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
-  before_filter :require_admin_permission , :only => [:destroy]
+  # before_filter :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
+  # before_filter :require_admin_permission , :only => [:destroy]
+  
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
+    # @players = Player.all
+    @namePlayers = params[:namePlayers]
+    # @players = Player.find(:all, :conditions=> [ "name LIKE ?", "%#{params[:namePlayers]}%" ])
+    # @players = Player.where("name LIKE ?", "%#{params[:namePlayers]}%" )
+    @players = Player.where("name LIKE ?", "%#@namePlayers%" )
+
   end
 
   # GET /players/1
