@@ -6,7 +6,18 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
+    
+    name = params[:name] unless params[:name].blank?
+    if(name.nil?)
+      @players = Player.all.paginate(:page => params[:page],:per_page => 10)
+    else
+      @players = Player.where(" name like ? ", "%"+name+"%" ).paginate(:page => params[:page],:per_page => 10)
+    end
+    
+    @players.each do |player|
+      player.calculate
+    end
+    
   end
 
   # GET /players/1

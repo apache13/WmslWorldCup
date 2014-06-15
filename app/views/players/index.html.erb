@@ -1,5 +1,5 @@
 <h1>Listing players</h1>
-
+<%= render "players/search" %>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -10,6 +10,7 @@
 			<th>Register</th>
 			<th>Favorite team</th>
 			<th>Pts</th>
+			<th>Lpts</th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -26,6 +27,7 @@
 			<td><%= player.created_at.localtime.to_formatted_s(:short) %></td>
 			<td><%= flag_image_tag player.team %></td>
 			<td><%= player.pts %></td>
+			<td><%= player.lpts %></td>
 			<td><%= button_to "View", player , :method => :get , :class=>"btn btn-default" %></td>
 			<% if current_user.admin? || player.user == current_user %>
 			<td><%= button_to "Edit", edit_player_path(player) , :method => :get , :class=>"btn btn-default" %></td>
@@ -39,7 +41,7 @@
 		<% end %>
 	</tbody>
 </table>
-
+<%= will_paginate @players %>
 <br>
 
 <%= link_to 'New Player', new_player_path %>
