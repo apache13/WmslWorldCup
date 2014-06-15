@@ -1,32 +1,47 @@
-<strong>Calculations</strong>
+<strong>Calculations</strong><em> (Order by total_point , team_winner_point , score_point , penalty_point , yellow_card_point , red_card_point , own_goal_point , bonus_team_point , player_id asc)</em>
 <table class="table">
 	<thead>
 		<tr>
 			<th>Pos</th>
 			<th title="Facebook">Player</th>
 			<th title="Player">Player</th>
-			<th title="Played">P</th>
-			<th title="Win">W</th>
-			<th title="Draw">D</th>
-			<th title="Loss">L</th>
-			<th title="Gd">Gd</th>
-			<th title="Points">Pts</th>
+			<th title="Total point">pts</th>
+			<th title="Team winner point">twp</th>
+			<th title="Score point">sp</th>
+			<th title="Penalty point">pp</th>
+			<th title="Yellow card point">ycp</th>
+			<th title="Red card point">rcp</th>
+			<th title="Own goal point">ogp</th>
+			<th title="Bonus team point">btp</th>
+			<th title="id">id</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% @table.each_with_index do |player,index| %>
-		<tr>
+		<% @table.each_with_index do |bet,index| %>
+		<% if index == 0%>
+			<tr class="success">
+		<% else %>
+			<% if current_user.player == bet.player %>
+				<tr class="info">
+			<% else %>
+				<tr>
+			<% end %>
+		<%end%>
 			<td><%= index+1 %></td>
-			<td><%= facebook_image_tag player %></td>
-			<td><%= link_to player.name , player %></td>
-			<td><%= player.played %></td>
-			<td><%= player.win %></td>
-			<td><%= player.draw %></td>
-			<td><%= player.loss %></td>
-			<td><%= player.pts %></td>
-			<td><%= player.lpts %></td>
+			<td><%= facebook_image_tag bet.player %></td>
+			<td><%= link_to bet.player.name , bet.player %></td>
+			<td><%= bet.calculation.total_point %></td>
+			<td><%= bet.calculation.team_winner_point %></td>
+			<td><%= bet.calculation.score_point %></td>
+			<td><%= bet.calculation.penalty_point %></td>
+			<td><%= bet.calculation.yellow_card_point %></td>
+			<td><%= bet.calculation.red_card_point %></td>
+			<td><%= bet.calculation.own_goal_point %></td>
+			<td><%= bet.calculation.bonus_team_point %></td>
+			<td><%= bet.player.id %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
