@@ -2,7 +2,7 @@ module ApplicationHelper
   def facebook_image_tag(player)
     if(player != nil)
       link_to player do
-        image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-rounded' , height: '30', width: '30' , :title => player.name
+        image_tag 'https://graph.facebook.com/'+player.uid+'/picture' ,:class => 'img-rounded' , height: '30', width: '30' , :title => player.user.name
       end
     end
 

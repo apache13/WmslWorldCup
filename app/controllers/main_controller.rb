@@ -10,8 +10,8 @@ class MainController < ApplicationController
     players = Player.all.order(:id)
     @tables = player_sort(players)
     
-    @matches_close = Match.where(:closed => true).order("datetime(:match) DESC").limit(5)
-    @matches_open = Match.where(:closed => false).order("datetime(:match) ASC").limit(5)
+    @matches_close = Match.where(:closed => true).order(match: :desc).limit(5)
+    @matches_open = Match.where(:closed => false).order(match: :asc).limit(5)
     @bets = Bet.joins(:match).where("player_id = ? and matches.closed = ? ",current_user.player,false).order("datetime(matches.match) ASC")
     
   end
