@@ -63,5 +63,5 @@ module ApplicationHelper
   def live_image_tag(channel)
     image_tag("/"+channel+".png", height: '20', width: '20')
   end
-
+   
 end

@@ -23,8 +23,9 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
-    @bets = Bet.joins(:match).where(player: @player).order('matches.match').paginate(:page => params[:page],:per_page => 10)
-    @battles = Battle.where('player1_id = ? or player2_id = ?' ,@player,@player).paginate(:page => params[:page],:per_page => 10)
+    @player.calculate
+    @bets = Bet.joins(:match).where(player: @player).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
+    @battles = Battle.joins(:match).where('player1_id = ? or player2_id = ?' ,@player,@player).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
   end
 
   # GET /players/new

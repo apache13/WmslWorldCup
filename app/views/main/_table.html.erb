@@ -2,15 +2,19 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>Pos</th>
+			<th>Lpts Pos.</th>
+			<th>Pts Pos.</th>
 			<th title="Facebook">Facebook</th>
 			<th title="Player">Player</th>
 			<th title="Played">P</th>
 			<th title="Win">W</th>
 			<th title="Draw">D</th>
 			<th title="Loss">L</th>
-			<th title="Gd">Gd</th>
 			<th title="Points">Pts</th>
+			<th title="League points">Lpts</th>
+			<th title="Points payment (baht)">Pts payment</th>
+			<th title="League points payment (baht)">Lpts payment</th>
+			<th title="Total payment (baht)">Total payment</th>
 		</tr>
 	</thead>
 
@@ -31,7 +35,8 @@
 			<% end %>
 		<%end%>
 
-			<td><%= index+1 %></td>
+			<td><%= player.lpts_pos %></td>
+			<td><%= player.pts_pos %></td>
 			<td><%= facebook_image_tag player %></td>
 			<td><%= link_to player.name , player %></td>
 			<td><%= player.played %></td>
@@ -40,6 +45,10 @@
 			<td><%= player.loss %></td>
 			<td><%= player.pts %></td>
 			<td><%= player.lpts %></td>
+			<td><%= player.pts_pay %></td>
+			<td><%= player.lpts_pay %></td>
+			<td><%= player.total_pay %></td>
+			<td></td>
 		</tr>
 		<% end %>
 	</tbody>

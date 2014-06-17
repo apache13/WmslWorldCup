@@ -30,6 +30,13 @@ class Player < ActiveRecord::Base
   
   attr_accessor :lpts
   
+  attr_accessor :pts_pos
+  attr_accessor :lpts_pos
+  
+  attr_accessor :pts_pay
+  attr_accessor :lpts_pay
+  attr_accessor :total_pay
+  
   def calculate
     cal_played
     cal_twp

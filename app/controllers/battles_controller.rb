@@ -17,7 +17,7 @@ class BattlesController < ApplicationController
     end
     conditions[:match_id] = params[:match] unless params[:match].blank?
     
-    @battles = Battle.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+    @battles = Battle.joins(:match).where(conditions).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
 
   end
 

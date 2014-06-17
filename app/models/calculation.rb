@@ -19,8 +19,8 @@ class Calculation < ActiveRecord::Base
     Random.new_seed 
     
     self.bet.result = rand(3) # 0,1,2
-    self.bet.team1_score = rand(10) # 0-9
-    self.bet.team2_score = rand(10) # 0-9
+    self.bet.team1_score = rand(4) # 0-3
+    self.bet.team2_score = rand(4) # 0-3
     
     self.bet.penalty = rand(2) == 1 ? true : false
     self.bet.yellow_card = rand(2) == 1 ? true : false

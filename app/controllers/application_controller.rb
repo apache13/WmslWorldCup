@@ -73,6 +73,24 @@ class ApplicationController < ActionController::Base
 
   def player_sort(players)
     
+    players = player_pts_sort(players)
+    players.each_with_index do |player,index|
+      player.pts_pos = index + 1
+      player.pts_pay = index*2
+    end
+    
+    players = player_lpts_sort(players)
+    players.each_with_index do |player,index|
+      player.lpts_pos = index + 1
+      player.lpts_pay = index*2
+      player.total_pay = player.pts_pay + player.lpts_pay
+    end
+    
+  end
+  
+  private
+  def player_lpts_sort(players)
+    
     players.each do |player|
       player.calculate
     end
@@ -106,5 +124,43 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def player_pts_sort(players)
+    
+    players.each do |player|
+      player.calculate
+    end
+    
+    players.collect.sort do |a,b|
+      comp = (b.pts <=> a.pts)
+      if comp.zero?
+        comp = (b.lpts <=> a.lpts)
+        if comp.zero?
+          comp = (b.win <=> a.win)
+          if comp.zero?
+            comp = (b.draw <=> a.draw)
+            if comp.zero?
+              comp = (a.loss <=> b.loss)
+              if comp.zero?
+              comp = (a.id <=> b.id)
+              else
+              comp
+              end
+            else
+            comp
+            end
+          else
+          comp
+          end
+        else
+        comp
+        end
+      else
+      comp
+      end
+    end
+  end
+  
+  
   
 end

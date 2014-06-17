@@ -22,7 +22,7 @@ class BetsController < ApplicationController
       conditions[:player_id] = current_user.player
     end
     
-    @bets = Bet.joins(:match).where(conditions).paginate(:page => params[:page],:per_page => 10)
+    @bets = Bet.joins(:match).where(conditions).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
 
   end
 
