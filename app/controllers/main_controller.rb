@@ -14,6 +14,13 @@ class MainController < ApplicationController
     @matches_open = Match.where(:closed => false).order(match: :asc).limit(5)
     @bets = Bet.joins(:match).where("player_id = ? and matches.closed = ? ",current_user.player,false).order("datetime(matches.match) ASC")
     
+    @total_pay = 0
+    @tables.each do |player|
+      @total_pay += player.total_pay
+    end
+    
+    
+    
   end
   def access_denied
     

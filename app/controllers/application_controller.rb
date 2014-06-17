@@ -11,6 +11,22 @@ class ApplicationController < ActionController::Base
   @@register_new_player = false
   @@player_edit_profile = false
 
+
+  @@payment_table = [0,
+    5,
+    10,
+    15,15,15,15,15,
+    20,20,20,20,20,
+    25,25,25,25,25,
+    30,30,30,30,30,
+    35,35,35,35,35,
+    40,40,40,40,40,
+    45,45,45,45,45,
+    50,50,50,50,50,
+    55,55,55,55,60,
+    60,60,60,65,70,
+    75]
+  
   def self.player_edit_profile?
     @@player_edit_profile
   end
@@ -76,13 +92,13 @@ class ApplicationController < ActionController::Base
     players = player_pts_sort(players)
     players.each_with_index do |player,index|
       player.pts_pos = index + 1
-      player.pts_pay = index*2
+      player.pts_pay = player_pts_payment(player)
     end
     
     players = player_lpts_sort(players)
     players.each_with_index do |player,index|
       player.lpts_pos = index + 1
-      player.lpts_pay = index*2
+      player.lpts_pay = player_lpts_payment(player)
       player.total_pay = player.pts_pay + player.lpts_pay
     end
     
@@ -161,6 +177,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def player_pts_payment(player)
+     return @@payment_table[player.pts_pos-1]
+  end
   
+  def player_lpts_payment(player)
+    return @@payment_table[player.lpts_pos-1]
+  end
   
 end
