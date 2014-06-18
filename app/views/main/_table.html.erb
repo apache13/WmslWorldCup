@@ -1,5 +1,5 @@
 <strong>Table</strong>
-<table class="table">
+<table id="playerTable" class="tablesorter-default">
 	<thead>
 		<tr>
 			<th>Bpts Pos.</th>
@@ -14,27 +14,13 @@
 			<th title="Battle points">Bpts</th>
 			<th title="Points paid (baht)">Ppts paid</th>
 			<th title="Battle points paid (baht)">Bpts paid</th>
-			<th title="Total paid (baht)">Total paid <br/>(<%= number_with_delimiter(@total_pay, :delimiter => ',') %> baht)</th>
+			<th title="Total paid (baht)">Total paid (<%= number_with_delimiter(@total_pay, :delimiter => ',') %> baht)</th>
 		</tr>
 	</thead>
 
 	<tbody>
-		<% @tables.each_with_index do |player,index| %>
-		
-		<% if index < 3 %>
-			<tr class="success">
-		<% else %>
-			<% if index > (@tables.count-4)%>
-				<tr class="danger">
-			<% else %>
-				<% if current_user.player == player %>
-					<tr class="info">
-				<% else %>
-					<tr>
-				<% end %>
-			<% end %>
-		<%end%>
-
+		<% @players.each_with_index do |player,index| %>
+		<tr>
 			<td><%= player.lpts_pos %></td>
 			<td><%= player.pts_pos %></td>
 			<td><%= facebook_image_tag player %></td>
