@@ -1,0 +1,19 @@
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Bets</th>
+			<th>Draw</th>
+			<th>Team 1 winner</th>
+			<th>Team 2 winner</th>
+		</tr>
+	</thead>
+	<body>
+		<tr>
+			<td><%= @bets %></td>
+			<td><%= @draw %> (<%= percent_of(@draw,@bets)%>%)</td>
+			<td><%= @team1_winner %> (<%= percent_of(@team1_winner,@bets)%>%)</td>
+			<td><%= @team2_winner %> (<%= percent_of(@team2_winner,@bets)%>%)</td>
+		</tr>
+	</body>
+</table>

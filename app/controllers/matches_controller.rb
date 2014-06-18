@@ -3,11 +3,10 @@ class MatchesController < ApplicationController
 
   before_filter :require_login_permission , :only => [:index,:show]
   before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
-  
   # GET /matches
   # GET /matches.json
   def index
-    
+
     conditions = {}
     unless params[:closed].blank?
       if params[:closed] == 'true'
@@ -28,7 +27,25 @@ class MatchesController < ApplicationController
   def show
     @view_only = true
     @table = Bet.joins(:calculation).where(:match=>@match).order('calculations.total_point desc , calculations.total_point desc , calculations.team_winner_point desc , calculations.score_point , calculations.penalty_point desc , calculations.yellow_card_point desc , calculations.red_card_point desc , calculations.own_goal_point desc, calculations.bonus_team_point desc , player_id')
-    
+
+    @bets = 0
+    @draw = 0
+    @team1_winner = 0
+    @team2_winner = 0
+    @match.bets.each do |bet|
+      if !bet.result.nil?
+        @bets += 1
+        if bet.result == 0
+          @draw += 1
+        else
+          if bet.result == 1
+            @team1_winner += 1
+          else
+            @team2_winner += 1
+          end
+        end
+      end
+    end
   end
 
   # GET /matches/new

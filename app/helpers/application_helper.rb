@@ -64,4 +64,10 @@ module ApplicationHelper
     image_tag("/"+channel+".png", height: '20', width: '20')
   end
    
+  def percent_of(a,b)
+    p = a.to_f / b.to_f * 100.0
+    p.round(2)
+  end
+
+
 end
