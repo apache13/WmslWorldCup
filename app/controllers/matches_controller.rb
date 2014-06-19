@@ -32,9 +32,14 @@ class MatchesController < ApplicationController
     @draw = 0
     @team1_winner = 0
     @team2_winner = 0
+    @team1_score = 0
+    @team2_score = 0
+    
     @match.bets.each do |bet|
       if !bet.result.nil?
         @bets += 1
+        @team1_score += bet.team1_score
+        @team2_score += bet.team2_score
         if bet.result == 0
           @draw += 1
         else
@@ -46,6 +51,8 @@ class MatchesController < ApplicationController
         end
       end
     end
+    
+    
   end
 
   # GET /matches/new

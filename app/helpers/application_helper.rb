@@ -69,5 +69,9 @@ module ApplicationHelper
     p.round(2)
   end
 
+  def avg_score_of(a,b)
+    p = a.to_f / b.to_f
+    p.round(2)
+  end
 
 end

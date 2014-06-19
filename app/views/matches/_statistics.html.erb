@@ -6,14 +6,18 @@
 			<th>Draw</th>
 			<th>Team 1 winner</th>
 			<th>Team 2 winner</th>
+			<th>Team 1 score</th>
+			<th>Team 2 score</th>
 		</tr>
 	</thead>
 	<body>
 		<tr>
 			<td><%= @bets %></td>
-			<td><%= @draw %> (<%= percent_of(@draw,@bets)%>%)</td>
-			<td><%= @team1_winner %> (<%= percent_of(@team1_winner,@bets)%>%)</td>
-			<td><%= @team2_winner %> (<%= percent_of(@team2_winner,@bets)%>%)</td>
+			<td><%= @draw %> <small>(<%= percent_of(@draw,@bets)%>%)</small></td>
+			<td><%= @team1_winner %> <small>(<%= percent_of(@team1_winner,@bets)%>%)</small></td>
+			<td><%= @team2_winner %> <small>(<%= percent_of(@team2_winner,@bets)%>%)</small></td>
+			<td><%= avg_score_of(@team1_score,@bets) %></td>
+			<td><%= avg_score_of(@team2_score,@bets) %></td>
 		</tr>
 	</body>
 </table>
