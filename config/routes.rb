@@ -20,6 +20,7 @@ WmslWorldCup::Application.routes.draw do
   get "main/login"
   get "main/index"
   get "main/access_denied"
+  get "main/my_bets"
   
   resources :teams
 

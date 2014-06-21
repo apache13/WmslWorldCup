@@ -51,3 +51,6 @@ gem 'omniauth-facebook'
 gem 'will_paginate', '~> 3.0.5'
 
 gem 'jquery-tablesorter', '~> 1.12.1'
+
+gem 'pdfkit', '~> 0.6.2'
+
