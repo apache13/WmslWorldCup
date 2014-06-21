@@ -1,13 +1,15 @@
 <style>
-table, th, td
-{
-border-collapse:collapse;
-border:1px solid black;
-}
-th, td
-{
-padding:5px;
-}
+	table, th, td {
+		border-collapse: collapse;
+		border: 1px solid black;
+	}
+	tr , th, td {
+		padding: 5px;
+		text-align:center; 
+	}
+	.match_desc{
+		text-align:left; 
+	}
 </style>
 
 <strong>My Bets <%= current_user.player.name %> (<%= current_user.name%>)</strong>
@@ -24,7 +26,7 @@ padding:5px;
 			<th>Yellow_card > 3</th>
 			<th>Red_card</th>
 			<th>Own_goal</th>
-			
+			<th>Pts.</th>
 		</tr>
 	</thead>
 
@@ -36,30 +38,34 @@ padding:5px;
 		<tr>
 			<%end %>
 			<td><%= index+1 %></td>
-			<td><%= bet.match.match.localtime.to_formatted_s(:short) %></td>
-			<td><%= bet.match.description %> (<%= bet.match.team1.name %> vs <%= bet.match.team2.name %>)</td>
+			<td><small><%= bet.match.match.localtime.to_formatted_s(:short) %></small></td>
+			<td class="match_desc"><small><%= bet.match.description %> (<%= bet.match.team1.name %> vs <%= bet.match.team2.name %>)</small></td>
 			<% if bet.match.closed == true %>
-			<td><strong><%= bet.match.team1_score.to_s+'-'+bet.match.team2_score.to_s %></strong></td>
+			<td><%= bet.match.team1_score.to_s+'-'+bet.match.team2_score.to_s %></td>
 			<% else %>
 			<td>Open</td>
 			<% end %>
-			
+
 			<%if bet.result == 0%>
 			<td>Draw</td>
 			<%else%>
-				<%if bet.result == 1%>
-					<td><%= bet.match.team1.name %></td>
-				<%else%>
-					<td><%= bet.match.team2.name %></td>
-				<%end%>
+			<%if bet.result == 1%>
+			<td><%= bet.match.team1.name %></td>
+			<%else%>
+			<td><%= bet.match.team2.name %></td>
 			<%end%>
-			
-			<td><strong><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></strong></td>
-			<td> <%= check_box_tag :red_card ,true, bet.penalty , :disabled=>true %> </td>
-			<td> <%= check_box_tag :red_card ,true, bet.yellow_card , :disabled=>true %> </td>
-			<td> <%= check_box_tag :red_card ,true, bet.red_card , :disabled=>true %> </td>
-			<td> <%= check_box_tag :red_card ,true, bet.own_goal , :disabled=>true %> </td>
-			
+			<%end%>
+
+			<td><%= bet.team1_score.to_s+'-'+bet.team2_score.to_s %></td>
+			<td><%= check_box_tag :red_card ,true, bet.penalty , :disabled=>true %> </td>
+			<td><%= check_box_tag :red_card ,true, bet.yellow_card , :disabled=>true %> </td>
+			<td><%= check_box_tag :red_card ,true, bet.red_card , :disabled=>true %> </td>
+			<td><%= check_box_tag :red_card ,true, bet.own_goal , :disabled=>true %> </td>
+			<% if bet.calculation.nil? %>
+			<td>-</td>
+			<% else %>
+			<td><%= bet.calculation.total_point %></td>
+			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
