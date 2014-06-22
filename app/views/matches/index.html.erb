@@ -16,8 +16,9 @@
 			<% if current_user.admin? %>
 			<th></th>
 			<th></th>
-			<th></th>
-			<th></th>
+			<th>Gen Bets</th>
+			<th>Gen Battles</th>
+			<th>Calculate</th>
 			<% end %>
 		</tr>
 	</thead>
@@ -44,12 +45,12 @@
 			<td><%= button_to "View", match , :method => :get , :class=>"btn btn-default" %></td>
 			<% if current_user.admin? %>
 			<td><%= button_to "Edit", edit_match_path(match) , :method => :get , :class=>"btn btn-default" %></td>
-			<td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			
-			<td><%= link_to("Bets (#{match.bets.count.to_s+'/'+Player.all.count.to_s})",{ controller: "generate" , action: "bets" , match: match}) %></td>
-			<td><%= link_to("Battles (#{match.battles.count.to_s+'/'+(Player.all.count/2).to_s})",{ controller: "generate" , action: "battles" , match: match} , data: { confirm: 'Are you sure?' }) %></td>
-			<td><%= link_to("Cal (#{Calculation.where(:bet_id=>match.bets).count.to_s+'/'+match.bets.count.to_s})",{ controller: "generate" , action: "calculate" , match: match}, :disabled => true) %></td>
-			
+			<td><%= button_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-default"%></td>
+
+			<td><%= button_to "Gen (#{match.bets.count.to_s+'/'+Player.all.count.to_s})", { controller: "generate" , action: "bets" , match: match} , :method => :post , :class=>"btn btn-default" %></td>
+			<td><%= button_to "Gen (#{match.battles.count.to_s+'/'+(Player.all.count/2).to_s})", { controller: "generate" , action: "battles" , match: match}  , :method => :post , :class=>"btn btn-default" %></td>
+			<td><%= button_to "Gen (#{Calculation.where(:bet_id=>match.bets).count.to_s+'/'+match.bets.count.to_s})", { controller: "generate" , action: "calculate" }, :method => :post , :class=>"btn btn-default" %></td>
+
 			<% end %>
 		</tr>
 		<% end %>

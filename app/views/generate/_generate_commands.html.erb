@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-2">
+		<% if current_user.admin? %>
+		<p>
+			<%= button_to "Generat Bets (#{@match.bets.count.to_s+'/'+Player.all.count.to_s})", { controller: "generate" , action: "bets" , match: @match.id} , :method => :post , :class=>"btn btn-default" %>
+		</p>
+		<p>
+			<%= button_to "Generat Battles (#{@match.battles.count.to_s+'/'+(Player.all.count/2).to_s})", { controller: "generate" , action: "battles" , match: @match.id} , :method => :post , :class=>"btn btn-default" %>
+		</p>
+		<p>
+			<%= button_to "Calculate (#{Calculation.where(:bet_id=>@match.bets).count.to_s+'/'+@match.bets.count.to_s})", { controller: "generate" , action: "calculate" , match: @match.id} , :method => :post , :class=>"btn btn-default" %>
+		</p>
+		<% end %>
+	</div>
+</div>

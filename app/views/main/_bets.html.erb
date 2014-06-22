@@ -1,5 +1,5 @@
 <strong>Bets (Open)</strong>
-<%= link_to('View all',{ controller: "bets"} ) %>
+<%= link_to 'Download MyBets.pdf', { :controller=>:main , :action=>:my_bets ,:format=>:pdf} %>
 <table class="table">
 	<thead>
 		<tr>

@@ -2,9 +2,9 @@ WmslWorldCup::Application.routes.draw do
   get "about/index"
   resources :calculation_configs
 
-  get "generate/bets"
-  get "generate/calculate"
-  get "generate/battles"
+  post "generate/bets"
+  post "generate/calculate"
+  post "generate/battles"
   
   get "administrator/index"
   resources :battles
