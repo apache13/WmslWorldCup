@@ -18,7 +18,18 @@ class MatchesController < ApplicationController
     conditions[:team1_id] = params[:team1_id] unless params[:team1_id].blank?
     conditions[:team2_id] = params[:team2_id] unless params[:team2_id].blank?
 
-    @matches = Match.where(conditions).order("datetime(:match)").paginate(:page => params[:page],:per_page => 10)
+    order_by = 'desc'
+    unless params[:order_by].blank?
+      if params[:order_by] == 'desc'
+        order_by = 'desc'
+      else
+        if params[:order_by] == 'asc'
+          order_by = 'asc'
+        end
+      end
+    end
+    
+    @matches = Match.where(conditions).order("datetime(matches.match) #{order_by} , matches.id desc ").paginate(:page => params[:page],:per_page => 10)
 
   end
 
