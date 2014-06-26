@@ -22,6 +22,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
       @players = player_sort(@team.players)
+      @matches = Match.where('team1_id = ? or team2_id = ?',@team,@team).order(match: :asc)
   end
 
   # GET /teams/new

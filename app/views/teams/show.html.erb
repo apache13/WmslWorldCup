@@ -20,10 +20,14 @@
 		</p>
 	</div>
 	<div class="col-md-10">
+		<%= render "teams/result" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
 		<%= render "teams/fev" %>
 	</div>
 </div>
-
 <% if current_user.admin? %>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <% end %>
