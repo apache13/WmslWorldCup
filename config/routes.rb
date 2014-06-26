@@ -1,4 +1,6 @@
 WmslWorldCup::Application.routes.draw do
+  resources :notifications
+
   get "about/index"
   resources :calculation_configs
 

@@ -1,0 +1,8 @@
+<strong>notification</strong>
+<ul class="list-group">
+<% @notifications.each do |notification|%>
+	<li class="list-group-item">
+		<%= link_to "#{notification.topic} (#{notification.created_at.localtime.to_formatted_s(:short)})" , notification , :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '800px', :colorbox_iframe => true } %> <span class="label label-primary">New</span>
+	</li>
+<% end %>
+</ul>

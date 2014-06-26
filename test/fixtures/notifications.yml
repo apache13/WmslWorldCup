@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: MyString
+  message: MyText
+  player_id: 1
+  closed: false
+
+two:
+  topic: MyString
+  message: MyText
+  player_id: 1
+  closed: false

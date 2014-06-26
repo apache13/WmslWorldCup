@@ -1,54 +1,60 @@
 <strong>Information</strong>
 <div class="row">
 	<div class="col-md-2">
-		<p>
-			<%= facebook_thumbnail_image_tag(current_user,'small') %>
-		</p>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<%= facebook_thumbnail_image_tag(current_user,'small') %>
+			</li>
+		</ul>
 	</div>
 	<div class="col-md-5">
-		<p>
-			<strong>UID:</strong>
-			<%= current_user.uid %>
-		</p>
-		<p>
-			<strong>URL:</strong>
-			<%= link_to 'Facebook' , url_for(current_user.link) , :target => "_blank" %>
-		</p>
-		<p>
-			<strong>Name:</strong>
-			<%= current_user.name %>
-		</p>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<strong>UID:</strong>
+				<%= current_user.uid %>
+			</li>
+			<li class="list-group-item">
+				<strong>URL:</strong>
+				<%= link_to 'Facebook' , url_for(current_user.link) , :target => "_blank" %>
+			</li>
+			<li class="list-group-item">
+				<strong>Name:</strong>
+				<%= current_user.name %>
+			</li>
+		</ul>
 	</div>
 	<div class="col-md-5">
-		<p>
-			<% if current_user.player == nil %>
-			<strong>Player:</strong>
-			
-			<span class="label label-default"><%= link_to 'Register', new_player_path %></span>
-			<% else%>
-			<strong>Player:</strong>
-			<%= link_to current_user.player.name , current_user.player %>
-			<% end %>
-		</p>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<% if current_user.player == nil %>
+				<strong>Player:</strong>
 
-		<p>
-			<% if current_user.player == nil %>
-			<strong>Register:</strong>
-			<%= '-' %>
-			<% else%>
-			<strong>Register:</strong>
-			<%= current_user.player.created_at.localtime.to_formatted_s(:short) %>
-			<% end %>
-		</p>
-		<p>
-			<% if current_user.player == nil %>
-			<strong>Favorite team:</strong>
-			<%= '-' %>
-			<% else%>
-			<strong>Favorite team:</strong>
-			<%= flag_image_tag current_user.player.team %>
-			<% end %>
-		</p>
+				<span class="label label-default"><%= link_to 'Register', new_player_path %></span>
+				<% else%>
+				<strong>Player:</strong>
+				<%= link_to current_user.player.name , current_user.player %>
+				<% end %>
+			</li>
+
+			<li class="list-group-item">
+				<% if current_user.player == nil %>
+				<strong>Register:</strong>
+				<%= '-' %>
+				<% else%>
+				<strong>Register:</strong>
+				<%= current_user.player.created_at.localtime.to_formatted_s(:short) %>
+				<% end %>
+			</li>
+			<li class="list-group-item">
+				<% if current_user.player == nil %>
+				<strong>Favorite team:</strong>
+				<%= '-' %>
+				<% else%>
+				<strong>Favorite team:</strong>
+				<%= flag_image_tag current_user.player.team %>
+				<% end %>
+			</li>
+		</ul>
 	</div>
 </div>
 

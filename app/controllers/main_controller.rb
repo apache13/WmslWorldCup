@@ -19,6 +19,8 @@ class MainController < ApplicationController
       @total_pay += player.total_pay
     end
 
+    @notifications = Notification.all.order(id: :desc).limit(3)
+    
   end
 
   def my_bets

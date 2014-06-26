@@ -1,0 +1,34 @@
+<h1>Listing notifications</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Message</th>
+      <th>Player</th>
+      <th>Closed</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifications.each do |notification| %>
+      <tr>
+        <td><%= notification.topic %></td>
+        <td><%= notification.message %></td>
+        <td><%= notification.player_id %></td>
+        <td><%= notification.closed %></td>
+        <td><%= link_to "Show", notification , :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '800px', :colorbox_iframe => true } %></td>
+        <td><%= link_to 'Show', notification %></td>
+        <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
+        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notification', new_notification_path %>
