@@ -1,9 +1,44 @@
-<div class="jumbotron">
-	<div class="container">
-		<h1><%= @notification.topic %></h1>
-		<hr />
-		<p class="lead">
-			<%= @notification.message %>
-		</p>
-	</div>
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WMSL World Cup 2014</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12">
+					<h1><%= @notification.topic.html_safe %></h1>
+					<hr />
+					<p class="lead">
+						<%= @notification.message.html_safe %>
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<!--
+		<div class="navbar navbar-fixed-bottom">
+		<div class="row">
+		<div class="col-md-12">
+		<%= form_for(@notification) do |f| %>
+		<div class="field">
+		<%= f.check_box :closed %>
+		<%= f.label :closed , 'à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¹�à¸ªà¸”à¸‡à¸‚à¹‰à¸­à¸„à¸§à¸²à¸¡à¸™à¸µà¹‰à¹ƒà¸™à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¹„à¸›' %>
+		</div>
+		<div class="actions">
+		<%= f.submit 'OK', :class=>"btn btn-default" %>
+		</div>
+		<% end %>
+		</div>
+		</div>
+		</div>
+		-->
+
+	</body>
+</html>
+

@@ -20,7 +20,6 @@
         <td><%= notification.message %></td>
         <td><%= notification.player_id %></td>
         <td><%= notification.closed %></td>
-        <td><%= link_to "Show", notification , :data => { :colorbox => true, :colorbox_height => '600px', :colorbox_width => '800px', :colorbox_iframe => true } %></td>
         <td><%= link_to 'Show', notification %></td>
         <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
         <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>

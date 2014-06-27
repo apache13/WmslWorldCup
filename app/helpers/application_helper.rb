@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def facebook_thumbnail_image_tag(player,type)
     if(player != nil)
-      image_tag 'https://graph.facebook.com/'+player.uid+'/picture?type='+type ,:class => 'img-thumbnail'
+      image_tag 'https://graph.facebook.com/'+player.uid+'/picture?type='+type ,:class => 'img-thumbnail center-block'
     end
   end
 
