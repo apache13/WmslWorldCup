@@ -1,0 +1,27 @@
+<strong>Bets</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Team1</th>
+			<th>Team2</th>
+			<th>Result</th>
+			<th>Penalty</th>
+			<th>Yellow card</th>
+			<th>Red card</th>
+			<th>Own goal</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="bet in bets">
+			<td>{{bet.id}}</td>
+			<td>{{bet.team1_score}}</td>
+			<td>{{bet.team2_score}}</td>
+			<td>{{bet.result}}</td>
+			<td>{{bet.penalty}}</td>
+			<td>{{bet.yellow_card}}</td>
+			<td>{{bet.red_card}}</td>
+			<td>{{bet.own_goal}}</td>
+		</tr>
+	</tbody>
+</table>

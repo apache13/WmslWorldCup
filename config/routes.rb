@@ -1,4 +1,8 @@
 WmslWorldCup::Application.routes.draw do
+  get "ang/index"
+  get "ang/matches_close"
+  get "ang/bets"
+  
   resources :notifications
 
   get "about/index"
