@@ -17,6 +17,7 @@ class GenerateController < ApplicationController
       end
     end
     @bets = Bet.where(match: match)
+    
   end
 
   def calculate

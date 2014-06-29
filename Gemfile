@@ -59,3 +59,4 @@ gem 'colorbox-rails', '~> 0.1.2'
 
 gem 'angularjs-rails', '~> 1.2.18'
 
+

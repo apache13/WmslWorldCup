@@ -5,7 +5,6 @@
     <tr>
       <th>Topic</th>
       <th>Message</th>
-      <th>Player</th>
       <th>Closed</th>
       <th></th>
       <th></th>
@@ -18,7 +17,6 @@
       <tr>
         <td><%= notification.topic %></td>
         <td><%= notification.message %></td>
-        <td><%= notification.player_id %></td>
         <td><%= notification.closed %></td>
         <td><%= link_to 'Show', notification %></td>
         <td><%= link_to 'Edit', edit_notification_path(notification) %></td>

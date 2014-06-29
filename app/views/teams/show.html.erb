@@ -1,29 +1,28 @@
 <div class="row">
 	<div class="col-md-2">
-		<p id="notice">
-			<%= notice %>
-		</p>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<strong>Name:</strong>
+				<%= @team.name %>
+			</li>
 
-		<p>
-			<strong>Name:</strong>
-			<%= @team.name %>
-		</p>
+			<li class="list-group-item">
+				<strong>Abbreviate:</strong>
+				<%= @team.abbreviate %>
+			</li>
 
-		<p>
-			<strong>Abbreviate:</strong>
-			<%= @team.abbreviate %>
-		</p>
-
-		<p>
-			<strong>Flag:</strong>
-			<%= flag_image_tag @team %>
-		</p>
+			<li class="list-group-item">
+				<strong>Flag:</strong>
+				<%= flag_image_tag @team %>
+			</li>
+		</ul>
 	</div>
 	<div class="col-md-10">
 		<%= render "teams/result" %>
 	</div>
 </div>
 <div class="row">
+	<strong>Fan club</strong>
 	<div class="col-md-12">
 		<%= render "teams/fev" %>
 	</div>

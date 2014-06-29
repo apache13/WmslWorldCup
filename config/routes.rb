@@ -9,8 +9,11 @@ WmslWorldCup::Application.routes.draw do
   resources :calculation_configs
 
   post "generate/bets"
+  get "generate/bets"
   post "generate/calculate"
+  get "generate/calculate"
   post "generate/battles"
+  get "generate/battles"
   
   get "administrator/index"
   resources :battles
