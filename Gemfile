@@ -57,6 +57,6 @@ gem 'pdfkit', '~> 0.6.2'
 
 gem 'colorbox-rails', '~> 0.1.2'
 
-gem 'angularjs-rails', '~> 1.2.18'
+# gem 'angularjs-rails', '~> 1.2.18'
 
 

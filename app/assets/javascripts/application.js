@@ -17,4 +17,3 @@
 //= require bootstrap
 //= require jquery-tablesorter
 //= require colorbox-rails
-//= require angular
