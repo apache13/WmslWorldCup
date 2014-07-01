@@ -26,7 +26,54 @@ class PlayersController < ApplicationController
     @player.calculate
     @bets = Bet.joins(:match).where(player: @player).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
     @battles = Battle.joins(:match).where('player1_id = ? or player2_id = ?' ,@player,@player).order('matches.match desc').paginate(:page => params[:page],:per_page => 10)
+    
+    calculations = Calculation.where(player: @player)
+    @cal_count = 0
+    @cal_result_currect = 0
+    @cal_score_currect = 0
+    @cal_penalty_currect = 0
+    @cal_yellow_card_currect = 0
+    @cal_red_card_currect = 0
+    @cal_own_goal_current = 0
+
+    calculations.each do |cal|
+      @cal_count += 1
+      
+      if cal.team_winner_point != 0
+        @cal_result_currect += 1
+      end
+      
+      if cal.score_point != 0
+        @cal_score_currect += 1
+      end
+      
+      if cal.penalty_point != 0
+        @cal_penalty_currect += 1
+      end
+      
+      if cal.yellow_card_point != 0
+        @cal_yellow_card_currect += 1
+      end
+      
+      if cal.red_card_point != 0
+        @cal_red_card_currect += 1
+      end
+      
+      if cal.own_goal_point != 0
+        @cal_own_goal_current += 1
+      end
+      
+    end
+      
+    @cal_result_currect = @cal_result_currect*100/@cal_count
+    @cal_score_currect = @cal_score_currect*100/@cal_count
+    @cal_penalty_currect = @cal_penalty_currect*100/@cal_count
+    @cal_yellow_card_currect = @cal_yellow_card_currect*100/@cal_count
+    @cal_red_card_currect = @cal_red_card_currect*100/@cal_count
+    @cal_own_goal_current = @cal_own_goal_current*100/@cal_count
+    
   end
+  
 
   # GET /players/new
   def new

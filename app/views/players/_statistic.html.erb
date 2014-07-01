@@ -1,4 +1,4 @@
-<strong>Statistic</strong>
+<strong>Score Stat.</strong>
 <table class="table">
 	<thead>
 		<tr>
@@ -18,6 +18,32 @@
 			<td><%= @player.loss %></td>
 			<td><%= @player.pts %></td>
 			<td><%= @player.lpts %></td>
+		</tr>
+	</tbody>
+</table>
+
+<strong>Bets stat.</strong>
+<table class="table">
+	<thead>
+		<tr>
+			<th title="Bet">Bet</th>
+			<th title="Result">Result</th>
+			<th title="Score">Score</th>
+			<th title="Penalty">Penalty</th>
+			<th title="Yello card">Yello card</th>
+			<th title="Red card">Red card</th>
+			<th title="Own goal">Own goal</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @cal_count %></td>
+			<td><%= "#{@cal_result_currect}%"%></td>
+			<td><%= "#{@cal_score_currect}%"%></td>
+			<td><%= "#{@cal_penalty_currect}%"%></td>
+			<td><%= "#{@cal_yellow_card_currect}%"%></td>
+			<td><%= "#{@cal_red_card_currect}%"%></td>
+			<td><%= "#{@cal_own_goal_current}%"%></td>
 		</tr>
 	</tbody>
 </table>
