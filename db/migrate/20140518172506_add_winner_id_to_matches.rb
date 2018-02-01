@@ -1,4 +1,4 @@
-class AddWinnerIdToMatches < ActiveRecord::Migration
+class AddWinnerIdToMatches < ActiveRecord::Migration[5.1]
   def change
     add_column :matches, :winner_id, :integer
   end

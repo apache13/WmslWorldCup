@@ -1,8 +1,8 @@
 class BattlesController < ApplicationController
   before_action :set_battle, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show]
-  before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
+  before_action :require_login_permission , :only => [:index,:show]
+  before_action :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
   # GET /battles
   # GET /battles.json
   def index

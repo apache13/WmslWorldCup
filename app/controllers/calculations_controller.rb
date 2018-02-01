@@ -1,8 +1,8 @@
 class CalculationsController < ApplicationController
   before_action :set_calculation, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show]
-  before_filter :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
+  before_action :require_login_permission , :only => [:index,:show]
+  before_action :require_admin_permission , :only => [:new,:create,:edit,:update,:destroy]
   
   # GET /calculations
   # GET /calculations.json

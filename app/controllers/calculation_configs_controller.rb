@@ -1,7 +1,7 @@
 class CalculationConfigsController < ApplicationController
   before_action :set_calculation_config, only: [:show, :edit, :update, :destroy]
   
-  before_filter :require_admin_permission
+  before_action :require_admin_permission
   
   # GET /calculation_configs
   # GET /calculation_configs.json

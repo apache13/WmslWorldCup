@@ -1,8 +1,8 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
-  before_filter :require_admin_permission , :only => [:destroy]
+  before_action :require_login_permission , :only => [:index,:show,:new,:create,:edit,:update]
+  before_action :require_admin_permission , :only => [:destroy]
   # GET /players
   # GET /players.json
   def index

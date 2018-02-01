@@ -1,4 +1,4 @@
-class CreateCalculations < ActiveRecord::Migration
+class CreateCalculations < ActiveRecord::Migration[5.1]
   def change
     create_table :calculations do |t|
       t.integer :player_id

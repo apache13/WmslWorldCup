@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 
-  before_filter :require_login_permission , :except => [:login]
+  before_action :require_login_permission , :except => [:login]
   def login
 
   end

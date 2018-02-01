@@ -1,4 +1,4 @@
-class AddOwnGoalPointAndYellowCardPointAndRedCardPointAndPenaltyPointToCalculations < ActiveRecord::Migration
+class AddOwnGoalPointAndYellowCardPointAndRedCardPointAndPenaltyPointToCalculations < ActiveRecord::Migration[5.1]
   def change
     add_column :calculations , :own_goal_point , :integer
     add_column :calculations , :yellow_card_point, :integer

@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_admin_permission ,:except => [:show]
+  before_action :require_admin_permission ,:except => [:show]
 
   # GET /notifications
   # GET /notifications.json

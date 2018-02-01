@@ -1,6 +1,6 @@
 class AngController < ApplicationController
   
-  before_filter :require_admin_permission 
+  before_action :require_admin_permission 
     
   def index
 

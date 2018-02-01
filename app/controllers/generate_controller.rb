@@ -1,6 +1,6 @@
 class GenerateController < ApplicationController
 
-  before_filter :require_admin_permission
+  before_action :require_admin_permission
   
   def bets
     match = Match.find(params[:match])

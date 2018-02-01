@@ -1,4 +1,4 @@
-class CreateCalculationConfigs < ActiveRecord::Migration
+class CreateCalculationConfigs < ActiveRecord::Migration[5.1]
   def change
     create_table :calculation_configs do |t|
       t.integer :team_winner_multiply

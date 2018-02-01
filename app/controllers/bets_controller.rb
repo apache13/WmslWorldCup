@@ -1,8 +1,8 @@
 class BetsController < ApplicationController
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_login_permission , :only => [:index,:show,:edit,:update]
-  before_filter :require_admin_permission , :only => [:new,:create,:destroy]
+  before_action :require_login_permission , :only => [:index,:show,:edit,:update]
+  before_action :require_admin_permission , :only => [:new,:create,:destroy]
   # GET /bets
   # GET /bets.json
   def index
