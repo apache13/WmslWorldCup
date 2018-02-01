@@ -39,8 +39,7 @@ sui = Team.create(name: 'Switzerland',abbreviate: 'sui')
 usa = Team.create(name: 'USA',abbreviate: 'usa')
 uru = Team.create(name: 'Uruguay',abbreviate: 'uru')
 
-#pong = Player.create(name: 'pong',uid: '10152042428021695',admin: true,team: ita)
-#beer = Player.create(name: 'beer',uid: '100001280493339',admin: false,team: eng)
+pong = Player.create(name: 'pong',uid: '10154981617291695',admin: true,team: ita)
 
 match01 = Match.create(description: 'Group Stage : A#01',match: '2014-06-13 03:00:00 +0700',team1: bra, team2: cro ,live: '7,8,WC',closed: false)
 match02 = Match.create(description: 'Group Stage : A#01',match: '2014-06-13 23:00:00 +0700',team1: mex, team2: cmr ,live: '7,8,WC',closed: false)

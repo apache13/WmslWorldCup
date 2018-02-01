@@ -14,6 +14,8 @@ RUN rake db:create
 
 RUN rake db:migrate
 
+RUN rake db:seed
+
 EXPOSE 3000
 
 CMD ["rails", "server"]
